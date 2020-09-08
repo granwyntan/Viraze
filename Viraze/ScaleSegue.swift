@@ -23,13 +23,14 @@ class ScaleSegue: UIStoryboardSegue {
         
         toViewController.view.transform = CGAffineTransform(scaleX: 0.05, y: 0.05)
         toViewController.view.center = originalCenter
-        toViewController.view.layer.cornerRadius = 15
+        toViewController.view.layer.cornerRadius = 25
         containerView?.addSubview(toViewController.view)
         
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
             toViewController.view.transform = CGAffineTransform.identity
         }, completion: { success in
             fromViewController.present(toViewController, animated: false, completion: nil)
+            toViewController.view.layer.cornerRadius = 0
         })
     }
     
@@ -44,7 +45,7 @@ class UnwindScaleSegue: UIStoryboardSegue {
     func scale() {
         let toViewController = self.destination
         let fromViewController = self.source
-        toViewController.view.layer.cornerRadius = 15
+        toViewController.view.layer.cornerRadius = 0
         fromViewController.view.superview?.insertSubview(toViewController.view, at: 0)
         
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {

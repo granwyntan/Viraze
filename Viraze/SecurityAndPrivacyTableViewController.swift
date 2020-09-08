@@ -48,7 +48,7 @@ class SecurityAndPrivacyTableViewController: UITableViewController {
         
         cell.textLabel?.text = securityAndPrivacy[indexPath.row]
         
-        cell.textLabel?.font = UIFont(name: "Futura", size: 17)
+//        cell.textLabel?.font = UIFont(name: "Futura", size: 17)
 
         return cell
     }

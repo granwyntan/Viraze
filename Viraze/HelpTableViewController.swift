@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import MessageUI
 
-class HelpTableViewController: UITableViewController {
+class HelpTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
     
-    let helpStuff = ["About Us", "Tutorial", "Contact"]
+    let helpStuff = ["About Us", "Tutorial", "Contact", "More"]
 
+    let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,9 +42,63 @@ class HelpTableViewController: UITableViewController {
         // Configure the cell...
         
         cell.textLabel?.text = helpStuff[indexPath.row]
-        cell.textLabel?.font = UIFont(name: "Futura", size: 17)
+//        cell.textLabel?.font = UIFont(name: "Futura", size: 17)
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            let alert = UIAlertController(title: "About Us", message: "Viraze\nDeveloped by Granwyn Tan,\nJoel Hui and Ashok\nSST S2-05 2020", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        } else if indexPath.row == 1 {
+            performSegue(withIdentifier: "goTutorial", sender: nil)
+        } else if indexPath.row == 2 {
+            showMailComposer()
+        }
+    }
+    
+    func showMailComposer() {
+        guard MFMailComposeViewController.canSendMail() else {
+            //Show alert informing the user
+            return
+        }
+        
+        let composer = MFMailComposeViewController()
+        composer.mailComposeDelegate = self
+        composer.setToRecipients(["granwyn_tan@s2019.ssts.edu.sg"])
+        composer.setSubject("Feedback for Viraze App")
+        if let name = defaults.string(forKey: "UserName"){
+            composer.setMessageBody("Dear App Developer,\n\n\(name)\nUser of Viraze", isHTML: false)
+        } else {
+            composer.setMessageBody("Dear App Developer,\n\nUser of Viraze", isHTML: false)
+        }
+        present(composer, animated: true)
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        
+        if let _ = error {
+            //Show error alert
+            controller.dismiss(animated: true)
+            return
+        }
+        
+        switch result {
+            case .cancelled:
+                print("Cancelled")
+            case .failed:
+                print("Failed to send")
+            case .saved:
+                print("Saved")
+            case .sent:
+                print("Email Sent")
+            @unknown default:
+                break
+        }
+        
+        controller.dismiss(animated: true)
     }
 
     /*

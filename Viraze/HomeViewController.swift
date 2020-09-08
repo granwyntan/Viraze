@@ -8,22 +8,33 @@
 
 import UIKit
 
+var selectedHazeCard: Int?
+var selectedTableHazeCard: Int?
+var selectedVirusCard: Int?
+
 class HomeViewController: UIViewController/*, UIViewControllerTransitioningDelegate*/ {
     @IBOutlet weak var greeting: UIButton!
     @IBOutlet weak var greetingText: UILabel!
     @IBOutlet weak var hazeLabel: UILabel!
+    @IBOutlet weak var hazePic: UIImageView!
     @IBOutlet weak var coronavirusLabel: UILabel!
+    @IBOutlet weak var coronavirusPic: UIImageView!
+    var hasBeenPressed = false
     var greetingPrefix = "Hello"
     @IBOutlet weak var haze1: UIButton!
     @IBOutlet weak var haze2: UIButton!
     @IBOutlet weak var haze3: UIButton!
     @IBOutlet weak var haze4: UIButton!
     @IBOutlet weak var haze5: UIButton!
+    @IBOutlet weak var haze6: UIButton!
+    @IBOutlet weak var haze7: UIButton!
+    @IBOutlet weak var haze8: UIButton!
 //    @IBOutlet weak var coronavirus1: UIButton!
 //    @IBOutlet weak var coronavirus2: UIButton!
 //    @IBOutlet weak var coronavirus3: UIButton!
 //    @IBOutlet weak var coronavirus4: UIButton!
 //    @IBOutlet weak var coronavirus5: UIButton!
+    
     var timeLeft = 1.0
     var imageName = UIImage()
     let defaults = UserDefaults.standard
@@ -31,9 +42,11 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
     var transition = CircularTransistion()
     override func viewDidLoad() {
         super.viewDidLoad()
+//        hazePic.alpha = 0.75
 
         // Do any additional setup after loading the view.
         self.navigationItem.hidesBackButton = true
+        
         // navigationController?.navigationBar.backgroundColor = .systemGreen
         // image.clipsToBounds = true
         // image.contentMode = .scaleAspectFit
@@ -52,16 +65,23 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
         haze3.layer.cornerRadius = 10
         haze4.layer.cornerRadius = 10
         haze5.layer.cornerRadius = 10
+        haze6.layer.cornerRadius = 10
+        haze7.layer.cornerRadius = 10
+        haze8.layer.cornerRadius = 10
         haze1.clipsToBounds = true
         haze2.clipsToBounds = true
         haze3.clipsToBounds = true
         haze4.clipsToBounds = true
         haze5.clipsToBounds = true
+        haze6.clipsToBounds = true
+        haze7.clipsToBounds = true
+        haze8.clipsToBounds = true
 //        coronavirus1.clipsToBounds = true
 //        coronavirus2.clipsToBounds = true
 //        coronavirus3.clipsToBounds = true
 //        coronavirus4.clipsToBounds = true
 //        coronavirus5.clipsToBounds = true
+        
     }
 
 //    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -115,12 +135,39 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
 //    @IBAction func seeHaze(_ sender: Any) {
 //        performSegue(withIdentifier: "hazeDefinition", sender: nil)
 //    }
+
+    @IBAction func tapCard(_ sender: UIButton) {
+//        if hasBeenPressed == false {
+        if sender == haze1 || sender == haze3 || sender == haze4 {
+            if sender == haze1 {
+                selectedHazeCard = 1
+            } else if sender == haze3 {
+                selectedHazeCard = 2
+            } else if sender == haze4 {
+                selectedHazeCard = 3
+            }
+            performSegue(withIdentifier: "cardWithoutTable", sender: nil)
+        } else if sender == haze2 || sender == haze5 || sender == haze6 || sender == haze7 {
+            if sender == haze2 {
+                selectedTableHazeCard = 1
+            } else if sender == haze5 {
+                selectedTableHazeCard = 2
+            } else if sender == haze6 {
+              selectedTableHazeCard = 3
+            }
+            performSegue(withIdentifier: "cardWithTable", sender: nil)
+        } else {
+            
+        }
+    }
     
     
     @IBAction func settingsScreen(_ sender: Any) {
         performSegue(withIdentifier: "seeSettings", sender: nil)
     }
+    
     override func viewDidAppear(_ animated: Bool) {
+        hasBeenPressed = false
         greeting.frame = CGRect(x: greetingText.layer.position.x, y: greetingText.layer.position.y, width: greetingText.layer.frame.width, height: greetingText.layer.frame.height)
         greeting.center = greetingText.center
         print(Calendar.current.component(.hour, from: Date()))

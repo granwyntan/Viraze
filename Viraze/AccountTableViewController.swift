@@ -43,7 +43,7 @@ class AccountTableViewController: UITableViewController, UIImagePickerController
         let image = UIImagePickerController()
         // var newImage: UIImage
         image.delegate = self
-        let alert = UIAlertController(title: "\(prefix) Profile Photo", message: "", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "\(prefix) Profile Photo", message: "Profile Photo to be used within Viraze, for personalisation", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Take Picture", style: .default, handler: { action in
             if UIImagePickerController.isSourceTypeAvailable(.camera){
                 image.sourceType = .camera
@@ -64,7 +64,7 @@ class AccountTableViewController: UITableViewController, UIImagePickerController
         alert.addAction(UIAlertAction(title: "Remove Profile Picture", style: .destructive, handler: {
             action in
             self.defaults.removeObject(forKey: "pfpFileDir")
-            self.pfp.setBackgroundImage(UIImage(named: "LOL"), for: .normal)
+            self.pfp.setBackgroundImage(UIImage(named: "Viraze Placeholder Icon"), for: .normal)
             self.prefix = "Set"
         }))
         if prefix == "Set" {
@@ -96,7 +96,7 @@ class AccountTableViewController: UITableViewController, UIImagePickerController
         if let imageThing = defaults.string(forKey: "pfpFileDir") {
             pfp.setBackgroundImage(UIImage(contentsOfFile: imageThing), for: .normal)
         } else {
-            pfp.setBackgroundImage(UIImage(named: "LOL"), for: .normal)
+            pfp.setBackgroundImage(UIImage(named: "Viraze Placeholder Icon"), for: .normal)
         }
 
         dismiss(animated: true)

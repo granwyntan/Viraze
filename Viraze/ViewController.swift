@@ -25,6 +25,11 @@ class ViewController: UIViewController {
         let segue = UnwindScaleSegue(identifier: unwindSegue.identifier, source: unwindSegue.source, destination: unwindSegue.destination)
         segue.perform()
     }
+    
+    @IBAction func unwindLogout(segue: UIStoryboardSegue){
+        
+    }
+    
     @IBAction func GetStarted(_ sender: Any) {
         performSegue(withIdentifier: "seeTutorial", sender: nil)
     }

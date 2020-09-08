@@ -7,45 +7,50 @@
 //
 
 import UIKit
+import AVFoundation
 
 class TutorialViewController: UIViewController {
     
     let defaults = UserDefaults.standard
     var seguePerformed = false
-    @IBOutlet weak var image: UIImageView!
+//    @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var pagecontrol: UIPageControl!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var instructions: UILabel!
     @IBOutlet var longPress: UILongPressGestureRecognizer!
-    
-    struct TutorialStuff {
-        var image: String
-        var title: String
-        var desc: String
-    }
+    @IBOutlet weak var playingThing: UIView!
+
     var currentPage = 0
     
-    let tutorials = [
-        TutorialStuff(image: "image1", title: "Title 1", desc: "desc 1"),
-        TutorialStuff(image: "image2", title: "Title 2", desc: "desc 2"),
-        TutorialStuff(image: "image3", title: "Title 3", desc: "desc 3")
-    ]
+    func playVideo(withName name: String, ofFileType fileType: String) {
+        guard let path = Bundle.main.path(forResource: name, ofType: fileType) else {return}
+        let player = AVPlayer(url: URL(fileURLWithPath: path))
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = self.playingThing.bounds
+        playerLayer.videoGravity = .resizeAspect
+        playingThing.layer.addSublayer(playerLayer)
+        player.play()
+        loopVideo(videoPlayer: player)
+    }
+    func loopVideo(videoPlayer: AVPlayer) {
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: nil) { notification in
+            videoPlayer.seek(to: CMTime.zero)
+            videoPlayer.play()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         defaults.setValue("TutorialViewController", forKey: "LaunchViewController")
-        longPress.isEnabled = false
         self.navigationItem.hidesBackButton = true
-        
         pagecontrol.numberOfPages = tutorials.count
-        pagecontrol.currentPage = currentPage
-        image.image = UIImage(named: tutorials[currentPage].image)
-        titleLabel.text = tutorials[currentPage].title
-        descriptionLabel.text = tutorials[currentPage].desc
-        
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(nextTutorial))
         swipeLeft.direction = .left
         self.view.addGestureRecognizer(swipeLeft)
@@ -57,10 +62,31 @@ class TutorialViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(nextTutorial))
         self.view.addGestureRecognizer(tap)
         
+        if let theCurrentPage = defaults.string(forKey: "TutorialPage") {
+            currentPage = Int(theCurrentPage)!
+            pagecontrol.currentPage = currentPage
+//            image.image = UIImage(named: tutorials[currentPage].image)
+            playVideo(withName: tutorials[currentPage].videoName, ofFileType: tutorials[currentPage].videoFileType)
+            titleLabel.text = tutorials[currentPage].title
+            descriptionLabel.text = tutorials[currentPage].desc
+            if currentPage == 2 {
+                instructions.text = "Long Press Anywhere to Continue"
+                longPress.isEnabled = true
+            } else {
+                instructions.text = "Tap or Swipe to Navigate"
+                longPress.isEnabled = false
+            }
+        } else {
+            playVideo(withName: tutorials[currentPage].videoName, ofFileType: tutorials[currentPage].videoFileType)
+            titleLabel.text = tutorials[currentPage].title
+            descriptionLabel.text = tutorials[currentPage].desc
+            pagecontrol.numberOfPages = tutorials.count
+        }
     }
-    @IBAction func scroll(_ sender: Any) {
+    @IBAction func pageControlChange(_ sender: UIPageControl) {
         currentPage = pagecontrol.currentPage
-        image.image = UIImage(named: tutorials[currentPage].image)
+//        image.image = UIImage(named: tutorials[currentPage].image)
+        playVideo(withName: tutorials[currentPage].videoName, ofFileType: tutorials[currentPage].videoFileType)
         titleLabel.text = tutorials[currentPage].title
         descriptionLabel.text = tutorials[currentPage].desc
         if currentPage == 2 {
@@ -70,23 +96,27 @@ class TutorialViewController: UIViewController {
             instructions.text = "Tap or Swipe to Navigate"
             longPress.isEnabled = false
         }
+        defaults.setValue(sender.currentPage, forKey: "TutorialPage")
     }
     @objc func prevTutorial(){
         if currentPage > 0 {
             instructions.text = "Tap or Swipe to Navigate"
             currentPage -= 1
-            image.image = UIImage(named: tutorials[currentPage].image)
+//            image.image = UIImage(named: tutorials[currentPage].image)
+            playVideo(withName: tutorials[currentPage].videoName, ofFileType: tutorials[currentPage].videoFileType)
             titleLabel.text = tutorials[currentPage].title
             descriptionLabel.text = tutorials[currentPage].desc
             pagecontrol.currentPage = currentPage
             longPress.isEnabled = false
         }
+        defaults.setValue(currentPage, forKey: "TutorialPage")
     }
     @objc func nextTutorial() {
         if currentPage < tutorials.count-1 {
             instructions.text = "Tap or Swipe to Navigate"
             currentPage += 1
-            image.image = UIImage(named: tutorials[currentPage].image)
+//            image.image = UIImage(named: tutorials[currentPage].image)
+            playVideo(withName: tutorials[currentPage].videoName, ofFileType: tutorials[currentPage].videoFileType)
             titleLabel.text = tutorials[currentPage].title
             descriptionLabel.text = tutorials[currentPage].desc
             pagecontrol.currentPage = currentPage
@@ -96,8 +126,10 @@ class TutorialViewController: UIViewController {
             instructions.text = "Long Press Anywhere to Continue"
             longPress.isEnabled = true
         }
+        defaults.setValue(currentPage, forKey: "TutorialPage")
     }
-    @IBAction func longPressed(_ sender: Any) {
+    
+    @IBAction func longPress(_ sender: Any) {
         if seguePerformed == false {
             performSegue(withIdentifier: "setName", sender: nil)
             seguePerformed = true
