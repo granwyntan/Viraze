@@ -102,6 +102,11 @@ class DefintionViewController: UIViewController, UIViewControllerTransitioningDe
                 playVideo(forView: videoPlayerView, withName: videoPlayerFileName, ofFileType: videoPlayerFileType)
             }
         }
+        
+        if label.text == "Causes" {
+            label.textColor = .black
+            text.textColor = .black
+        }
     }
     
     func playVideo(forView viewName: UIView, withName videoName: String, ofFileType fileType: String) {

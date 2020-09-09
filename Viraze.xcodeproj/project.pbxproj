@@ -24,6 +24,8 @@
 		89AF6C6C24E5107800CA1EC6 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AF6C6B24E5107800CA1EC6 /* TutorialViewController.swift */; };
 		89AF6C6E24E5502F00CA1EC6 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AF6C6D24E5502E00CA1EC6 /* NameViewController.swift */; };
 		89B6FFB724E7E75100B7A0B9 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B6FFB624E7E75100B7A0B9 /* Data.swift */; };
+		89C4D40B2508726300FD076A /* Virus (Dark).mov in Resources */ = {isa = PBXBuildFile; fileRef = 89C4D40A2508726300FD076A /* Virus (Dark).mov */; };
+		89C4D40D25087F2400FD076A /* Screen Recording 2020-09-09 at 11.07.54 AM.mov in Resources */ = {isa = PBXBuildFile; fileRef = 89C4D40C25087F2300FD076A /* Screen Recording 2020-09-09 at 11.07.54 AM.mov */; };
 		89D8D90624E6440A00ED240C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D8D90524E6440A00ED240C /* HomeViewController.swift */; };
 		89D8D90824E66E9500ED240C /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D8D90724E66E9500ED240C /* ChangeNameViewController.swift */; };
 		89E37E3B2503E5E800434D16 /* TutorialInSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E37E3A2503E5E800434D16 /* TutorialInSettingsViewController.swift */; };
@@ -32,7 +34,7 @@
 		89E6D20E24F0A5AA005E9B11 /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E6D20D24F0A5AA005E9B11 /* HelpTableViewController.swift */; };
 		89F11CF424F785EE004746EC /* McqQnsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F11CF224F785ED004746EC /* McqQnsViewController.swift */; };
 		89F11CF524F785EE004746EC /* McqMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F11CF324F785EE004746EC /* McqMainViewController.swift */; };
-		89F5878D24F22DCE0058D62B /* Virus.mov in Resources */ = {isa = PBXBuildFile; fileRef = 89F5878C24F22DCE0058D62B /* Virus.mov */; };
+		89F5878D24F22DCE0058D62B /* Virus (Light).mov in Resources */ = {isa = PBXBuildFile; fileRef = 89F5878C24F22DCE0058D62B /* Virus (Light).mov */; };
 		89F5878F24F22E370058D62B /* TestVirusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5878E24F22E360058D62B /* TestVirusViewController.swift */; };
 		89F5879124F2472A0058D62B /* DefintionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5879024F2472A0058D62B /* DefintionViewController.swift */; };
 		89F5879524F274B80058D62B /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5879424F274B80058D62B /* CircularTransition.swift */; };
@@ -60,6 +62,8 @@
 		89AF6C6B24E5107800CA1EC6 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		89AF6C6D24E5502E00CA1EC6 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		89B6FFB624E7E75100B7A0B9 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		89C4D40A2508726300FD076A /* Virus (Dark).mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Virus (Dark).mov"; sourceTree = "<group>"; };
+		89C4D40C25087F2300FD076A /* Screen Recording 2020-09-09 at 11.07.54 AM.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Screen Recording 2020-09-09 at 11.07.54 AM.mov"; sourceTree = "<group>"; };
 		89D8D90524E6440A00ED240C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		89D8D90724E66E9500ED240C /* ChangeNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
 		89E37E3A2503E5E800434D16 /* TutorialInSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialInSettingsViewController.swift; sourceTree = "<group>"; };
@@ -68,7 +72,7 @@
 		89E6D20D24F0A5AA005E9B11 /* HelpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		89F11CF224F785ED004746EC /* McqQnsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = McqQnsViewController.swift; sourceTree = "<group>"; };
 		89F11CF324F785EE004746EC /* McqMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = McqMainViewController.swift; sourceTree = "<group>"; };
-		89F5878C24F22DCE0058D62B /* Virus.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Virus.mov; sourceTree = "<group>"; };
+		89F5878C24F22DCE0058D62B /* Virus (Light).mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Virus (Light).mov"; sourceTree = "<group>"; };
 		89F5878E24F22E360058D62B /* TestVirusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVirusViewController.swift; sourceTree = "<group>"; };
 		89F5879024F2472A0058D62B /* DefintionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefintionViewController.swift; sourceTree = "<group>"; };
 		89F5879424F274B80058D62B /* CircularTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
@@ -106,10 +110,12 @@
 		89AF6C5424E4D91500CA1EC6 /* Viraze */ = {
 			isa = PBXGroup;
 			children = (
+				89F5878C24F22DCE0058D62B /* Virus (Light).mov */,
+				89C4D40A2508726300FD076A /* Virus (Dark).mov */,
+				89C4D40C25087F2300FD076A /* Screen Recording 2020-09-09 at 11.07.54 AM.mov */,
 				89AF6C5524E4D91500CA1EC6 /* AppDelegate.swift */,
 				89AF6C5724E4D91500CA1EC6 /* SceneDelegate.swift */,
 				89AF6C5B24E4D91500CA1EC6 /* Main.storyboard */,
-				89F5878C24F22DCE0058D62B /* Virus.mov */,
 				89AF6C5E24E4D91800CA1EC6 /* Assets.xcassets */,
 				89AF6C6024E4D91800CA1EC6 /* LaunchScreen.storyboard */,
 				89AF6C6324E4D91800CA1EC6 /* Info.plist */,
@@ -200,9 +206,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89C4D40D25087F2400FD076A /* Screen Recording 2020-09-09 at 11.07.54 AM.mov in Resources */,
 				89AF6C6224E4D91800CA1EC6 /* LaunchScreen.storyboard in Resources */,
 				89AF6C5F24E4D91800CA1EC6 /* Assets.xcassets in Resources */,
-				89F5878D24F22DCE0058D62B /* Virus.mov in Resources */,
+				89F5878D24F22DCE0058D62B /* Virus (Light).mov in Resources */,
+				89C4D40B2508726300FD076A /* Virus (Dark).mov in Resources */,
 				89AF6C5D24E4D91500CA1EC6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -66,9 +66,7 @@ class TutorialViewController: UIViewController {
             currentPage = Int(theCurrentPage)!
             pagecontrol.currentPage = currentPage
 //            image.image = UIImage(named: tutorials[currentPage].image)
-            playVideo(withName: tutorials[currentPage].videoName, ofFileType: tutorials[currentPage].videoFileType)
-            titleLabel.text = tutorials[currentPage].title
-            descriptionLabel.text = tutorials[currentPage].desc
+            startPlayingVideo()
             if currentPage == 2 {
                 instructions.text = "Long Press Anywhere to Continue"
                 longPress.isEnabled = true
@@ -77,18 +75,14 @@ class TutorialViewController: UIViewController {
                 longPress.isEnabled = false
             }
         } else {
-            playVideo(withName: tutorials[currentPage].videoName, ofFileType: tutorials[currentPage].videoFileType)
-            titleLabel.text = tutorials[currentPage].title
-            descriptionLabel.text = tutorials[currentPage].desc
+            startPlayingVideo()
             pagecontrol.numberOfPages = tutorials.count
         }
     }
     @IBAction func pageControlChange(_ sender: UIPageControl) {
         currentPage = pagecontrol.currentPage
 //        image.image = UIImage(named: tutorials[currentPage].image)
-        playVideo(withName: tutorials[currentPage].videoName, ofFileType: tutorials[currentPage].videoFileType)
-        titleLabel.text = tutorials[currentPage].title
-        descriptionLabel.text = tutorials[currentPage].desc
+        startPlayingVideo()
         if currentPage == 2 {
             instructions.text = "Long Press Anywhere to Continue"
             longPress.isEnabled = true
@@ -98,14 +92,36 @@ class TutorialViewController: UIViewController {
         }
         defaults.setValue(sender.currentPage, forKey: "TutorialPage")
     }
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if traitCollection.userInterfaceStyle == UIUserInterfaceStyle.light {
+            playVideo(withName: tutorials[currentPage].videoName, ofFileType: tutorials[currentPage].videoFileType)
+            titleLabel.text = tutorials[currentPage].title
+            descriptionLabel.text = tutorials[currentPage].desc
+        } else if traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark {
+            playVideo(withName: tutorialsDark[currentPage].videoName, ofFileType: tutorialsDark[currentPage].videoFileType)
+            titleLabel.text = tutorialsDark[currentPage].title
+            descriptionLabel.text = tutorialsDark[currentPage].desc
+        }
+    }
+    
+    func startPlayingVideo () {
+        if traitCollection.userInterfaceStyle == UIUserInterfaceStyle.light {
+            playVideo(withName: tutorials[currentPage].videoName, ofFileType: tutorials[currentPage].videoFileType)
+            titleLabel.text = tutorials[currentPage].title
+            descriptionLabel.text = tutorials[currentPage].desc
+        } else if traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark {
+            playVideo(withName: tutorialsDark[currentPage].videoName, ofFileType: tutorialsDark[currentPage].videoFileType)
+            titleLabel.text = tutorialsDark[currentPage].title
+            descriptionLabel.text = tutorialsDark[currentPage].desc
+        }
+    }
+    
     @objc func prevTutorial(){
         if currentPage > 0 {
             instructions.text = "Tap or Swipe to Navigate"
             currentPage -= 1
 //            image.image = UIImage(named: tutorials[currentPage].image)
-            playVideo(withName: tutorials[currentPage].videoName, ofFileType: tutorials[currentPage].videoFileType)
-            titleLabel.text = tutorials[currentPage].title
-            descriptionLabel.text = tutorials[currentPage].desc
+            startPlayingVideo()
             pagecontrol.currentPage = currentPage
             longPress.isEnabled = false
         }
@@ -116,9 +132,7 @@ class TutorialViewController: UIViewController {
             instructions.text = "Tap or Swipe to Navigate"
             currentPage += 1
 //            image.image = UIImage(named: tutorials[currentPage].image)
-            playVideo(withName: tutorials[currentPage].videoName, ofFileType: tutorials[currentPage].videoFileType)
-            titleLabel.text = tutorials[currentPage].title
-            descriptionLabel.text = tutorials[currentPage].desc
+            startPlayingVideo()
             pagecontrol.currentPage = currentPage
             longPress.isEnabled = false
         }

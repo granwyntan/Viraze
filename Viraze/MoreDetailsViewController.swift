@@ -25,6 +25,17 @@ class MoreDetailsViewController: UIViewController {
     @IBOutlet weak var contentText: UITextView!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var animationPlayerView: UIView!
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if let imageName = imageName {
+            if imageName[0] == "Viraze (Haze Timeline)" {
+                if traitCollection.userInterfaceStyle == UIUserInterfaceStyle.light {
+                    image.image = UIImage(named: imageName[0])
+                } else if traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark {
+                    image.image = UIImage(named: "\(imageName[0])-dark")
+                }
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,8 +72,14 @@ class MoreDetailsViewController: UIViewController {
             backgroundImage.image = UIImage(named: backgroundImageName)
         }
         
-        if let imagesNames = imageName {
-            image.image = UIImage(named: imagesNames[0])
+        if let imageName = imageName {
+            if imageName[0] == "Viraze (Haze Timeline)" {
+                if traitCollection.userInterfaceStyle == UIUserInterfaceStyle.light {
+                    image.image = UIImage(named: imageName[0])
+                } else if traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark {
+                    image.image = UIImage(named: "\(imageName[0])-dark")
+                }
+            }
             image.isHidden = false
         }
         

@@ -47,9 +47,7 @@ class TutorialInSettingsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        playVideo(withName: tutorials[currentPage].videoName, ofFileType: tutorials[currentPage].videoFileType)
-        titleLabel.text = tutorials[currentPage].title
-        descriptionLabel.text = tutorials[currentPage].desc
+        startPlayingVideo()
         pageControl.numberOfPages = tutorials.count
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(nextTutorial))
         swipeLeft.direction = .left
@@ -66,9 +64,7 @@ class TutorialInSettingsViewController: UIViewController {
     @IBAction func pageControlChange(_ sender: UIPageControl) {
         currentPage = pageControl.currentPage
 //        image.image = UIImage(named: tutorials[currentPage].image)
-        playVideo(withName: tutorials[currentPage].videoName, ofFileType: tutorials[currentPage].videoFileType)
-        titleLabel.text = tutorials[currentPage].title
-        descriptionLabel.text = tutorials[currentPage].desc
+        startPlayingVideo()
         if currentPage == 2 {
             instructions.text = "Long Press Anywhere to Continue"
             longPressGesture.isEnabled = true
@@ -82,9 +78,7 @@ class TutorialInSettingsViewController: UIViewController {
             instructions.text = "Tap or Swipe to Navigate"
             currentPage -= 1
 //            image.image = UIImage(named: tutorials[currentPage].image)
-            playVideo(withName: tutorials[currentPage].videoName, ofFileType: tutorials[currentPage].videoFileType)
-            titleLabel.text = tutorials[currentPage].title
-            descriptionLabel.text = tutorials[currentPage].desc
+            startPlayingVideo()
             pageControl.currentPage = currentPage
             longPressGesture.isEnabled = false
         }
@@ -94,15 +88,35 @@ class TutorialInSettingsViewController: UIViewController {
             instructions.text = "Tap or Swipe to Navigate"
             currentPage += 1
 //            image.image = UIImage(named: tutorials[currentPage].image)
-            playVideo(withName: tutorials[currentPage].videoName, ofFileType: tutorials[currentPage].videoFileType)
-            titleLabel.text = tutorials[currentPage].title
-            descriptionLabel.text = tutorials[currentPage].desc
+            startPlayingVideo()
             pageControl.currentPage = currentPage
             longPressGesture.isEnabled = false
         }
         if currentPage == 2 {
             instructions.text = "Long Press Anywhere to Continue"
             longPressGesture.isEnabled = true
+        }
+    }
+    func startPlayingVideo () {
+        if traitCollection.userInterfaceStyle == UIUserInterfaceStyle.light {
+            playVideo(withName: tutorials[currentPage].videoName, ofFileType: tutorials[currentPage].videoFileType)
+            titleLabel.text = tutorials[currentPage].title
+            descriptionLabel.text = tutorials[currentPage].desc
+        } else if traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark {
+            playVideo(withName: tutorialsDark[currentPage].videoName, ofFileType: tutorialsDark[currentPage].videoFileType)
+            titleLabel.text = tutorialsDark[currentPage].title
+            descriptionLabel.text = tutorialsDark[currentPage].desc
+        }
+    }
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if traitCollection.userInterfaceStyle == UIUserInterfaceStyle.light {
+            playVideo(withName: tutorials[currentPage].videoName, ofFileType: tutorials[currentPage].videoFileType)
+            titleLabel.text = tutorials[currentPage].title
+            descriptionLabel.text = tutorials[currentPage].desc
+        } else if traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark {
+            playVideo(withName: tutorialsDark[currentPage].videoName, ofFileType: tutorialsDark[currentPage].videoFileType)
+            titleLabel.text = tutorialsDark[currentPage].title
+            descriptionLabel.text = tutorialsDark[currentPage].desc
         }
     }
     @IBAction func longPressed(_ sender: Any) {

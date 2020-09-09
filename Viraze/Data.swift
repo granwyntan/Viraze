@@ -238,7 +238,7 @@ var HazeTableArray = [
                 itemContents: [
                     HazeTableItemContent(
                         content: "Seems obvious, but this is the simplest form of dealing with the haze. The Mother Nature website has the following tips:\n\nAvoid exercising in the open. Aerobic activities make you breathe deeply, hence you suck in pollutants deep into your lungs.\n\nAvoid smoking. Other than exposing your lungs to the same toxins found in hazy conditions, smoking makes your lungs more sensitive to the effects of air pollutants.",
-                        imageNames: ["hazeAvoidExposure"]
+                        imageNames: ["hazeNewAvoidExposure"]
                     ),
                     HazeTableItemContent(
                         content: "Stay indoors as much as possible and keep the doors and windows closed.\n\nIf you have an air conditioner, switch it on and ensure the air filter is clean.\n\nThe use of suitable particulate air filters (air filters which remove solid particles from the air) within an enclosed area can also help.\n\n(Source: Ministry of Health FAQ)",
@@ -254,7 +254,7 @@ var HazeTableArray = [
                     ),
                     HazeTableItemContent(
                         content: "There are a number of DIY remedies that can be concocted easily to soothe the various ailments caused by the haze.\n\nThe air particles in the haze often cause irritation of the air passages and dry throat. Some of the more popular remedies listed on Natural Home Remedies and Buzzle websites include:\n\n - Inhaling steam from a pan filled with hot water mixed with aromatherapy oils. This is generally helpful for soothing dry throats.\n - Mix equal quantities of aloe vera juice and orange juice. Add one table spoon of honey and drink every morning to soothe the throat.\n - Mince a garlic clove and place it in a small bowl. Add two tablespoon of honey and cover the bowl with plastic wrap. Leave it overnight and take one table spoon of the mixture throughout the next day as needed. This is believed to help suppress bouts of coughing.\n - Add two tablespoon of apple cider vinegar in a glass of water and take a few swallows as needed. Vinegar dissolves the mucus in the throat and reduces inflammation.\n - Gargling with warm spinach juice is said to be a very good cough remedy.",
-                        imageNames: ["hazeAvoidExposure"]
+                        imageNames: ["hazeNaturalRemedies"]
                     ),
                     HazeTableItemContent(
                         content: "If the haze persists and you cannot avoid it completely, it may help to take certain nutrients that provide a measure of internal pollution protection. Consume:\n\nVitamin A\nFoods rich in vitamin A include liver, carrots, sweet potatos, mangoes and spinach.\nThese foods help protect your eyes, lungs and the oxygen-carrying capabilities of your bloodstream, and help shield the lungs from air pollution. Vitamin A is required for the health of the mucous membranes. The oxidizing chemicals in haze destroy the vitamin A stores in the lung tissue, thus decreasing the efficiency of the body's first line of defence against carcinogens.\n\nVitamin C and E\nA study conducted by Yale University researchers have found that vitamins C and E work together to keep lung tissue healthy. Daily supplements of both builds up levels of a protective protein that prevents enzymes released during inflammation from destroying the lung's elastic properties.\n\nSelenium\nResearchers say that selenium activates glutathione peroxidase, as important antioxidant enzyme that helps keep lung tissue elastic. Foods rich in selenium include grains, seeds and fish.\n\nDaily Recommended Nutrient Amount\nVitamin A: 5,000 international units\nBeta-carotene (Beta-carotene is converted into Vitamin A in the body): 25,000 international units\nVitamin C: 1,200 miligrams\nVitamin E: 600 international units\nSelenium: 50-200 micrograms\n\n\n* Selenium in doeses exceeding 100 micrograms daily can be toxic and should be taken only under medical supervision. These figures are only a guide. If in doubt, please ask your doctor.\n\nIn addition, avoid foods high in saturated fats. Saturated fat intake has been linked to a higher risk of developing lung cancer. Eat lots of salad greens and other raw vegetables and fresh fruits.",
@@ -281,7 +281,13 @@ struct TutorialStuff {
 }
 
 let tutorials = [
-    TutorialStuff(videoName: "Virus", videoFileType: "mov", image: "image1", title: "Title 1", desc: "desc 1"),
-    TutorialStuff(videoName: "Virus", videoFileType: "mov", image: "image2", title: "Title 2", desc: "desc 2"),
-    TutorialStuff(videoName: "Virus", videoFileType: "mov", image: "image3", title: "Title 3", desc: "desc 3")
+    TutorialStuff(videoName: "Virus (Light)", videoFileType: "mov", image: "image1", title: "Title 1", desc: "desc 1"),
+    TutorialStuff(videoName: "Virus (Light)", videoFileType: "mov", image: "image2", title: "Title 2", desc: "desc 2"),
+    TutorialStuff(videoName: "Virus (Light)", videoFileType: "mov", image: "image3", title: "Title 3", desc: "desc 3")
+]
+
+let tutorialsDark = [
+    TutorialStuff(videoName: "Virus (Dark)", videoFileType: "mov", image: "image1", title: "Title 1", desc: "desc 1"),
+    TutorialStuff(videoName: "Virus (Dark)", videoFileType: "mov", image: "image2", title: "Title 2", desc: "desc 2"),
+    TutorialStuff(videoName: "Virus (Dark)", videoFileType: "mov", image: "image3", title: "Title 3", desc: "desc 3")
 ]
