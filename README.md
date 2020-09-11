@@ -1,2 +1,3 @@
 # Viraze
-Viraze ChangeMakers Disaster Challenge App
+Viraze SST ChangeMakers Innofest Disaster Challenge App
+Virus, Haze, Mask and Quiz Education App
