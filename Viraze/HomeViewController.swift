@@ -29,7 +29,8 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
     @IBOutlet weak var haze6: UIButton!
     @IBOutlet weak var haze7: UIButton!
     @IBOutlet weak var haze8: UIButton!
-//    @IBOutlet weak var coronavirus1: UIButton!
+    @IBOutlet weak var haze9: UIButton!
+    //    @IBOutlet weak var coronavirus1: UIButton!
 //    @IBOutlet weak var coronavirus2: UIButton!
 //    @IBOutlet weak var coronavirus3: UIButton!
 //    @IBOutlet weak var coronavirus4: UIButton!
@@ -68,6 +69,7 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
         haze6.layer.cornerRadius = 10
         haze7.layer.cornerRadius = 10
         haze8.layer.cornerRadius = 10
+        haze9.layer.cornerRadius = 10
         haze1.clipsToBounds = true
         haze2.clipsToBounds = true
         haze3.clipsToBounds = true
@@ -76,7 +78,8 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
         haze6.clipsToBounds = true
         haze7.clipsToBounds = true
         haze8.clipsToBounds = true
-//        coronavirus1.clipsToBounds = true
+        haze9.clipsToBounds = true
+//        coronavirus1.clipsToBounds= true
 //        coronavirus2.clipsToBounds = true
 //        coronavirus3.clipsToBounds = true
 //        coronavirus4.clipsToBounds = true
@@ -147,17 +150,17 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
                 selectedHazeCard = 3
             }
             performSegue(withIdentifier: "cardWithoutTable", sender: nil)
-        } else if sender == haze2 || sender == haze5 || sender == haze6 || sender == haze7 {
+        } else if sender == haze2 || sender == haze5 || sender == haze6 {
             if sender == haze2 {
                 selectedTableHazeCard = 1
             } else if sender == haze5 {
                 selectedTableHazeCard = 2
             } else if sender == haze6 {
-              selectedTableHazeCard = 3
+                selectedTableHazeCard = 3
             }
             performSegue(withIdentifier: "cardWithTable", sender: nil)
-        } else {
-            
+        } else if sender == haze7 {
+            performSegue(withIdentifier: "seeHazeGuidelines", sender: nil)
         }
     }
     

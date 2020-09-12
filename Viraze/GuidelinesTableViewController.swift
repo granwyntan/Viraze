@@ -1,18 +1,15 @@
 //
-//  SourcesTableViewController.swift
+//  GuidelinesTableViewController.swift
 //  Viraze
 //
-//  Created by Granwyn Tan on 6/9/20.
+//  Created by Granwyn Tan on 12/9/20.
 //  Copyright © 2020 Granwyn Tan. All rights reserved.
 //
 
 import UIKit
 import SafariServices
 
-class SourcesTableViewController: UITableViewController {
-    
-    var sourcesData: [String]?
-    var sourcesLinks: [String]?
+class GuidelinesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,24 +30,36 @@ class SourcesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return sourcesData!.count
+        return Guidelines.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "sourceCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "guidelinecell", for: indexPath)
 
         // Configure the cell...
-
-        cell.textLabel?.text = sourcesData![indexPath.row]
         
+        cell.textLabel?.text = Guidelines[indexPath.row].guidelineName
+        cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .caption1)
+
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        present(SFSafariViewController(url: URL(string: sourcesLinks![indexPath.row])!), animated: true)
+        present(SFSafariViewController(url: URL(string: Guidelines[indexPath.row].guidelineLink)!), animated: true)
     }
+    
+    @IBAction func closeButton(_ sender: Any) {
+        DispatchQueue.global(qos: .background).async {
 
+        // Background Thread
+
+        DispatchQueue.main.async {
+            self.navigationController?.navigationBar.isHidden = true
+            }
+        }
+        performSegue(withIdentifier: "closeGuidelines", sender: nil)
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -94,7 +103,6 @@ class SourcesTableViewController: UITableViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
- */
- 
-}
+    */
 
+}

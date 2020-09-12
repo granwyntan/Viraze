@@ -73,12 +73,10 @@ class MoreDetailsViewController: UIViewController {
         }
         
         if let imageName = imageName {
-            if imageName[0] == "Viraze (Haze Timeline)" {
-                if traitCollection.userInterfaceStyle == UIUserInterfaceStyle.light {
-                    image.image = UIImage(named: imageName[0])
-                } else if traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark {
-                    image.image = UIImage(named: "\(imageName[0])-dark")
-                }
+            image.image = UIImage(named: imageName[0])
+            image.contentMode = .scaleAspectFit
+            if imageName[0].contains("hazeimage") || imageName[0].contains("hazecontentimage") || imageName[0] == "hazeMasks" {
+                image.contentMode = .scaleAspectFill
             }
             image.isHidden = false
         }

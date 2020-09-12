@@ -34,6 +34,9 @@ class DefintionViewController: UIViewController, UIViewControllerTransitioningDe
         newcancelButton.isUserInteractionEnabled = true
         newcancelButton.setImage(UIImage(systemName: "xmark"), for: .normal)
         newcancelButton.tintColor = .white
+        if label.text == "Causes" {
+            newcancelButton.tintColor = .black
+        }
         newcancelButton.addTarget(self, action: #selector(closeCard), for: .touchUpInside)
         newcancelButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
         newcancelButton.scalesLargeContentImage = true
@@ -134,10 +137,13 @@ class DefintionViewController: UIViewController, UIViewControllerTransitioningDe
 //        self.navigationController?.isNavigationBarHidden = true
 //        self.tabBarController?.tabBar.isHidden = true
         
+//        let window = UIApplication.shared.keyWindow!
         let viewHeight: CGFloat = self.view.bounds.size.height
+            //- window.safeAreaInsets.top
         let viewWidth: CGFloat = self.view.bounds.size.width
         
-        let scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: viewHeight))
+        let scrollView = UIScrollView(frame: CGRect(x: 0, y: 0 //window.safeAreaInsets.top
+            , width: viewWidth, height: viewHeight))
         scrollView.isPagingEnabled = true
 //        scrollView.canCancelContentTouches = false
         
@@ -185,7 +191,9 @@ class DefintionViewController: UIViewController, UIViewControllerTransitioningDe
 //        print("Zoom Scale is \(scrollView.zoomScale)")
 //        scrollView.isUserInteractionEnabled = true
 //        self.view.bringSubviewToFront(cancelButton)
-        let cancelButton = UIButton(frame: CGRect(x: viewWidth-40, y: 40, width: 30, height: 30))
+        let cancelButton = UIButton(frame: CGRect(x: viewWidth-40, y: 40
+            //+window.safeAreaInsets.top
+            , width: 30, height: 30))
         cancelButton.isUserInteractionEnabled = true
         cancelButton.setImage(UIImage(systemName: "xmark"), for: .normal)
         cancelButton.tintColor = .white
@@ -221,6 +229,7 @@ class DefintionViewController: UIViewController, UIViewControllerTransitioningDe
         self.tabBarController?.tabBar.isHidden = true
         scrollView.tag = 100
         cancelButton.tag = 200
+        
     }
 
     @objc func dismissPage (_ sender: UIButton) {
@@ -322,15 +331,20 @@ class DefintionViewController: UIViewController, UIViewControllerTransitioningDe
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "seeSources" {
+            let navVC = segue.destination as? UINavigationController
+            let destVC = navVC?.viewControllers.first as! SourcesTableViewController
+            destVC.sourcesData = Haze[selectedHazeCard!-1].sourcesName
+            destVC.sourcesLinks = Haze[selectedHazeCard!-1].sources
+        }
     }
-    */
     
     @IBAction func tapToSeeSources(_ sender: Any) {
         if Haze[selectedHazeCard!-1].sources.count == 1 {

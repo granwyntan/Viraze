@@ -70,10 +70,20 @@ class TipsTableViewController: UITableViewController {
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .body)
                 }
             }
+        } else if selectedTableHazeCard == 1 {
+            if indexPath.row == 0 {
+                cell.textLabel?.text = tableViewData[indexPath.section].title
+                cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+            }
+        } else if selectedTableHazeCard == 2 {
+            if indexPath.row == 0 {
+                cell.textLabel?.text = tableViewData[indexPath.section].title
+                cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 11)
+            }
         } else {
             if indexPath.row == 0 {
                 cell.textLabel?.text = tableViewData[indexPath.section].title
-                cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .subheadline)
+                cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
             } else {
                 if let _ = tableViewData[indexPath.section].sectionData {
                     cell.textLabel?.text = tableViewData[indexPath.section].sectionData![dataIndex]
@@ -148,7 +158,10 @@ class TipsTableViewController: UITableViewController {
     }
     */
 
-
+    @IBAction func tapforsources(_ sender: Any) {
+        performSegue(withIdentifier: "showTableSources", sender: nil)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -195,6 +208,10 @@ class TipsTableViewController: UITableViewController {
                     destVC.backgroundImageName = bgImageName
                 }
             }
+        } else if segue.identifier == "showTableSources" {
+            let destVC = segue.destination as! SourcesTableViewController
+            destVC.sourcesData = HazeTableArray[selectedTableHazeCard!-1].sourcesName
+            destVC.sourcesLinks = HazeTableArray[selectedTableHazeCard!-1].sources
         }
     }
 

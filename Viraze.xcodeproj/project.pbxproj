@@ -15,6 +15,7 @@
 		8978695824EE93AB0007F25A /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8978695724EE93AB0007F25A /* SettingsTableViewController.swift */; };
 		8978695A24EE93B30007F25A /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8978695924EE93B30007F25A /* AccountTableViewController.swift */; };
 		8978695C24EF664A0007F25A /* SecurityAndPrivacyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8978695B24EF664A0007F25A /* SecurityAndPrivacyTableViewController.swift */; };
+		897FFCD0250CA83C005E336B /* GuidelinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897FFCCF250CA83C005E336B /* GuidelinesTableViewController.swift */; };
 		89A714B125065CBF003AA536 /* ImageViewZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A714B025065CBF003AA536 /* ImageViewZoom.swift */; };
 		89AF6C5624E4D91500CA1EC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AF6C5524E4D91500CA1EC6 /* AppDelegate.swift */; };
 		89AF6C5824E4D91500CA1EC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AF6C5724E4D91500CA1EC6 /* SceneDelegate.swift */; };
@@ -50,6 +51,7 @@
 		8978695724EE93AB0007F25A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		8978695924EE93B30007F25A /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
 		8978695B24EF664A0007F25A /* SecurityAndPrivacyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityAndPrivacyTableViewController.swift; sourceTree = "<group>"; };
+		897FFCCF250CA83C005E336B /* GuidelinesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidelinesTableViewController.swift; sourceTree = "<group>"; };
 		89A714B025065CBF003AA536 /* ImageViewZoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewZoom.swift; sourceTree = "<group>"; };
 		89AF6C5224E4D91500CA1EC6 /* Viraze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Viraze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89AF6C5524E4D91500CA1EC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				89E37E3E250544EA00434D16 /* TipsTableViewController.swift */,
 				89A714B025065CBF003AA536 /* ImageViewZoom.swift */,
 				89479B722507E6B3003E512C /* MoreDetailsViewController.swift */,
+				897FFCCF250CA83C005E336B /* GuidelinesTableViewController.swift */,
 			);
 			path = Viraze;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				8978695C24EF664A0007F25A /* SecurityAndPrivacyTableViewController.swift in Sources */,
 				89E37E3D2504777300434D16 /* SourcesTableViewController.swift in Sources */,
 				89A714B125065CBF003AA536 /* ImageViewZoom.swift in Sources */,
+				897FFCD0250CA83C005E336B /* GuidelinesTableViewController.swift in Sources */,
 				89E37E3F250544EB00434D16 /* TipsTableViewController.swift in Sources */,
 				89F5879924F27CE00058D62B /* SecondViewController.swift in Sources */,
 				8978695A24EE93B30007F25A /* AccountTableViewController.swift in Sources */,

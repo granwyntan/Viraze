@@ -83,7 +83,7 @@ var HazeTableArray = [
                 header: "2013 haze outbreak",
                 headerContents: HazeTableItemContent(
                     content: "The 2013 haze outbreak was one of the most serious haze episodes to affect Singapore in the past 16 years. It was the first time that the PSI level reached the hazardous range, with the highest PSI reading of 401 recorded on 21 June 2013. At the peak of the outbreak, the general public was advised by the authorities to minimise outdoor activities and to wear N95 masks if they needed to engage in outdoor activities.\nLike the previous haze episodes, the cause of the 2013 haze outbreak was due to the widespread burning of forested land in Indonesia. The severity of haze this time was attributed to the massive burning of land carried out by palm oil companies. The Indonesian authorities claimed that some of these companies were owned by Singaporean and Malaysian investors. In response to such claims, the Singapore government warned that it would take action against any Singapore-linked company found to be involved in the illegal burning activities. The Singapore Manufacturing Federation (SMF) urged its members to boycott the firms involved, while the Consumers Association of Singapore (CASE) criticised the companies responsible for such activities.\n\nDomestic action against the haze\nIn September 1994, the Haze Task Force was formed to help coordinate the Singapore government’s efforts against the haze. As of June 2013, the Task Force comprises representatives from government agencies. The Task Force meets yearly to prepare for the annual dry season (usually lasting from June to September), which often coincides with cases of haze pollution over Singapore. In 2013, the aims of the task force were to protect public health and safety, work with Indonesia to curb the burning of forested land, and maintain social and economic resilience. In June 2013, in response to the severe haze conditions, the government set up an Inter-Ministerial Committee chaired by Minister for Defence Ng Eng Hen to oversee the overall national efforts against the haze.\nAt the height of the outbreak, various government ministries, including the Ministry of Education, Ministry of Health and Ministry of Defence, issued health advisories urging the public to monitor their health and limit outdoor activities. The government’s stockpile of N95 masks was also released and distributed to various retail outlets. The masks were distributed free to low-income families. Medical health subsidies were also granted to vulnerable groups such as the elderly and young children.\n\n[According to NLB]",
-                    videoLink: "https://www.bbc.com/news/world-asia-22998592")
+                    videoLink: "https://www.youtube.com/embed/JFtvPVJQsxk")
             ),
             HazeTableItem(
                 header: "Regional action against the haze",
@@ -267,6 +267,20 @@ var HazeTableArray = [
         sourcesName: ["SHAPE", "AsiaOne"]
     )
 ]
+
+struct Guideline {
+    var guidelineName: String
+    var guidelineLink: String
+}
+
+var Guidelines = [
+    Guideline(guidelineName: "SportSG | Haze management at Sport Singapore", guidelineLink: "https://www.sportsingapore.gov.sg/sports-education/sports-safety/haze-management-at-sport-singapore"),
+    Guideline(guidelineName: "Haze guidelines and advisory for work (Ministry of Manpower)", guidelineLink: "https://www.nea.gov.sg/our-services/pollution-control/air-pollution/managing-haze"),
+    Guideline(guidelineName: "NEA | Managing Haze", guidelineLink: "https://www.nea.gov.sg/our-services/pollution-control/air-pollution/managing-haze"),
+    Guideline(guidelineName: "NEA | Singapore Government Agencies Haze Mitigation Measures", guidelineLink: "https://www.nea.gov.sg/media/news/news/index/singapore-government-agencies-implement-measures-to-mitigate-impact-of-haze")
+]
+
+//
 
 //var VirusQuestions = [
 //    QuizQuestion(question: <#T##String#>, choice1: <#T##String#>, choice2: <#T##String#>, choice3: <#T##String#>, choice4: <#T##String#>, correctChoice: <#T##OptionChoice#>)
