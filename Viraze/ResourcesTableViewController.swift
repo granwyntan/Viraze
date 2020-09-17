@@ -1,15 +1,15 @@
 //
-//  GuidelinesTableViewController.swift
+//  ResourcesTableViewController.swift
 //  Viraze
 //
-//  Created by Granwyn Tan on 12/9/20.
+//  Created by Granwyn Tan on 15/9/20.
 //  Copyright © 2020 Granwyn Tan. All rights reserved.
 //
 
 import UIKit
 import SafariServices
 
-class GuidelinesTableViewController: UITableViewController {
+class ResourcesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,43 +25,54 @@ class GuidelinesTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return Guidelines.count
+        if section == 0 {
+            return hazeGov.count
+        } else if section == 1 {
+            return hazeNews.count
+        }
+        return hazeJournalsLinks.count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Government"
+        } else if section == 1 {
+            return "News Outlets and Sources"
+        }
+        return "Research/Medical Journals"
     }
 
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "guidelinecell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "resourcecell", for: indexPath)
 
         // Configure the cell...
-        
-        cell.textLabel?.text = Guidelines[indexPath.row].guidelineName
-        cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-        cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .body)
 
+        if indexPath.section == 0 {
+            cell.textLabel?.text = hazeGov[indexPath.row]
+        } else if indexPath.section == 1 {
+            cell.textLabel?.text = hazeNews[indexPath.row]
+        } else {
+            cell.textLabel?.text = "Journal \(indexPath.row+1)"
+        }
+        
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        present(SFSafariViewController(url: URL(string: Guidelines[indexPath.row].guidelineLink)!), animated: true)
-    }
-    
-    @IBAction func closeButton(_ sender: Any) {
-        DispatchQueue.global(qos: .background).async {
-
-        // Background Thread
-
-        DispatchQueue.main.async {
-            self.navigationController?.navigationBar.isHidden = true
-            }
+        if indexPath.section == 0 {
+            present(SFSafariViewController(url: URL(string: hazeGovSites[indexPath.row])!), animated: true)
+        } else if indexPath.section == 1 {
+            present(SFSafariViewController(url: URL(string: hazeNewsWebsites[indexPath.row])!), animated: true)
+        } else if indexPath.section == 2 {
+            present(SFSafariViewController(url: URL(string: hazeJournalsLinks[indexPath.row])!), animated: true)
         }
-        performSegue(withIdentifier: "closeGuidelines", sender: nil)
     }
-    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -106,5 +117,16 @@ class GuidelinesTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func closeButton(_ sender: Any) {
+        DispatchQueue.global(qos: .background).async {
+
+        // Background Thread
+
+        DispatchQueue.main.async {
+            self.navigationController?.navigationBar.isHidden = true
+            }
+        }
+        performSegue(withIdentifier: "closeResources", sender: nil)
+    }
 
 }

@@ -280,11 +280,491 @@ var Guidelines = [
     Guideline(guidelineName: "NEA | Singapore Government Agencies Haze Mitigation Measures", guidelineLink: "https://www.nea.gov.sg/media/news/news/index/singapore-government-agencies-implement-measures-to-mitigate-impact-of-haze")
 ]
 
-//
+let hazeResources = ["MOH", "NEA"]
+let hazeResourcesLinks = ["https://www.moh.gov.sg/resources-statistics/educational-resources/haze/faqs-on-haze-health-advisory", "https://www.nea.gov.sg/our-services/pollution-control/air-pollution/faqs"]
+
+struct VirusTableItemContent {
+    var description: String
+    var videoLink: String?
+    var imageName: String?
+    var backgroundImageName: String?
+}
+
+struct VirusTableItem {
+    var header: String
+    var headerContents: VirusTableItemContent
+}
+
+struct VirusTable {
+    var title: String
+    var data: [VirusTableItem]
+    var sources: [String]
+    var sourcesNames: [String]
+}
+
+//var Virus = [
+//    VirusTable(
+//        title: "Definition",
+//        data: [
+//            VirusTableItem(
+//                header: "What is are coronavirus? or What are coronaviruses?",
+//                headerContents: VirusTableItemContent(
+//                    description: "Coronaviruses (CoV) are a large family of viruses which may cause illness illnesses ranging from the common cold to pneumonia (a more severe lung infection), in animals or humans. In humans, several coronaviruses are known to cause respiratory infections ranging from the common cold to more severe diseases such as Middle East Respiratory Syndrome (MERS) and Severe Acute Respiratory Syndrome (SARS). The most recently discovered coronavirus causes coronavirus disease COVID-19.",
+//                    imageName: "coronavirus1"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "What is COVID-19?",
+//                headerContents: VirusTableItemContent(
+//                    description: "COVID-19 is the infectious disease caused by the most recently discovered coronavirus. This new virus and disease were unknown before the outbreak began in Wuhan, China, in December 2019. COVID-19 is now a pandemic affecting many countries globally.",
+//                    videoLink: "https://www.youtube.com/embed/i0ZabxXmH4Y"
+//                )
+//            )
+//        ],
+//        sources: [
+//            "https://www.moh.gov.sg/covid-19/faqs",
+//            "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/q-a-coronaviruses"
+//        ],
+//        sourcesNames: [
+//            "MOH",
+//            "WHO"
+//        ]
+//    ),
+//    VirusTable(
+//        title: "Symptoms",
+//        data: [
+//            VirusTableItem(
+//                header: "What are the symptoms of COVID-19?",
+//                headerContents: VirusTableItemContent(
+//                    description: "The symptoms of COVID-19 infection are similar to that of regular pneumonia. The most common or typical symptoms of COVID-19 are fever, dry cough, and tiredness, and shortness of breath. Other symptoms that are less common and may affect some patients include aches and pains, nasal congestion, headache, conjunctivitis, sore throat, diarrhea, loss of taste or smell or a rash on skin or discoloration of fingers or toes. These symptoms are usually mild and begin gradually. Some people become infected but only have very mild symptoms./n/nMost people (about 80%) recover from the disease without needing hospital treatment. Around 1 out of every 5 people who gets COVID-19 becomes seriously ill and develops difficulty breathing. Older people, and those with underlying medical problems like high blood pressure, heart and lung problems, diabetes, or cancer, are at higher risk of developing serious illness. However, anyone can catch COVID-19 and become seriously ill. People of all ages who experience fever and/or cough associated with difficulty breathing/shortness of breath, chest pain/pressure, or loss of speech or movement should seek medical attention immediately. If possible, it is recommended to call the health care provider or facility first, so the patient can be directed to the right clinic./n/nMost common symptoms:/n - fever/n - dry cough/n - tiredness/n/nLess common symptoms:/n - aches and pains/n - sore throat/n - diarrhoea/n - conjunctivitis/n - headache/n - loss of taste or smell/n - a rash on skin, or discolouration of fingers or toes",
+//                    videoLink: "https://www.youtube.com/embed/U8r3oTVMtQ0"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "What should I do if I have COVID-19 symptoms and when should I seek medical care?",
+//                headerContents: VirusTableItemContent(
+//                    description: "If you have minor symptoms, such as a slight cough or a mild fever, there is generally no need to seek medical care. Stay at home, self-isolate and monitor your symptoms. Follow national guidance on self-isolation.\n\nHowever, if you live in an area with malaria or dengue fever it is important that you do not ignore symptoms of fever. Seek medical help. When you attend the health facility wear a mask if possible, keep at least 1 metre distance from other people and do not touch surfaces with your hands. If it is a child who is sick help the child stick to this advice.\n\nSeek immediate medical care if you have difficulty breathing or pain/pressure in the chest. If possible, call your health care provider in advance, so he/she can direct you to the right health facility.",
+//                    videoLink: "https://www.youtube.com/embed/OOJqHPfG7pA"
+//                )
+//            ),
+//            VirusTableItem(header: "How long is the incubation period? If somebody travels to cities with confirmed cases, how many days of no-symptoms after the travel, will he/she then be considered clean and disease-free?", headerContents: VirusTableItemContent(description: "Data from cases in China suggests that the incubation period is around 14 days.\n\nTherefore, travellers are advised to monitor their health closely for at least 2 weeks upon return to Singapore. You are advised to seek medical attention promptly if you feel unwell, and to also inform your doctor of your travel history.", videoLink: "https://www.youtube.com/embed/hZDX08RcPmg")),
+//            VirusTableItem(header: "I would like to seek medical attention as I have a cough and runny nose and have recently travelled to the countries with confirmed cases of COVID-19. Should I go to the GP or do I have to go to A&E?", headerContents: VirusTableItemContent(description: "If you have recently travelled overseas, and are feeling unwell with a fever, or respiratory symptoms (such as cough, runny nose), please seek medical attention promptly. You can go to any of the Public Health Preparedness Clinics (PHPCs), as well as polyclinics. You may look for a PHPC near you at www.phpc.gov.sg. All cases fulfilling the suspect case definition seen at various healthcare settings will be reported to MOH immediately and referred to hospitals for further assessment and treatment.", videoLink: "https://youtu.be/U8r3oTVMtQ0")),
+//            VirusTableItem(
+//                header: "How do I get tested for COVID-19?  Will I have to pay for it?",
+//                headerContents: VirusTableItemContent(
+//                    description: "You will be tested for COVID-19 only if your doctor assesses that there is clinical need to do so, based on your health condition and travel/contact history. If it is deemed that there is the need for you to be tested, your doctor will be able to test you or refer you to a hospital for the test, and you will not be required to pay for the test. Please note that a negative test is possible during the virus incubation period, and does not exclude the possibility that infection is present.",
+//                    imageName: "coronavirus2"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "Can I send my employees/ students to the doctor to get tested at the end of the 14-day period so that they can be cleared to come back to work/return to school?",
+//                headerContents: VirusTableItemContent(
+//                    description: "It is not useful to send persons who do not have symptoms to the doctor/ hospital for testing. Such individuals will not be offered diagnostic testing, and will be asked to return home.",
+//                    imageName: "coronavirus3"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "Are discharged COVID-19 patients infectious?",
+//                headerContents: VirusTableItemContent(
+//                    description: "No. COVID-19 patients in Singapore are discharged only when fully recovered and no longer transmitting the virus.",
+//                    imageName: "coronavirus4"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "What are the Regional Screening Centres?",
+//                headerContents: VirusTableItemContent(
+//                    description: "The Regional Screening Centres (RSCs) are set up by the Health Promotion Board (HPB) to conduct testing for COVID-19. These centres are integral to the implementation of our national testing strategy, and play a critical role in keeping Singapore COVID-19 safe. Where possible, these RSCs will be located in places that are easily accessible to support the screening needs in the community. For example, RSCs have been set up at the Old Police Academy, The Float @ Marina Bay, the Bukit Gombak sport hall and Bishan sport hall. The RSCs are set up with proper infection control measures, and strict safe distancing requirements will be observed to protect individuals and the community.",
+//                    imageName: "coronavirus5"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "Who can be tested at the Regional Screening Centres?",
+//                headerContents: VirusTableItemContent(
+//                    description: "The Regional Screening Centres support diagnostic testing in the community and active surveillance testing for targeted groups including frontline workers supporting COVID-19 operations and workers in the construction, marine and process sectors. The RSCs do not accept walk-in requests for screening. Individuals who are unwell or have medical concerns should consult their primary care doctors, and will be tested if necessary.",
+//                    imageName: "coronavirus6"
+//                )
+//            )
+//        ],
+//        sources: [
+//            "https://www.moh.gov.sg/covid-19/faqs",
+//            "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/q-a-coronaviruses"
+//        ],
+//        sourcesNames: [
+//            "MOH",
+//            "WHO"
+//        ]
+//    ),
+//    VirusTable(
+//        title: "Transmission",
+//        data: [
+//            VirusTableItem(
+//                header: "How does COVID-19 spread?",
+//                headerContents: VirusTableItemContent(
+//                    description: "People can catch COVID-19 from others who have the virus. The disease spreads primarily from person to person through small respiratory droplets from the nose or mouth, which are expelled when an infected person with COVID-19 coughs, sneezes, exhales, speaks, talks or sings. These respiratory droplets, which are relatively heavy, and do not travel far and quickly sink to the ground, can reach the eyes, nose or mouth of a susceptible person directly or indirectly (via contaminated surfaces), resulting in infection. People can also catch COVID-19 if they breathe in these droplets from a person infected with the virus. This is why it is important to stay at least 1 meter) away from others. These droplets can land on objects and surfaces around the person such as tables, doorknobs and handrails. People can become infected by touching these objects or surfaces, then touching their eyes, nose or mouth. This is why it is important to wash your hands regularly with soap and water or clean with alcohol-based hand rub.\n\nAirborne transmission of the virus can occur in health care settings where aerosol generatiing procedures are performed. The role and extent of airborne transmission outside of health care settings is under further study. MOH will continue to monitor the evidence as it emerges.\n\nWHO is assessing ongoing research on the ways that COVID-19 is spread and will continue to share updated findings.",
+//                    videoLink: "https://www.youtube.com/embed/677pSwGauqs"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "Can COVID-19 be caught from a person who has no symptoms?",
+//                headerContents: VirusTableItemContent(
+//                    description: "COVID-19 is mainly spread through respiratory droplets expelled by someone who is coughing or has other symptoms such as fever or tiredness. Many people with COVID-19 experience only mild symptoms. This is particularly true in the early stages of the disease. It is possible to catch COVID-19 from someone who has just a mild cough and does not feel ill.\n\nSome reports have indicated that people with no symptoms can transmit the virus. It is not yet known how often it happens. WHO is assessing ongoing research on the topic and will continue to share updated findings.",
+//                    videoLink: "https://www.youtube.com/embed/BvArUcf-1V4"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "How can we protect others and ourselves if we don't know who is infected?",
+//                headerContents: VirusTableItemContent(
+//                    description: "Practicing hand and respiratory hygiene is important at ALL times and is the best way to protect others and yourself.\n\nWhen possible maintain at least a 1 meter distance between yourself and others. This is especially important if you are standing by someone who is coughing or sneezing.  Since some infected persons may not yet be exhibiting symptoms or their symptoms may be mild, maintaining a physical distance with everyone is a good idea if you are in an area where COVID-19 is circulating.\n\nTo reduce the risk of spread, members of public are advised to wear a mask when leaving home, observe good hand hygiene and safe distancing, and avoid crowded spaces if possible.\n\nCover the mouth and nose with a tissue when coughing or sneezing and use the inside of the elbow if no tissue is available. Practice proper hand hygiene after any cough or sneeze such as cleaning hands with hand sanitizer.",
+//                    videoLink: "https://www.youtube.com/embed/BtN-goy9VOY"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "What should I do if I have come in close contact with someone who has COVID-19?",
+//                headerContents: VirusTableItemContent(
+//                    description: "If you have been in close contact or proximity with someone with COVID-19, you may be infected.\n\nClose contact means that you live with or have been in settings of less than 1 metre from those who have the disease. In these cases, it is best to stay at home.\n\nHowever, if you live in an area with malaria or dengue fever it is important that you do not ignore symptoms of fever. Seek medical help. When you attend the health facility wear a mask if possible, keep at least 1 metre distant from other people and do not touch surfaces with your hands. If it is a child who is sick help the child stick to this advice.\n\nIf you do not live in an area with malaria or dengue fever please do the following:\n - If you become ill, even with very mild symptoms you must self-isolate\n - Even if you don’t think you have been exposed to COVID-19 but develop symptoms, then self-isolate and monitor yourself\n - You are more likely to infect others in the early stages of the disease when you just have mild symptoms, therefore early self-isolation is very important.\n - If you do not have symptoms, but have been exposed to an infected person, self-quarantine for 14 days.\n\nIf you have definitely had COVID-19 (confirmed by a test) self-isolate for 14 days even after symptoms have disappeared as a precautionary measure – it is not yet known exactly how long people remain infectious after they have recovered. Follow national advice on self-isolation.",
+//                    videoLink: "https://www.youtube.com/embed/8c_UJwLq8PI"
+//                )
+//            )
+//        ],
+//        sources: [
+//            "https://www.moh.gov.sg/covid-19/faqs",
+//            "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/q-a-coronaviruses"
+//        ],
+//        sourcesNames: [
+//            "MOH",
+//            "WHO"
+//        ]
+//    ),
+//    VirusTable(
+//        title: "Treatment",
+//        data: [
+//            VirusTableItem(
+//                header: <#T##String#>,
+//                headerContents: VirusTableItemContent(
+//                    description: <#T##String#>,
+//                    videoLink: <#T##String?#>,
+//                    imageName: <#T##String?#>,
+//                    backgroundImageName: <#T##String?#>
+//                )
+//            )
+//        ],
+//        sources: [
+//            "https://www.moh.gov.sg/covid-19/faqs",
+//            "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/q-a-coronaviruses"
+//        ],
+//        sourcesNames: [
+//            "MOH",
+//            "WHO"
+//        ]
+//    ),
+//    VirusTable(
+//        title: "Masks and Personal Protective Equipment (PPE)",
+//        data: [
+//            VirusTableItem(
+//                header: "Why and when must I wear a mask?",
+//                headerContents: VirusTableItemContent(
+//                    description: "It is mandatory for all persons to wear a mask when leaving their homes.\n\nThe general public is advised to stay home and avoid going out. It is difficult for those who need to go out for work or to purchase necessities, to avoid contact completely, including with infected persons who have very mild symptoms or may not show any symptoms. The wearing of masks is therefore an important precaution we can all take.\n\nEveryone must wear a mask when outside of their homes. This applies on public transport, taxis, private hire cars, walking to or at markets, and also for permitted enterprise workers at all workplace premises, whether they are frontline staff (such as food handlers, cashiers and bus drivers) or performing back office functions (such as data entry personnel and payroll executives). Individuals may remove their mask while engaging in strenuous exercise outdoors (e.g. running/jogging), but they must put it back on after completing exercise. ",
+//                    videoLink: "https://www.youtube.com/embed/421fmflQX0E"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "What types of masks should we wear?",
+//                headerContents: VirusTableItemContent(
+//                    description: "For the general public, a mask that closely and completely covers the nose and mouth (i.e. without leaving a gap between the mask and the face) must be worn when persons go out of their homes./n/nPersons who have respiratory symptoms (such as cough, runny nose), and certain groups who are more vulnerable to or at risk of COVID-19 infection should wear surgical masks or reusable masks with better filtration capabilities. These include:/n1. Seniors aged 60 years old and above/n2. Persons with other concurrent medical conditions (such as diabetes, heart conditions)/n3. Persons interacting with (such as providing care to) someone who has respiratory symptoms/n/nMasks with better filtration capabilities are those indicated to have at least 95% bacterial filtration efficiency*. The recent reusable masks that the government had distributed (from May to June 2020) to all Singaporeans carry this specification./n/nThe following specific groups of persons may use a face shield, in place of masks:/na)     Children 12 years and below, who may have difficulty wearing and keeping face masks on for a prolonged period of time;/nb)     Persons who have health conditions that may result in breathing or other medical difficulties when a mask is worn for a prolonged period of time; and/nc)     Persons who are speaking to a group in a classroom or lecture-style setting, where they largely remain at the spot from which they are speaking, and are able to maintain a safe distance away from any other persons./n/nA face shield must be worn properly so that it covers the entire face, from the forehead to below the chin, wrapping around the sides of the face./n/nPlastic spit guards predominantly cover the mouth and are not considered as face shields or masks.Face coverings such as neck gaiters, bandannas, scarves or handkerchiefs are not considered as masks./n/nWe should conserve surgical masks for those who need them the most, i.e. our healthcare workers, given the current global shortage of surgical masks./n/n* Bacterial filtration efficiency is a measure of the degree of barrier protection provided by a material or fabric. This is often indicated on the packaging or product description of masks being sold.",
+//                    imageName: "coronavirus7"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "Why are only specific groups allowed to wear face shields instead of masks? A face shield is more comfortable, and allows me to breathe more easily. Can I use a face shield instead of a mask?",
+//                headerContents: VirusTableItemContent(
+//                    description: "While a face shield provides a barrier over the wearer’s face, its design typically leaves a gap between the face shield and the wearer’s face. Masks that closely and completely cover the nose and mouth do not have such gaps./nCOVID-19 is spread predominantly through droplets. With the re-opening of our economy and society, more activities and close contact amongst people, including on public transport, are expected. Masks will therefore be a default when persons need to leave their homes.",
+//                    imageName: "coronavirus8"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "In which settings will face shields be allowed in place of masks?",
+//                headerContents: VirusTableItemContent(
+//                    description: "In settings where persons who are speaking to a group in a classroom or lecture-style setting, face shields may be used in place of masks. Such persons should largely remain at the spot from which they are speaking and maintain a safe distance away from any other persons.",
+//                    imageName: "coronavirus9"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "Must I wear a mask throughout the day at work, for example, if I am at a work cubicle?",
+//                headerContents: VirusTableItemContent(
+//                    description: "Everyone should wear a mask when they are outside their homes. This includes while they are at the workplace./n/nHowever, if an individual is alone in his or her own office with the door closed, and no other person enters the room, the individual may remove his or her mask in the room. If the room door is opened or if there is any contact with people, a mask must be used.",
+//                    imageName: "coronavirus10"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "Do motorcyclists need to wear masks?",
+//                headerContents: VirusTableItemContent(
+//                    description: "Motorcyclists are not required to wear a mask while riding. Masks should be worn when not riding, as is the case for everyone else when they go outside their homes.",
+//                    imageName: "coronavirus11"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "Must I wear a mask even while exercising?",
+//                headerContents: VirusTableItemContent(
+//                    description: "Everyone must wear a mask when outside of their homes. Individuals may remove their mask while engaging in strenuous exercise outdoors (e.g. running/jogging), but they must put it back on after completing their exercise.",
+//                    imageName: "coronavirus12"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "What will happen if I do not wear a mask?",
+//                headerContents: VirusTableItemContent(
+//                    description: "First-time offenders will be issued composition offers of $300, and repeat offenders will face higher fines or prosecution in court for egregious cases.",
+//                    imageName: "coronavirus13"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "I can’t find a suitable mask for my child. What should I do?",
+//                headerContents: VirusTableItemContent(
+//                    description: "You can make adjustments to the reusable masks distributed by the Government to fit your child, or make your own mask out of fabric or other similar materials, with the purpose of covering your child’s nose and mouth to reduce transmission of droplets./n/nChildren 12 years and below may also use face shields in place of masks if they have difficulty wearing and keeping face masks on for a prolonged period of time.",
+//                    imageName: "faceshieldvirus"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "Must my infant also wear a mask?",
+//                headerContents: VirusTableItemContent(
+//                    description: "Mask-wearing is not recommended for young children below the age of two for child safety reasons./n/nMedical experts have also advised that some groups may have difficulties, including children with special needs and young children aged two and above, and we will exercise flexibility in enforcement for these groups.",
+//                    imageName: "coronavirus14"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "I tend to have shortness of breath and wearing a mask will make the problem worse. Can I be exempted?",
+//                headerContents: VirusTableItemContent(
+//                    description: "If you have underlying conditions, you may be more vulnerable to serious COVID-19 infection. You should stay at home as much as possible, and avoid going out unless necessary./n/nTo protect yourself and others, you are recommended to wear a mask when leaving the house./n/nFace shields could be used in situations where individuals have health conditions which may result in breathing or other medical difficulties when a mask is worn for a prolonged period of time. Safe distancing measures such as maintaining at least one metre distance from all persons must be observed.",
+//                    imageName: "coronavirus15"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "My child is four years old, and he keeps removing his mask. I keep telling him to put it on, but he cries and complains that it is hot and he cannot breathe. What should I do?",
+//                headerContents: VirusTableItemContent(
+//                    description: "To protect your child and others, it is recommended that he wears a mask when leaving the house. If there is difficulty wearing and keeping face masks on for a prolonged period of time, children 12 years and below may use face shields in place of masks./n/nMedical experts have advised that some groups may have difficulties wearing a mask, including children with special needs and young children aged two and above, and we will exercise flexibility in enforcement for these groups.",
+//                    imageName: "coronavirus16"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "Can I remove my mask to eat, drink, or take medication?",
+//                headerContents: VirusTableItemContent(
+//                    description: "Yes, you may do so, but must immediately put your mask back on after eating, drinking or taking medication. If eating outside your home, please ensure that safe distancing measures are strictly complied (e.g. maintain physical separation with others while eating) with.",
+//                    imageName: "removemask"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "Can I remove my mask to smoke outside?",
+//                headerContents: VirusTableItemContent(
+//                    description: "In view of the COVID-19 (Temporary Measures) (Control Order) Regulations 2020, all Designated Smoking Areas (DSAs) within the Orchard Road No Smoking Zone (ORNSZ) as well as smoking corners located beyond the ORNSZ have been closed. Everyone must wear a mask when outside of their homes. If you are out doing essential tasks, and smoke in a non-smoking prohibited area, you must immediately put your mask back on after smoking, just like what you must do after eating, drinking or cleaning your face. Please strictly comply with the safe distancing measures while smoking.",
+//                    videoLink: "smokevirus"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "Do I have to keep my mask on at the gym and at fitness studios? How about at beaches and playgrounds?",
+//                headerContents: VirusTableItemContent(
+//                    description: "Masks are required to be worn when outside one’s own home. This includes all these venues. Masks should only be removed when engaging in strenuous activity, and then promptly put back on after.",
+//                    imageName: "maskoffvirus"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "Do I have to keep my mask on when dining-in at F&B outlets?",
+//                headerContents: VirusTableItemContent(
+//                    description: "Masks are required to be worn in F&B outlets. Diners should only take them off when eating or drinking.",
+//                    imageName: "diningvirus"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "Do I have to wear a mask when visiting other peoples’ homes?",
+//                headerContents: VirusTableItemContent(
+//                    description: "Masks are required to be worn when outside one’s own home. Household visitors are strongly encouraged to observe safe management principles when visiting other peoples’ homes. This includes wearing a mask, keeping a safe distance of at least one metre from others, minimising physical contact and washing our hands regularly. Do not visit if you are unwell.",
+//                    imageName: "coronavirus17"
+//                )
+//            )
+//        ],
+//        sources: [
+//            "https://www.moh.gov.sg/covid-19/faqs"
+//        ],
+//        sourcesNames: [
+//            "MOH"
+//        ]
+//    ),
+//    VirusTable(
+//        title: "Confirmed Cases and Contact Tracing",
+//        data: [
+//            VirusTableItem(
+//                header: "Can MOH provide more information about the whereabouts of the confirmed cases? What if I suspect that I have been at the same place as the confirmed cases? What should I do?",
+//                headerContents: VirusTableItemContent(
+//                    description: "Contact tracing will be conducted to identify close contacts of the confirmed cases.\n\nIf you are deemed to be a close contact of a confirmed case, you will be contacted by MOH officials and advised on the measures that you should take. Close contacts are defined as: (i) anyone who had provided care for or has had close physical contact with the patient; (ii) anyone who had stayed at the same place as a confirmed case. The health status of all close contacts will be monitored closely for 14 days from their last exposure to the patient. Those who develop symptoms will be brought to the hospital via a dedicated ambulance for further assessment.\n\nTransient contacts can be described as anyone who had interacted with the confirmed case for short periods of time, such as passing by each other in the corridor or being on the same public transport or in the same public spaces. The risk of infection from transient contact is assessed to be low.",
+//                    videoLink: <#T##String?#>,
+//                    imageName: <#T##String?#>,
+//                    backgroundImageName: <#T##String?#>
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "My friend sent me a message to avoid a certain location as there has been a suspected case reported. Should I be concerned?",
+//                headerContents: VirusTableItemContent(
+//                    description: "There is no need to avoid places where suspected or confirmed cases of COVID-19 have been. The risk of infection from transient contact, such as in public places, is low. There is also currently no evidence of widespread sustained community transmission. Members of public are advised to adopt good personal hygiene practices, such as washing your hands frequently with soap.\n\nNEA has been liaising closely with, and providing support to, residents and owners of premises, to ensure that the cleaning and disinfection of areas is done in accordance with NEA’s guidelines. For places exposed to confirmed cases, NEA has also been giving advice and supervising the cleaning and disinfection works. In addition, NEA has issued sanitation and hygiene advisories to premises and facilities with high public access like hotels, commercial buildings and F&B outlets, including hawker centres.",
+//                    videoLink: ""
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "I stay near a Government Quarantine Facility. Should I be concerned?",
+//                headerContents: VirusTableItemContent(
+//                    description: "Persons served with Quarantine Orders (QO) are required to stay in their designated location at all times within the allocated quarantine period. They will not be allowed to use common facilities within the Government Quarantine Facility (GQF). There will also be no visitors to the QO persons, and food/ necessary supplies will be delivered to them.\n\nThere are also security measures in place to ensure compliance to GQF guidelines. Thus, persons served with QO will not able to mingle with the larger population. All staff working at the GQF are also provided with personal protective equipment (PPE). GQFs also undergo rigorous cleansing and hygiene regimes in accordance with MOH and NEA guidelines.",
+//                    videoLink: <#T##String?#>,
+//                    imageName: <#T##String?#>,
+//                    backgroundImageName: <#T##String?#>
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "What is a Community Isolation Facility (CIF)? How is this different from the Government Quarantine Facility?",
+//                headerContents: VirusTableItemContent(
+//                    description: "The Community Isolation Facility is modelled after the existing Government Quarantine Facilities, and is managed with a high level of infection control. Patients who are clinically fit for discharge but are still COVID-19 positive will be isolated and safely cared for in this facility until they are tested negative for COVID-19.",
+//                    videoLink: <#T##String?#>,
+//                    imageName: <#T##String?#>,
+//                    backgroundImageName: <#T##String?#>
+//                )
+//            )
+//        ],
+//        sources: [
+//            "https://www.moh.gov.sg/covid-19/faqs"
+//        ],
+//        sourcesNames: [
+//            "MOH"
+//        ]
+//    ),
+//    VirusTable(
+//        title: "Leave of Absence (LOA), Stay-Home Notice (SHN) and Quarantine Order (QO)",
+//        data: [
+//            VirusTableItem(
+//                header: "What is the difference between being issued a Quarantine Order (QO), being under a Leave of Absence (LOA) and being under a Stay-Home Notice (SHN)?",
+//                headerContents: VirusTableItemContent(
+//                    description: "A QO is a legal order issued to individuals under the Infectious Diseases Act and thus has legal force with severe penalties for non-compliance. A QO is issued to quarantine or isolate an individual who is, or is suspected to be, a carrier of an infectious disease or a contact of a person confirmed to have an infectious disease. This is with the aim of limiting the spread of the virus in the community. Quarantine usually occurs in the home but can also be served in dedicated Government Quarantine Facilities (GQFs) or hospitals, should the individual not have suitable accommodation in Singapore./nA Leave of Absence (LOA) is a precautionary measure. We urge those who are on LOA to be socially responsible and comply with the LOA, to prevent possible transmission of infections. Persons on LOA should remain in their residences as much as possible, minimise having visitors and maintain good records of persons with whom they come into close contact. Persons on LOA may leave their residences for daily necessities or to attend important matters, but they must minimise time spent in public spaces and contact with others./nA Stay-Home Notice (SHN) is stricter than the LOA regime. Those placed on SHN will have to remain in their place of residence at all times, and should not invite visitors to their residence.",
+//                    videoLink: "https://www.youtube.com/embed/6cgI5bfHpQ4"
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "I am employed. Does being under a Quarantine Order (QO) utilise my quota for medical leave or hospitalisation leave?",
+//                headerContents: VirusTableItemContent(
+//                    description: "Employees who are served a Quarantine Order (QO) will be deemed to be on paid sick leave. The period of absence from work would be treated as paid hospitalisation leave, as part of the employees’ hospitalisation leave eligibility under their employment contracts or agreements.",
+//                    videoLink: <#T##String?#>,
+//                    imageName: <#T##String?#>,
+//                    backgroundImageName: <#T##String?#>
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "What must I do when I am being quarantined? How will it affect my household members?",
+//                headerContents: VirusTableItemContent(
+//                    description: "If you are issued a quarantine order and live with other household members who are not issued quarantine orders, you will be conveyed to a Government Quarantine Facility (GQF) to serve your quarantine period\n\nThis is because those under quarantine are not supposed to come into contact with others in order to avoid the possibility of the spread of virus through person-to-person contact. Hence, those under quarantine will need to be isolated from and cannot physically interact with others living in the same premises.\n\nThere may be exceptional circumstances in which you may serve your quarantine at home with other household members who are not issued quarantine orders e.g. if you require a caregiver.",
+//                    videoLink: <#T##String?#>,
+//                    imageName: <#T##String?#>,
+//                    backgroundImageName: <#T##String?#>
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "How will those who are under quarantine orders at home be monitored?",
+//                headerContents: VirusTableItemContent(
+//                    description: "If individual are issued quarantine orders together with all other household members, they will serve their quarantine orders at home, unless the premises are deemed unsuitable.\n\nIndividuals under quarantine will be monitored by video calls or the QO App (HOMER) at least three times a day.\n\nSpot checks will be carried out to ensure that they strictly adhere to the conditions under the Isolation / Quarantine Order (QO) during the period specified. If they are found to be non-compliant, the Director of Medical Services may require them to wear an electronic tag or order that they be detained and isolated in a hospital or in any other suitable place. It is an offence if they do not comply with the conditions listed in accordance with the QO.",
+//                    videoLink: <#T##String?#>,
+//                    imageName: <#T##String?#>,
+//                    backgroundImageName: <#T##String?#>
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "If I need to go out to attend to urgent matters, what should I do? What will happen if I break quarantine?",
+//                headerContents: VirusTableItemContent(
+//                    description: "Persons under quarantine must not leave their designated location for any reason. Should they require assistance for daily needs, they should arrange with their relatives / friends to purchase groceries and assist in their daily needs whenever necessary. If they urgently need to leave their place of isolation / their home for matters needing personal attention which cannot be postponed, they must first seek the permission of the Quarantine Order (QO) Agent.\n\nSpot checks will be carried out to ensure that they strictly adhere to the conditions under the Isolation / Quarantine Order during the period specified. If they are found to be non-compliant, the Director of Medical Services may require them to wear an electronic tag or order that they be detained and isolated in a hospital or in any other suitable place. It is an offence if they do not comply with the conditions listed in accordance with the QO.",
+//                    videoLink: <#T##String?#>,
+//                    imageName: <#T##String?#>,
+//                    backgroundImageName: <#T##String?#>
+//                )
+//            ),
+//            VirusTableItem(
+//                header: "I have been in recent contact with someone who has been issued a Quarantine Order (QO). What should I do?",
+//                headerContents: VirusTableItemContent(
+//                    description: "Persons issued with a Quarantine Order are individuals assessed to have had close contact with a confirmed case, and they are generally well and have no symptoms.\n\nWe would advise you to monitor your health closely. If you have fever, cough or runny nose, wear a mask and seek medical attention promptly. Call the clinic ahead of your visit and inform the doctor of your symptoms as well as your travel history, if any.",
+//                    videoLink: <#T##String?#>,
+//                    imageName: <#T##String?#>,
+//                    backgroundImageName: <#T##String?#>
+//                )
+//            )
+//        ],
+//        sources: [
+//            "https://www.moh.gov.sg/covid-19/faqs"
+//        ],
+//        sourcesNames: [
+//            "MOH"
+//        ]
+//    ),
+//    VirusTable(
+//        title: "More",
+//        data: [
+//            VirusTableItem(
+//                header: <#T##String#>,
+//                headerContents: VirusTableItemContent(
+//                    description: <#T##String#>,
+//                    videoLink: <#T##String?#>,
+//                    imageName: <#T##String?#>,
+//                    backgroundImageName: <#T##String?#>
+//                )
+//            )
+//        ],// "https://www.youtube.com/embed/5DGwOJXSxqg" //"https://www.youtube.com/embed/BvArUcf-1V4" //"https://www.youtube.com/embed/nOa8wIhQdzo" //"https://www.youtube.com/embed/mdX61H4Rsnw" //"https://www.youtube.com/embed/1_AxGswGnno" //"https://www.youtube.com/embed/yLSHNV4pSwc" //"https://www.youtube.com/embed/eXhbQU9rzYo" //"https://www.youtube.com/embed/l33a25lchT8" //"https://www.youtube.com/embed/oRyuOLP5xUE" //"https://www.youtube.com/embed/oDE8_4UTuRM" //"https://www.youtube.com/embed/Qg8sRsERlwU" //"https://www.youtube.com/embed/1APwq1df6Mw"
+//        sources: [
+//        ],
+//        sourcesNames: [
+//        ]
+//    )
+//]
+
+let virusResources = [""]
+let virusResourcesLinks = [""]
+//VirusTable(
+//    title: <#T##String#>,
+//    data: [
+//        VirusTableItem(
+//            header: <#T##String#>,
+//            headerContents: VirusTableItemContent(
+//                description: <#T##String#>,
+//                videoLink: <#T##String?#>,
+//                imageName: <#T##String?#>,
+//                backgroundImageName: <#T##String?#>
+//            )
+//        )
+//    ],
+//    sourcesNames: [
+//    ],
+//    sources: [
+//    ]
+//)
 
 //var VirusQuestions = [
 //    QuizQuestion(question: <#T##String#>, choice1: <#T##String#>, choice2: <#T##String#>, choice3: <#T##String#>, choice4: <#T##String#>, correctChoice: <#T##OptionChoice#>)
 //]
+
+var hazeNews = ["CNA (News)", "CNA (PSI)", "ST"]
+var hazeNewsWebsites = ["https://www.channelnewsasia.com/news/topic/haze", "https://www.channelnewsasia.com/news/psi", "https://www.straitstimes.com/tags/haze"]
+var hazeGov = ["Haze Microsite (LIVE PSI)", "NEA’s myENV app", "NEA’s Twitter Page", "NEA’s Facebook page", "NEA’s corporate website", "MOM", "MOH"]
+var hazeGovSites = ["https://www.haze.gov.sg/","https://apps.apple.com/sg/app/myenv/id444435182", "https://twitter.com/NEAsg", "https://www.facebook.com/NEASingapore", "https://www.nea.gov.sg/", "https://www.mom.gov.sg/haze", "https://www.moh.gov.sg/resources-statistics/educational-resources/haze/faqs-on-haze-health-advisory"]
+var hazeJournalsLinks = [
+    "https://ink.library.smu.edu.sg/cgi/viewcontent.cgi?article=5397&context=sis_research",
+    "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6765769/",
+    "https://www.pnas.org/content/116/12/5239",
+    "https://oxfordre.com/politics/view/10.1093/acrefore/9780190228637.001.0001/acrefore-9780190228637-e-262",
+    "https://link.springer.com/article/10.1007/s101130100021",
+    "https://link.springer.com/article/10.1007%2Fs10308-006-0067-1",
+    "https://link.springer.com/article/10.1353/dem.2002.0009",
+    "https://www.sciencedirect.com/science/article/abs/pii/S1352231000003952",
+    "https://link.springer.com/article/10.1007/s00024-003-8771-x",
+    "https://www.sciencedirect.com/science/article/abs/pii/S1462901115300770",
+    "https://www.sciencedirect.com/science/article/abs/pii/S0305750X0100122X",
+    "https://www.nature.com/articles/nclimate3008",
+    "https://www.mdpi.com/2071-1050/8/5/499",
+    "https://link.springer.com/article/10.1007/s11027-006-9045-6",
+    "https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1931-0846.2004.tb00158.x",
+    "https://onlinelibrary.wiley.com/doi/abs/10.1046/j.1440-1843.2000.00247.x",
+    "https://www.sciencedirect.com/science/article/abs/pii/S0959378014000296",
+    "https://www.sciencedirect.com/science/article/abs/pii/S1352231000003952",
+    "https://www.ijern.com/journal/August-2013/09.pdf"
+]
 
 struct TutorialStuff {
     var videoName: String

@@ -12,7 +12,7 @@ import UIKit
 
 class McqQnsViewController: UIViewController {
     
-    let timeAllowed = 0
+    let timeAllowed = 10
     let qnsAsked = 4
     let totalQns:UInt32 = 10
     

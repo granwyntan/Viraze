@@ -30,11 +30,8 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
     @IBOutlet weak var haze7: UIButton!
     @IBOutlet weak var haze8: UIButton!
     @IBOutlet weak var haze9: UIButton!
-    //    @IBOutlet weak var coronavirus1: UIButton!
-//    @IBOutlet weak var coronavirus2: UIButton!
-//    @IBOutlet weak var coronavirus3: UIButton!
-//    @IBOutlet weak var coronavirus4: UIButton!
-//    @IBOutlet weak var coronavirus5: UIButton!
+    
+    @IBOutlet weak var coronavirus1: UIButton!
     
     var timeLeft = 1.0
     var imageName = UIImage()
@@ -52,15 +49,14 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
         // image.clipsToBounds = true
         // image.contentMode = .scaleAspectFit
         defaults.setValue("HomeThing", forKey: "LaunchViewController")
-//        viewThing.alpha = 1
-//        viewThing2.alpha = 0
-//        scrollViewThing.alpha = 1
-//        scrollViewThing2.alpha = 0
-//        coronavirus1.layer.cornerRadius = 10
+        coronavirus1.layer.cornerRadius = 10
 //        coronavirus2.layer.cornerRadius = 10
 //        coronavirus3.layer.cornerRadius = 10
 //        coronavirus4.layer.cornerRadius = 10
 //        coronavirus5.layer.cornerRadius = 10
+        coronavirus1.contentMode = .scaleAspectFill
+        coronavirus1.layoutIfNeeded()
+        coronavirus1.subviews.first?.contentMode = .scaleAspectFill
         haze1.layer.cornerRadius = 10
         haze2.layer.cornerRadius = 10
         haze3.layer.cornerRadius = 10
@@ -79,12 +75,12 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
         haze7.clipsToBounds = true
         haze8.clipsToBounds = true
         haze9.clipsToBounds = true
-//        coronavirus1.clipsToBounds= true
+        coronavirus1.clipsToBounds = true
 //        coronavirus2.clipsToBounds = true
 //        coronavirus3.clipsToBounds = true
 //        coronavirus4.clipsToBounds = true
 //        coronavirus5.clipsToBounds = true
-        
+//        
     }
 
 //    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -161,6 +157,10 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
             performSegue(withIdentifier: "cardWithTable", sender: nil)
         } else if sender == haze7 {
             performSegue(withIdentifier: "seeHazeGuidelines", sender: nil)
+        } else if sender == haze8 {
+            performSegue(withIdentifier: "seeHazeFAQs", sender: nil)
+        } else if sender == haze9 {
+            performSegue(withIdentifier: "seeHazeRes", sender: nil)
         }
     }
     

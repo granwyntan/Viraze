@@ -70,26 +70,12 @@ class TipsTableViewController: UITableViewController {
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .body)
                 }
             }
-        } else if selectedTableHazeCard == 1 {
-            if indexPath.row == 0 {
-                cell.textLabel?.text = tableViewData[indexPath.section].title
-                cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15)
-            }
-        } else if selectedTableHazeCard == 2 {
-            if indexPath.row == 0 {
-                cell.textLabel?.text = tableViewData[indexPath.section].title
-                cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 11)
-            }
         } else {
-            if indexPath.row == 0 {
-                cell.textLabel?.text = tableViewData[indexPath.section].title
-                cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
-            } else {
-                if let _ = tableViewData[indexPath.section].sectionData {
-                    cell.textLabel?.text = tableViewData[indexPath.section].sectionData![dataIndex]
-                    cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .body)
-                }
-            }
+            cell.textLabel?.text = tableViewData[indexPath.section].title
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+            cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .body)
+//            cell.textLabel?.attributedText = makeAttributedString(
         }
         return cell
     }

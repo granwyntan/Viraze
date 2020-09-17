@@ -33,14 +33,9 @@ class DefintionViewController: UIViewController, UIViewControllerTransitioningDe
         let newcancelButton = UIButton(frame: CGRect(x: view.bounds.width-40, y: 40, width: 30, height: 30))
         newcancelButton.isUserInteractionEnabled = true
         newcancelButton.setImage(UIImage(systemName: "xmark"), for: .normal)
-        newcancelButton.tintColor = .white
-        if label.text == "Causes" {
-            newcancelButton.tintColor = .black
-        }
         newcancelButton.addTarget(self, action: #selector(closeCard), for: .touchUpInside)
         newcancelButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
         newcancelButton.scalesLargeContentImage = true
-        self.view.addSubview(newcancelButton)
         
         //conceptNameLabel.numberOfLines = 3; // Dynamic number of lines
         //
@@ -84,6 +79,13 @@ class DefintionViewController: UIViewController, UIViewControllerTransitioningDe
             browser.isHidden = false
             browser.load(URLRequest(url: URL(string: videoLinkName)!))
         }
+        
+        if label.text == "Causes" {
+            newcancelButton.tintColor = .black
+        } else {
+            newcancelButton.tintColor = .white
+        }
+        self.view.addSubview(newcancelButton)
         
         if let imagesNames = Haze[selectedHazeCard!-1].imageNames {
             image.isUserInteractionEnabled = true

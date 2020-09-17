@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		891677C72513B9CB006A45A4 /* VirusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891677C62513B9CB006A45A4 /* VirusTableViewController.swift */; };
 		8931C09024F564B300F7541D /* ScaleSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8931C08F24F564B300F7541D /* ScaleSegue.swift */; };
+		89378C6A2510867200409CCC /* VirusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89378C692510867200409CCC /* VirusViewController.swift */; };
+		89378C6C2510987800409CCC /* ResourcesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89378C6B2510987800409CCC /* ResourcesTableViewController.swift */; };
+		89378C6E2510989F00409CCC /* FAQsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89378C6D2510989F00409CCC /* FAQsTableViewController.swift */; };
 		89479B732507E6B3003E512C /* MoreDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89479B722507E6B3003E512C /* MoreDetailsViewController.swift */; };
 		894A36F5250881E00042B227 /* Virus (Dark).mov in Resources */ = {isa = PBXBuildFile; fileRef = 894A36F3250881E00042B227 /* Virus (Dark).mov */; };
 		894A36F6250881E00042B227 /* Virus (Light).mov in Resources */ = {isa = PBXBuildFile; fileRef = 894A36F4250881E00042B227 /* Virus (Light).mov */; };
-		8978695624EE7BDB0007F25A /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8978695524EE7BDB0007F25A /* AccountViewController.swift */; };
 		8978695824EE93AB0007F25A /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8978695724EE93AB0007F25A /* SettingsTableViewController.swift */; };
 		8978695A24EE93B30007F25A /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8978695924EE93B30007F25A /* AccountTableViewController.swift */; };
 		8978695C24EF664A0007F25A /* SecurityAndPrivacyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8978695B24EF664A0007F25A /* SecurityAndPrivacyTableViewController.swift */; };
@@ -35,6 +38,7 @@
 		89E6D20E24F0A5AA005E9B11 /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E6D20D24F0A5AA005E9B11 /* HelpTableViewController.swift */; };
 		89F11CF424F785EE004746EC /* McqQnsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F11CF224F785ED004746EC /* McqQnsViewController.swift */; };
 		89F11CF524F785EE004746EC /* McqMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F11CF324F785EE004746EC /* McqMainViewController.swift */; };
+		89F2D9D0251368F900020C21 /* PreventionVirusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F2D9CF251368F900020C21 /* PreventionVirusViewController.swift */; };
 		89F5878F24F22E370058D62B /* TestVirusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5878E24F22E360058D62B /* TestVirusViewController.swift */; };
 		89F5879124F2472A0058D62B /* DefintionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5879024F2472A0058D62B /* DefintionViewController.swift */; };
 		89F5879524F274B80058D62B /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5879424F274B80058D62B /* CircularTransition.swift */; };
@@ -43,11 +47,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		891677C62513B9CB006A45A4 /* VirusTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirusTableViewController.swift; sourceTree = "<group>"; };
 		8931C08F24F564B300F7541D /* ScaleSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleSegue.swift; sourceTree = "<group>"; };
+		89378C692510867200409CCC /* VirusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirusViewController.swift; sourceTree = "<group>"; };
+		89378C6B2510987800409CCC /* ResourcesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesTableViewController.swift; sourceTree = "<group>"; };
+		89378C6D2510989F00409CCC /* FAQsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQsTableViewController.swift; sourceTree = "<group>"; };
 		89479B722507E6B3003E512C /* MoreDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreDetailsViewController.swift; sourceTree = "<group>"; };
 		894A36F3250881E00042B227 /* Virus (Dark).mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Virus (Dark).mov"; sourceTree = "<group>"; };
 		894A36F4250881E00042B227 /* Virus (Light).mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Virus (Light).mov"; sourceTree = "<group>"; };
-		8978695524EE7BDB0007F25A /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		8978695724EE93AB0007F25A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		8978695924EE93B30007F25A /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
 		8978695B24EF664A0007F25A /* SecurityAndPrivacyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityAndPrivacyTableViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +80,7 @@
 		89E6D20D24F0A5AA005E9B11 /* HelpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		89F11CF224F785ED004746EC /* McqQnsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = McqQnsViewController.swift; sourceTree = "<group>"; };
 		89F11CF324F785EE004746EC /* McqMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = McqMainViewController.swift; sourceTree = "<group>"; };
+		89F2D9CF251368F900020C21 /* PreventionVirusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreventionVirusViewController.swift; sourceTree = "<group>"; };
 		89F5878E24F22E360058D62B /* TestVirusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVirusViewController.swift; sourceTree = "<group>"; };
 		89F5879024F2472A0058D62B /* DefintionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefintionViewController.swift; sourceTree = "<group>"; };
 		89F5879424F274B80058D62B /* CircularTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
@@ -125,7 +133,6 @@
 				89D8D90524E6440A00ED240C /* HomeViewController.swift */,
 				89D8D90724E66E9500ED240C /* ChangeNameViewController.swift */,
 				89B6FFB624E7E75100B7A0B9 /* Data.swift */,
-				8978695524EE7BDB0007F25A /* AccountViewController.swift */,
 				8978695724EE93AB0007F25A /* SettingsTableViewController.swift */,
 				8978695924EE93B30007F25A /* AccountTableViewController.swift */,
 				8978695B24EF664A0007F25A /* SecurityAndPrivacyTableViewController.swift */,
@@ -144,6 +151,11 @@
 				89A714B025065CBF003AA536 /* ImageViewZoom.swift */,
 				89479B722507E6B3003E512C /* MoreDetailsViewController.swift */,
 				897FFCCF250CA83C005E336B /* GuidelinesTableViewController.swift */,
+				89378C692510867200409CCC /* VirusViewController.swift */,
+				89378C6B2510987800409CCC /* ResourcesTableViewController.swift */,
+				89378C6D2510989F00409CCC /* FAQsTableViewController.swift */,
+				89F2D9CF251368F900020C21 /* PreventionVirusViewController.swift */,
+				891677C62513B9CB006A45A4 /* VirusTableViewController.swift */,
 			);
 			path = Viraze;
 			sourceTree = "<group>";
@@ -221,28 +233,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89F2D9D0251368F900020C21 /* PreventionVirusViewController.swift in Sources */,
 				8931C09024F564B300F7541D /* ScaleSegue.swift in Sources */,
 				89AF6C5A24E4D91500CA1EC6 /* ViewController.swift in Sources */,
 				89AF6C6A24E50B1800CA1EC6 /* TabBarController.swift in Sources */,
+				89378C6C2510987800409CCC /* ResourcesTableViewController.swift in Sources */,
 				8978695C24EF664A0007F25A /* SecurityAndPrivacyTableViewController.swift in Sources */,
 				89E37E3D2504777300434D16 /* SourcesTableViewController.swift in Sources */,
 				89A714B125065CBF003AA536 /* ImageViewZoom.swift in Sources */,
 				897FFCD0250CA83C005E336B /* GuidelinesTableViewController.swift in Sources */,
 				89E37E3F250544EB00434D16 /* TipsTableViewController.swift in Sources */,
+				89378C6E2510989F00409CCC /* FAQsTableViewController.swift in Sources */,
 				89F5879924F27CE00058D62B /* SecondViewController.swift in Sources */,
 				8978695A24EE93B30007F25A /* AccountTableViewController.swift in Sources */,
 				89AF6C6C24E5107800CA1EC6 /* TutorialViewController.swift in Sources */,
+				89378C6A2510867200409CCC /* VirusViewController.swift in Sources */,
 				89F11CF524F785EE004746EC /* McqMainViewController.swift in Sources */,
 				89F11CF424F785EE004746EC /* McqQnsViewController.swift in Sources */,
 				89F5879124F2472A0058D62B /* DefintionViewController.swift in Sources */,
 				8978695824EE93AB0007F25A /* SettingsTableViewController.swift in Sources */,
-				8978695624EE7BDB0007F25A /* AccountViewController.swift in Sources */,
 				89AF6C5624E4D91500CA1EC6 /* AppDelegate.swift in Sources */,
 				89F5879724F27CD10058D62B /* FirstViewController.swift in Sources */,
 				89E6D20E24F0A5AA005E9B11 /* HelpTableViewController.swift in Sources */,
 				89479B732507E6B3003E512C /* MoreDetailsViewController.swift in Sources */,
 				89F5879524F274B80058D62B /* CircularTransition.swift in Sources */,
 				89AF6C5824E4D91500CA1EC6 /* SceneDelegate.swift in Sources */,
+				891677C72513B9CB006A45A4 /* VirusTableViewController.swift in Sources */,
 				89D8D90624E6440A00ED240C /* HomeViewController.swift in Sources */,
 				89E37E3B2503E5E800434D16 /* TutorialInSettingsViewController.swift in Sources */,
 				89AF6C6E24E5502F00CA1EC6 /* NameViewController.swift in Sources */,
