@@ -29,15 +29,15 @@ class TutorialInSettingsViewController: UIViewController {
         playerLayer.videoGravity = .resizeAspect
         ViewThing.layer.addSublayer(playerLayer)
         player.play()
-        loopVideo(videoPlayer: player)
+        //loopVideo(videoPlayer: player)
     }
     
-    func loopVideo(videoPlayer: AVPlayer) {
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: nil) { notification in
-            videoPlayer.seek(to: CMTime.zero)
-            videoPlayer.play()
-        }
-    }
+//    func loopVideo(videoPlayer: AVPlayer) {
+//        NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: nil) { notification in
+//            videoPlayer.seek(to: CMTime.zero)
+//            videoPlayer.play()
+//        }
+//    }
     
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
@@ -98,6 +98,8 @@ class TutorialInSettingsViewController: UIViewController {
         }
     }
     func startPlayingVideo () {
+        ViewThing.layer.sublayers?.removeAll()
+        ViewThing.layer.sublayers = nil
         if traitCollection.userInterfaceStyle == UIUserInterfaceStyle.light {
             playVideo(withName: tutorials[currentPage].videoName, ofFileType: tutorials[currentPage].videoFileType)
             titleLabel.text = tutorials[currentPage].title

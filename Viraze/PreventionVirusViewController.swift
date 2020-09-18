@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class PreventionVirusViewController: UIViewController {
 
@@ -17,6 +18,14 @@ class PreventionVirusViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let newcancelButton = UIButton(frame: CGRect(x: view.bounds.width-40, y: 40, width: 30, height: 30))
+        newcancelButton.isUserInteractionEnabled = true
+        newcancelButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        newcancelButton.addTarget(self, action: #selector(closeCard), for: .touchUpInside)
+        newcancelButton.tintColor = .label
+        newcancelButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
+        newcancelButton.scalesLargeContentImage = true
+        self.view.addSubview(newcancelButton)
         titleHeaderText.text = "Prevention"
         text.text = """
         Protect yourself and others around you by knowing the facts and taking appropriate precautions. Follow advice provided by your local health authority.
@@ -34,6 +43,12 @@ class PreventionVirusViewController: UIViewController {
         Masks
         Masks can help prevent the spread of the virus from the person wearing the mask to others. Masks alone do not protect against COVID-19, and should be combined with physical distancing and hand hygiene. Follow the advice provided by your local health authority.
         """
+    }
+    @objc func closeCard() {
+        performSegue(withIdentifier: "closePreventionCard", sender: nil)
+    }
+    @IBAction func seeSource(_ sender: Any) {
+        present(SFSafariViewController(url: URL(string: "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public")!), animated: true)
     }
     
 

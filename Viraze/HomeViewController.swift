@@ -30,8 +30,22 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
     @IBOutlet weak var haze7: UIButton!
     @IBOutlet weak var haze8: UIButton!
     @IBOutlet weak var haze9: UIButton!
-    
+    @IBOutlet weak var allquiz: UIButton!
+    @IBOutlet weak var virusQuiz: UIButton!
+    @IBOutlet weak var hazeQuiz: UIButton!
+    @IBOutlet weak var chooseMask: UIButton!
+    @IBOutlet weak var browseMask: UIButton!
     @IBOutlet weak var coronavirus1: UIButton!
+    @IBOutlet weak var coronavirus2: UIButton!
+    @IBOutlet weak var coronavirus3: UIButton!
+    @IBOutlet weak var coronavirus4: UIButton!
+    @IBOutlet weak var coronavirus5: UIButton!
+    @IBOutlet weak var coronavirus6: UIButton!
+    @IBOutlet weak var coronavirus7: UIButton!
+    @IBOutlet weak var coronavirus8: UIButton!
+    @IBOutlet weak var coronavirus9: UIButton!
+    @IBOutlet weak var coronavirus10: UIButton!
+    @IBOutlet weak var textview: UITextView!
     
     var timeLeft = 1.0
     var imageName = UIImage()
@@ -40,6 +54,7 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
     var transition = CircularTransistion()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 //        hazePic.alpha = 0.75
 
         // Do any additional setup after loading the view.
@@ -49,14 +64,63 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
         // image.clipsToBounds = true
         // image.contentMode = .scaleAspectFit
         defaults.setValue("HomeThing", forKey: "LaunchViewController")
-        coronavirus1.layer.cornerRadius = 10
-//        coronavirus2.layer.cornerRadius = 10
-//        coronavirus3.layer.cornerRadius = 10
-//        coronavirus4.layer.cornerRadius = 10
-//        coronavirus5.layer.cornerRadius = 10
         coronavirus1.contentMode = .scaleAspectFill
         coronavirus1.layoutIfNeeded()
         coronavirus1.subviews.first?.contentMode = .scaleAspectFill
+        coronavirus2.contentMode = .scaleAspectFill
+        coronavirus2.layoutIfNeeded()
+        coronavirus2.subviews.first?.contentMode = .scaleAspectFill
+        coronavirus3.contentMode = .scaleAspectFill
+        coronavirus3.layoutIfNeeded()
+        coronavirus3.subviews.first?.contentMode = .scaleAspectFill
+        coronavirus4.contentMode = .scaleAspectFill
+        coronavirus4.layoutIfNeeded()
+        coronavirus4.subviews.first?.contentMode = .scaleAspectFill
+        coronavirus5.contentMode = .scaleAspectFill
+        coronavirus5.layoutIfNeeded()
+        coronavirus5.subviews.first?.contentMode = .scaleAspectFill
+        coronavirus7.contentMode = .scaleAspectFill
+        coronavirus7.layoutIfNeeded()
+        coronavirus7.subviews.first?.contentMode = .scaleAspectFill
+        coronavirus6.contentMode = .scaleAspectFill
+        coronavirus6.layoutIfNeeded()
+        coronavirus6.subviews.first?.contentMode = .scaleAspectFill
+        coronavirus8.contentMode = .scaleAspectFill
+        coronavirus8.layoutIfNeeded()
+        coronavirus8.subviews.first?.contentMode = .scaleAspectFill
+        coronavirus9.contentMode = .scaleAspectFill
+        coronavirus9.layoutIfNeeded()
+        coronavirus9.subviews.first?.contentMode = .scaleAspectFill
+        coronavirus10.contentMode = .scaleAspectFill
+        coronavirus10.layoutIfNeeded()
+        coronavirus10.subviews.first?.contentMode = .scaleAspectFill
+        haze1.contentMode = .scaleAspectFill
+        haze1.layoutIfNeeded()
+        haze1.subviews.first?.contentMode = .scaleAspectFill
+        haze2.contentMode = .scaleAspectFill
+        haze2.layoutIfNeeded()
+        haze2.subviews.first?.contentMode = .scaleAspectFill
+        haze3.contentMode = .scaleAspectFill
+        haze3.layoutIfNeeded()
+        haze3.subviews.first?.contentMode = .scaleAspectFill
+        haze4.contentMode = .scaleAspectFill
+        haze4.layoutIfNeeded()
+        haze4.subviews.first?.contentMode = .scaleAspectFill
+        haze5.contentMode = .scaleAspectFill
+        haze5.layoutIfNeeded()
+        haze5.subviews.first?.contentMode = .scaleAspectFill
+        haze7.contentMode = .scaleAspectFill
+        haze7.layoutIfNeeded()
+        haze7.subviews.first?.contentMode = .scaleAspectFill
+        haze6.contentMode = .scaleAspectFill
+        haze6.layoutIfNeeded()
+        haze6.subviews.first?.contentMode = .scaleAspectFill
+        haze8.contentMode = .scaleAspectFill
+        haze8.layoutIfNeeded()
+        haze8.subviews.first?.contentMode = .scaleAspectFill
+        haze9.contentMode = .scaleAspectFill
+        haze9.layoutIfNeeded()
+        haze9.subviews.first?.contentMode = .scaleAspectFill
         haze1.layer.cornerRadius = 10
         haze2.layer.cornerRadius = 10
         haze3.layer.cornerRadius = 10
@@ -75,12 +139,25 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
         haze7.clipsToBounds = true
         haze8.clipsToBounds = true
         haze9.clipsToBounds = true
+        coronavirus1.layer.cornerRadius = 10
+        coronavirus2.layer.cornerRadius = 10
+        coronavirus3.layer.cornerRadius = 10
+        coronavirus4.layer.cornerRadius = 10
+        coronavirus5.layer.cornerRadius = 10
+        coronavirus6.layer.cornerRadius = 10
+        coronavirus7.layer.cornerRadius = 10
+        coronavirus8.layer.cornerRadius = 10
+        coronavirus9.layer.cornerRadius = 10
         coronavirus1.clipsToBounds = true
-//        coronavirus2.clipsToBounds = true
-//        coronavirus3.clipsToBounds = true
-//        coronavirus4.clipsToBounds = true
-//        coronavirus5.clipsToBounds = true
-//        
+        coronavirus2.clipsToBounds = true
+        coronavirus3.clipsToBounds = true
+        coronavirus4.clipsToBounds = true
+        coronavirus5.clipsToBounds = true
+        coronavirus6.clipsToBounds = true
+        coronavirus7.clipsToBounds = true
+        coronavirus8.clipsToBounds = true
+        coronavirus9.clipsToBounds = true
+        textview.contentMode = .bottomLeft
     }
 
 //    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -161,6 +238,25 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
             performSegue(withIdentifier: "seeHazeFAQs", sender: nil)
         } else if sender == haze9 {
             performSegue(withIdentifier: "seeHazeRes", sender: nil)
+        } else if sender == coronavirus1 || sender == coronavirus2 || sender == coronavirus4 || sender == coronavirus6 || sender == coronavirus7 || sender == coronavirus8 {
+            if sender == coronavirus1 {
+                selectedVirusCard = 1
+            } else if sender == coronavirus2 {
+                selectedVirusCard = 2
+            } else if sender == coronavirus4 {
+                selectedVirusCard = 3
+            } else if sender == coronavirus6 {
+                selectedVirusCard = 4
+            } else if sender == coronavirus7 {
+                selectedVirusCard = 5
+            } else if sender == coronavirus8 {
+                selectedVirusCard = 6
+            }
+            performSegue(withIdentifier: "seeTableVirus", sender: nil)
+        } else if sender == coronavirus3 {
+            performSegue(withIdentifier: "seePreventionVirus", sender: nil)
+        } else if sender == coronavirus5 {
+            performSegue(withIdentifier: "seeTreatmentVirus", sender: nil)
         }
     }
     

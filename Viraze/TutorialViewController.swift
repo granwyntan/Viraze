@@ -31,14 +31,14 @@ class TutorialViewController: UIViewController {
         playerLayer.videoGravity = .resizeAspect
         playingThing.layer.addSublayer(playerLayer)
         player.play()
-        loopVideo(videoPlayer: player)
+        // loopVideo(videoPlayer: player)
     }
-    func loopVideo(videoPlayer: AVPlayer) {
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: nil) { notification in
-            videoPlayer.seek(to: CMTime.zero)
-            videoPlayer.play()
-        }
-    }
+//    func loopVideo(videoPlayer: AVPlayer) {
+//        NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: nil) { notification in
+//            videoPlayer.seek(to: CMTime.zero)
+//            videoPlayer.play()
+//        }
+//    }
     
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
@@ -105,6 +105,8 @@ class TutorialViewController: UIViewController {
     }
     
     func startPlayingVideo () {
+        playingThing.layer.sublayers?.removeAll()
+        playingThing.layer.sublayers = nil
         if traitCollection.userInterfaceStyle == UIUserInterfaceStyle.light {
             playVideo(withName: tutorials[currentPage].videoName, ofFileType: tutorials[currentPage].videoFileType)
             titleLabel.text = tutorials[currentPage].title
@@ -145,6 +147,8 @@ class TutorialViewController: UIViewController {
     
     @IBAction func longPress(_ sender: Any) {
         if seguePerformed == false {
+            playingThing.layer.sublayers?.removeAll()
+            playingThing.layer.sublayers = nil
             performSegue(withIdentifier: "setName", sender: nil)
             seguePerformed = true
         }

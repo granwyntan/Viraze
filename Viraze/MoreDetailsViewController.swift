@@ -36,18 +36,40 @@ class MoreDetailsViewController: UIViewController {
             }
         }
     }
+    func setupLargeTitleAutoAdjustFont() {
+        guard let navigationBar = navigationController?.navigationBar else {
+            return
+        }
+        // recursively find the label
+        func findLabel(in view: UIView) -> UILabel? {
+            if view.subviews.count > 0 {
+                for subview in view.subviews {
+                    if let label = findLabel(in: subview) {
+                        return label
+                    }
+                }
+            }
+            return view as? UILabel
+        }
+
+        if let label = findLabel(in: navigationBar) {
+            if label.text == self.title {
+                label.adjustsFontSizeToFitWidth = true
+                // label.minimumScaleFactor = 0.7
+            }
+            //label.numberOfLines = 2
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = titleName
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationItem.largeTitleDisplayMode = .automatic
-
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
+//        self.navigationController?.navigationItem.largeTitleDisplayMode = .automatic
 //        self.navigationController?.navigationBar.largeTitleTextAttributes = [
 //            NSAttributedString.Key.foregroundColor: UIColor.black,
-//            NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .largeTitle)]
-
-//        self.navigationItem.hidesBackButton = true
+//            NSAttributedString.Key.font : UIFont.preferredFont(forTextStyle: .largeTitle)
+//                                        ]
 //        for navItem in(self.navigationController?.navigationBar.subviews)! {
 //             for itemSubView in navItem.subviews {
 //                 if let largeLabel = itemSubView as? UILabel {
@@ -56,7 +78,10 @@ class MoreDetailsViewController: UIViewController {
 //                     largeLabel.lineBreakMode = .byWordWrapping
 //                 }
 //             }
+//
 //        }
+//        setupLargeTitleAutoAdjustFont()
+
         
         contentText.text = content
         
@@ -78,6 +103,13 @@ class MoreDetailsViewController: UIViewController {
             if imageName[0].contains("hazeimage") || imageName[0].contains("hazecontentimage") || imageName[0] == "hazeMasks" {
                 image.contentMode = .scaleAspectFill
             }
+            if imageName[0] == "Viraze (Haze Timeline)" {
+                if traitCollection.userInterfaceStyle == UIUserInterfaceStyle.light {
+                    image.image = UIImage(named: imageName[0])
+                } else if traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark {
+                    image.image = UIImage(named: "\(imageName[0])-dark")
+                }
+            }
             image.isHidden = false
         }
         
@@ -93,6 +125,16 @@ class MoreDetailsViewController: UIViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    private lazy var setupLargeTitleLabelOnce: Void = {[unowned self] in
+        if #available(iOS 11.0, *) {
+            self.setupLargeTitleAutoAdjustFont()
+        }
+    }()
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let _ = setupLargeTitleLabelOnce
     }
 
     func playVideo(forView viewName: UIView, withName videoName: String, ofFileType fileType: String) {

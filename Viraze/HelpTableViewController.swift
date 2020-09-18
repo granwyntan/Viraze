@@ -11,7 +11,7 @@ import MessageUI
 
 class HelpTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
     
-    let helpStuff = ["About Us", "Tutorial", "Contact", "More"]
+    let helpStuff = ["About Us", "Tutorial", "Contact"]
 
     let defaults = UserDefaults.standard
     override func viewDidLoad() {

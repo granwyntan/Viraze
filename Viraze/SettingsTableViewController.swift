@@ -40,9 +40,9 @@ class SettingsTableViewController: UITableViewController {
         if indexPath.row == 0 {
             performSegue(withIdentifier: "seeAcct", sender: nil)
         } else if indexPath.row == 1 {
-            performSegue(withIdentifier: "seeSecAndPriv", sender: nil)
-        } else if indexPath.row == 2 {
             performSegue(withIdentifier: "seeHelp", sender: nil)
+        } else if indexPath.row == 2 {
+            performSegue(withIdentifier: "seeMore", sender: nil)
         } else if indexPath.row == 3 {
             let alert = UIAlertController(title: "Are you sure you want to Sign Out?", message: "Your data and preferences will not be saved", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in

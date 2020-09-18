@@ -13,13 +13,15 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var desc: UILabel!
+    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var getStarted: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.navigationItem.hidesBackButton = true
-        label.text = "Welcome\nTo\nViraze"
-        desc.text = "App Description"
         defaults.setValue("ViewController", forKey: "LaunchViewController")
+        icon.layer.cornerRadius = 25
+        icon.clipsToBounds = true
     }
     override func unwind(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {
         let segue = UnwindScaleSegue(identifier: unwindSegue.identifier, source: unwindSegue.source, destination: unwindSegue.destination)
