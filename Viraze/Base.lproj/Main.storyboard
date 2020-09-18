@@ -727,6 +727,7 @@
                         <segue destination="upa-3n-3dA" kind="presentation" identifier="seePreventionVirus" customClass="ScaleSegue" customModule="Viraze" customModuleProvider="target" modalPresentationStyle="fullScreen" id="UpO-bZ-nmw"/>
                         <segue destination="2sy-GJ-hwa" kind="presentation" identifier="seeTableVirus" customClass="ScaleSegue" customModule="Viraze" customModuleProvider="target" modalPresentationStyle="fullScreen" id="4Kh-Fc-Yhy"/>
                         <segue destination="ELh-g9-TlH" kind="presentation" identifier="seeTreatmentVirus" customClass="ScaleSegue" customModule="Viraze" customModuleProvider="target" modalPresentationStyle="fullScreen" id="RSa-te-Bt9"/>
+                        <segue destination="o8E-wF-gtS" kind="presentation" identifier="moreVirus" customClass="ScaleSegue" customModule="Viraze" customModuleProvider="target" modalPresentationStyle="fullScreen" id="q6P-JX-1Hf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qbc-zb-RVL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1630,7 +1631,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O5H-qY-6Sf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6245" y="-1281"/>
+            <point key="canvasLocation" x="6278" y="-1290"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wqw-YF-ebP">
@@ -2446,6 +2447,67 @@
                 <exit id="Hh5-UX-8ns" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="8977" y="-1281"/>
+        </scene>
+        <!--More Information-->
+        <scene sceneID="ntM-1u-0UR">
+            <objects>
+                <tableViewController id="eVF-74-lh1" customClass="VirusMoreTableViewController" customModule="Viraze" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="eoj-8g-q1Z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="n8a-xg-79F">
+                            <rect key="frame" x="0.0" y="99.5" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" title="Source"/>
+                        </button>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="moreviruscell" id="gEe-2r-Dof">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gEe-2r-Dof" id="zOG-OS-oUm">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="eVF-74-lh1" id="36P-vf-65Q"/>
+                            <outlet property="delegate" destination="eVF-74-lh1" id="izh-Ok-tyP"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="More Information" id="pyo-ky-7J0">
+                        <barButtonItem key="rightBarButtonItem" image="xmark" catalog="system" id="sUw-Wy-KSZ"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="J0X-Df-Ds2" kind="unwind" identifier="close" customClass="UnwindScaleSegue" customModule="Viraze" customModuleProvider="target" unwindAction="prepareForUnwindWithSegue:" id="ZyJ-3z-Mlr"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j0F-U6-l83" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="J0X-Df-Ds2" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="5368" y="-2089"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ceQ-La-ej0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o8E-wF-gtS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="qdY-iH-1SW"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="oDJ-ow-2XW">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="labelColor"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eVF-74-lh1" kind="relationship" relationship="rootViewController" id="Ofv-bS-LpS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vmf-ML-lt2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4458" y="-2089"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

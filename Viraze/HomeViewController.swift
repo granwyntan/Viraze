@@ -257,6 +257,8 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
             performSegue(withIdentifier: "seePreventionVirus", sender: nil)
         } else if sender == coronavirus5 {
             performSegue(withIdentifier: "seeTreatmentVirus", sender: nil)
+        } else if sender == coronavirus9 {
+            performSegue(withIdentifier: "moreVirus", sender: nil)
         }
     }
     
