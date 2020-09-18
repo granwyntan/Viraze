@@ -148,6 +148,7 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
         coronavirus7.layer.cornerRadius = 10
         coronavirus8.layer.cornerRadius = 10
         coronavirus9.layer.cornerRadius = 10
+        coronavirus10.layer.cornerRadius = 10
         coronavirus1.clipsToBounds = true
         coronavirus2.clipsToBounds = true
         coronavirus3.clipsToBounds = true
@@ -157,7 +158,14 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
         coronavirus7.clipsToBounds = true
         coronavirus8.clipsToBounds = true
         coronavirus9.clipsToBounds = true
+        coronavirus10.clipsToBounds = true
         textview.contentMode = .bottomLeft
+        hazeQuiz.alpha = 0.95
+        hazeQuiz.layer.cornerRadius = 10
+        hazeQuiz.clipsToBounds = true
+        virusQuiz.alpha = 0.95
+        virusQuiz.layer.cornerRadius = 10
+        virusQuiz.clipsToBounds = true
     }
 
 //    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

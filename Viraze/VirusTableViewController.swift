@@ -57,6 +57,14 @@ class VirusTableViewController: UITableViewController {
     }
 
     @IBAction func x(_ sender: Any) {
+        DispatchQueue.global(qos: .background).async {
+
+        // Background Thread
+
+        DispatchQueue.main.async {
+            self.navigationController?.navigationBar.isHidden = true
+            }
+        }
         performSegue(withIdentifier: "backtohome", sender: nil)
     }
     @IBAction func viewSources(_ sender: Any) {

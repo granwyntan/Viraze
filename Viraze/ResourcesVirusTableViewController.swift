@@ -1,5 +1,5 @@
 //
-//  VirusMoreTableViewController.swift
+//  ResourcesVirusTableViewController.swift
 //  Viraze
 //
 //  Created by Granwyn Tan on 19/9/20.
@@ -8,8 +8,7 @@
 
 import UIKit
 
-class VirusMoreTableViewController: UITableViewController {
-    var tableViewData = [cellData]()
+class ResourcesVirusTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,81 +18,30 @@ class VirusMoreTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        for i in 0..<virusmore.count{
-            tableViewData.append(cellData(opened: false, title: virusmore[i].question, sectionData: [virusmore[i].answer]))
-        }
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return tableViewData.count
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if tableViewData[section].opened == true {
-            return tableViewData[section].sectionData!.count + 1
-        }
-        return 1
+        return 0
     }
 
-
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "moreviruscell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        let dataIndex = indexPath.row-1
         // Configure the cell...
-        if indexPath.row == 0 {
-            cell.isUserInteractionEnabled = true
-            cell.textLabel?.text = tableViewData[indexPath.section].title
-            cell.textLabel?.numberOfLines = 0
-            cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-            cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
-            if tableViewData[indexPath.section].opened == false {
-                cell.accessoryType = .disclosureIndicator
-            } else {
-                cell.accessoryType = .none
-            }
-        } else {
-            cell.isUserInteractionEnabled = false
-            cell.accessoryType = .none
-            cell.textLabel?.text = tableViewData[indexPath.section].sectionData![dataIndex]
-            cell.textLabel?.numberOfLines = 0
-            cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-            cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .body)
-        }
 
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            if tableViewData[indexPath.section].opened == true {
-                tableViewData[indexPath.section].opened = false
-            } else {
-                tableViewData[indexPath.section].opened = true
-            }
-            let sections = IndexSet.init(integer: indexPath.section)
-            tableView.reloadSections(sections, with: .automatic)
-        }
-    }
-    @IBAction func close(_ sender: Any) {
-        DispatchQueue.global(qos: .background).async {
+    */
 
-        // Background Thread
-
-        DispatchQueue.main.async {
-            self.navigationController?.navigationBar.isHidden = true
-            }
-        }
-        performSegue(withIdentifier: "close", sender: nil)
-    }
-    @IBAction func seeSource(_ sender: Any) {
-        print(virusmoresources)
-    }
-    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
