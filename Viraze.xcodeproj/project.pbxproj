@@ -14,6 +14,8 @@
 		890B039525152C88001DC79D /* ResourcesVirusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890B039425152C87001DC79D /* ResourcesVirusTableViewController.swift */; };
 		891677C72513B9CB006A45A4 /* VirusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891677C62513B9CB006A45A4 /* VirusTableViewController.swift */; };
 		891677CD25146A68006A45A4 /* AllSourcesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891677CC25146A67006A45A4 /* AllSourcesTableViewController.swift */; };
+		8926A4B7251783E7006E4AEF /* Haze (Dark).mov in Resources */ = {isa = PBXBuildFile; fileRef = 8926A4B5251783E6006E4AEF /* Haze (Dark).mov */; };
+		8926A4B8251783E7006E4AEF /* Haze (Light).mov in Resources */ = {isa = PBXBuildFile; fileRef = 8926A4B6251783E7006E4AEF /* Haze (Light).mov */; };
 		8931C09024F564B300F7541D /* ScaleSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8931C08F24F564B300F7541D /* ScaleSegue.swift */; };
 		89378C6A2510867200409CCC /* VirusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89378C692510867200409CCC /* VirusViewController.swift */; };
 		89378C6C2510987800409CCC /* ResourcesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89378C6B2510987800409CCC /* ResourcesTableViewController.swift */; };
@@ -21,6 +23,9 @@
 		89479B732507E6B3003E512C /* MoreDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89479B722507E6B3003E512C /* MoreDetailsViewController.swift */; };
 		894A36F5250881E00042B227 /* Virus (Dark).mov in Resources */ = {isa = PBXBuildFile; fileRef = 894A36F3250881E00042B227 /* Virus (Dark).mov */; };
 		894A36F6250881E00042B227 /* Virus (Light).mov in Resources */ = {isa = PBXBuildFile; fileRef = 894A36F4250881E00042B227 /* Virus (Light).mov */; };
+		896968AF251590EA00F28A42 /* MasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896968AE251590EA00F28A42 /* MasksTableViewController.swift */; };
+		896968B62515911C00F28A42 /* PickMasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896968B52515911C00F28A42 /* PickMasksViewController.swift */; };
+		896968B92515912A00F28A42 /* ShowMasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896968B82515912A00F28A42 /* ShowMasksViewController.swift */; };
 		896F16CB25147E6700390AFA /* MoreSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896F16CA25147E6700390AFA /* MoreSettingsTableViewController.swift */; };
 		8978695824EE93AB0007F25A /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8978695724EE93AB0007F25A /* SettingsTableViewController.swift */; };
 		8978695A24EE93B30007F25A /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8978695924EE93B30007F25A /* AccountTableViewController.swift */; };
@@ -36,18 +41,20 @@
 		89AF6C6C24E5107800CA1EC6 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AF6C6B24E5107800CA1EC6 /* TutorialViewController.swift */; };
 		89AF6C6E24E5502F00CA1EC6 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AF6C6D24E5502E00CA1EC6 /* NameViewController.swift */; };
 		89B6FFB724E7E75100B7A0B9 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B6FFB624E7E75100B7A0B9 /* Data.swift */; };
+		89B96190251753AF00B52C71 /* GameEndedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B9618E251753AE00B52C71 /* GameEndedViewController.swift */; };
+		89B96191251753AF00B52C71 /* QuizThingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B9618F251753AE00B52C71 /* QuizThingViewController.swift */; };
 		89CBF2F52514A5C000BDE9C7 /* TreatmentVirusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CBF2F42514A5C000BDE9C7 /* TreatmentVirusViewController.swift */; };
 		89D8D90624E6440A00ED240C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D8D90524E6440A00ED240C /* HomeViewController.swift */; };
 		89D8D90824E66E9500ED240C /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D8D90724E66E9500ED240C /* ChangeNameViewController.swift */; };
 		89E37E3B2503E5E800434D16 /* TutorialInSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E37E3A2503E5E800434D16 /* TutorialInSettingsViewController.swift */; };
 		89E37E3D2504777300434D16 /* SourcesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E37E3C2504777200434D16 /* SourcesTableViewController.swift */; };
-		89E37E3F250544EB00434D16 /* TipsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E37E3E250544EA00434D16 /* TipsTableViewController.swift */; };
+		89E37E3F250544EB00434D16 /* HazeTableCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E37E3E250544EA00434D16 /* HazeTableCardViewController.swift */; };
 		89E6D20E24F0A5AA005E9B11 /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E6D20D24F0A5AA005E9B11 /* HelpTableViewController.swift */; };
 		89F11CF424F785EE004746EC /* McqQnsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F11CF224F785ED004746EC /* McqQnsViewController.swift */; };
 		89F11CF524F785EE004746EC /* McqMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F11CF324F785EE004746EC /* McqMainViewController.swift */; };
 		89F2D9D0251368F900020C21 /* PreventionVirusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F2D9CF251368F900020C21 /* PreventionVirusViewController.swift */; };
 		89F5878F24F22E370058D62B /* TestVirusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5878E24F22E360058D62B /* TestVirusViewController.swift */; };
-		89F5879124F2472A0058D62B /* DefintionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5879024F2472A0058D62B /* DefintionViewController.swift */; };
+		89F5879124F2472A0058D62B /* HazeCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5879024F2472A0058D62B /* HazeCardViewController.swift */; };
 		89F5879524F274B80058D62B /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5879424F274B80058D62B /* CircularTransition.swift */; };
 		89F5879724F27CD10058D62B /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5879624F27CD10058D62B /* FirstViewController.swift */; };
 		89F5879924F27CE00058D62B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5879824F27CE00058D62B /* SecondViewController.swift */; };
@@ -60,6 +67,8 @@
 		890B039425152C87001DC79D /* ResourcesVirusTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesVirusTableViewController.swift; sourceTree = "<group>"; };
 		891677C62513B9CB006A45A4 /* VirusTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirusTableViewController.swift; sourceTree = "<group>"; };
 		891677CC25146A67006A45A4 /* AllSourcesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSourcesTableViewController.swift; sourceTree = "<group>"; };
+		8926A4B5251783E6006E4AEF /* Haze (Dark).mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Haze (Dark).mov"; sourceTree = "<group>"; };
+		8926A4B6251783E7006E4AEF /* Haze (Light).mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Haze (Light).mov"; sourceTree = "<group>"; };
 		8931C08F24F564B300F7541D /* ScaleSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleSegue.swift; sourceTree = "<group>"; };
 		89378C692510867200409CCC /* VirusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirusViewController.swift; sourceTree = "<group>"; };
 		89378C6B2510987800409CCC /* ResourcesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesTableViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +76,9 @@
 		89479B722507E6B3003E512C /* MoreDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreDetailsViewController.swift; sourceTree = "<group>"; };
 		894A36F3250881E00042B227 /* Virus (Dark).mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Virus (Dark).mov"; sourceTree = "<group>"; };
 		894A36F4250881E00042B227 /* Virus (Light).mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Virus (Light).mov"; sourceTree = "<group>"; };
+		896968AE251590EA00F28A42 /* MasksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasksTableViewController.swift; sourceTree = "<group>"; };
+		896968B52515911C00F28A42 /* PickMasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickMasksViewController.swift; sourceTree = "<group>"; };
+		896968B82515912A00F28A42 /* ShowMasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMasksViewController.swift; sourceTree = "<group>"; };
 		896F16CA25147E6700390AFA /* MoreSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreSettingsTableViewController.swift; sourceTree = "<group>"; };
 		8978695724EE93AB0007F25A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		8978695924EE93B30007F25A /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
@@ -85,18 +97,20 @@
 		89AF6C6B24E5107800CA1EC6 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		89AF6C6D24E5502E00CA1EC6 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		89B6FFB624E7E75100B7A0B9 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		89B9618E251753AE00B52C71 /* GameEndedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEndedViewController.swift; sourceTree = "<group>"; };
+		89B9618F251753AE00B52C71 /* QuizThingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizThingViewController.swift; sourceTree = "<group>"; };
 		89CBF2F42514A5C000BDE9C7 /* TreatmentVirusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentVirusViewController.swift; sourceTree = "<group>"; };
 		89D8D90524E6440A00ED240C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		89D8D90724E66E9500ED240C /* ChangeNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
 		89E37E3A2503E5E800434D16 /* TutorialInSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialInSettingsViewController.swift; sourceTree = "<group>"; };
 		89E37E3C2504777200434D16 /* SourcesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesTableViewController.swift; sourceTree = "<group>"; };
-		89E37E3E250544EA00434D16 /* TipsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsTableViewController.swift; sourceTree = "<group>"; };
+		89E37E3E250544EA00434D16 /* HazeTableCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HazeTableCardViewController.swift; sourceTree = "<group>"; };
 		89E6D20D24F0A5AA005E9B11 /* HelpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		89F11CF224F785ED004746EC /* McqQnsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = McqQnsViewController.swift; sourceTree = "<group>"; };
 		89F11CF324F785EE004746EC /* McqMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = McqMainViewController.swift; sourceTree = "<group>"; };
 		89F2D9CF251368F900020C21 /* PreventionVirusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreventionVirusViewController.swift; sourceTree = "<group>"; };
 		89F5878E24F22E360058D62B /* TestVirusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVirusViewController.swift; sourceTree = "<group>"; };
-		89F5879024F2472A0058D62B /* DefintionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefintionViewController.swift; sourceTree = "<group>"; };
+		89F5879024F2472A0058D62B /* HazeCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HazeCardViewController.swift; sourceTree = "<group>"; };
 		89F5879424F274B80058D62B /* CircularTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
 		89F5879624F27CD10058D62B /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		89F5879824F27CE00058D62B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +127,98 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		896968BC2515915700F28A42 /* Main Pages */ = {
+			isa = PBXGroup;
+			children = (
+				89AF6C5924E4D91500CA1EC6 /* ViewController.swift */,
+				89AF6C6B24E5107800CA1EC6 /* TutorialViewController.swift */,
+				89AF6C6D24E5502E00CA1EC6 /* NameViewController.swift */,
+				89D8D90524E6440A00ED240C /* HomeViewController.swift */,
+				89D8D90724E66E9500ED240C /* ChangeNameViewController.swift */,
+			);
+			path = "Main Pages";
+			sourceTree = "<group>";
+		};
+		896968BD2515916300F28A42 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				896F16CA25147E6700390AFA /* MoreSettingsTableViewController.swift */,
+				8978695724EE93AB0007F25A /* SettingsTableViewController.swift */,
+				8978695924EE93B30007F25A /* AccountTableViewController.swift */,
+				8978695B24EF664A0007F25A /* SecurityAndPrivacyTableViewController.swift */,
+				89E6D20D24F0A5AA005E9B11 /* HelpTableViewController.swift */,
+				89E37E3A2503E5E800434D16 /* TutorialInSettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		896968C4251592B100F28A42 /* Haze */ = {
+			isa = PBXGroup;
+			children = (
+				89E37E3E250544EA00434D16 /* HazeTableCardViewController.swift */,
+				89F5879024F2472A0058D62B /* HazeCardViewController.swift */,
+				89479B722507E6B3003E512C /* MoreDetailsViewController.swift */,
+				897FFCCF250CA83C005E336B /* GuidelinesTableViewController.swift */,
+				89378C6D2510989F00409CCC /* FAQsTableViewController.swift */,
+				89378C6B2510987800409CCC /* ResourcesTableViewController.swift */,
+			);
+			path = Haze;
+			sourceTree = "<group>";
+		};
+		896968C5251592C100F28A42 /* Virus */ = {
+			isa = PBXGroup;
+			children = (
+				89378C692510867200409CCC /* VirusViewController.swift */,
+				89F2D9CF251368F900020C21 /* PreventionVirusViewController.swift */,
+				891677C62513B9CB006A45A4 /* VirusTableViewController.swift */,
+				89CBF2F42514A5C000BDE9C7 /* TreatmentVirusViewController.swift */,
+				890B038D25151A6C001DC79D /* VirusMoreTableViewController.swift */,
+			);
+			path = Virus;
+			sourceTree = "<group>";
+		};
+		896968C62515933D00F28A42 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				891677CC25146A67006A45A4 /* AllSourcesTableViewController.swift */,
+				89E37E3C2504777200434D16 /* SourcesTableViewController.swift */,
+				890B039425152C87001DC79D /* ResourcesVirusTableViewController.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		896968C72515936300F28A42 /* Masks */ = {
+			isa = PBXGroup;
+			children = (
+				896968AE251590EA00F28A42 /* MasksTableViewController.swift */,
+				896968B52515911C00F28A42 /* PickMasksViewController.swift */,
+				896968B82515912A00F28A42 /* ShowMasksViewController.swift */,
+			);
+			path = Masks;
+			sourceTree = "<group>";
+		};
+		896968C82515937300F28A42 /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				89B9618E251753AE00B52C71 /* GameEndedViewController.swift */,
+				89B9618F251753AE00B52C71 /* QuizThingViewController.swift */,
+				89F11CF324F785EE004746EC /* McqMainViewController.swift */,
+				89F11CF224F785ED004746EC /* McqQnsViewController.swift */,
+			);
+			path = Quiz;
+			sourceTree = "<group>";
+		};
+		896968CB2515949C00F28A42 /* Testing Features */ = {
+			isa = PBXGroup;
+			children = (
+				89AF6C6924E50B1700CA1EC6 /* TabBarController.swift */,
+				89F5878E24F22E360058D62B /* TestVirusViewController.swift */,
+				89F5879624F27CD10058D62B /* FirstViewController.swift */,
+				89F5879824F27CE00058D62B /* SecondViewController.swift */,
+			);
+			path = "Testing Features";
+			sourceTree = "<group>";
+		};
 		89AF6C4924E4D91500CA1EC6 = {
 			isa = PBXGroup;
 			children = (
@@ -132,51 +238,30 @@
 		89AF6C5424E4D91500CA1EC6 /* Viraze */ = {
 			isa = PBXGroup;
 			children = (
+				896968CB2515949C00F28A42 /* Testing Features */,
+				896968C62515933D00F28A42 /* Sources */,
+				896968C5251592C100F28A42 /* Virus */,
+				896968C4251592B100F28A42 /* Haze */,
+				896968C82515937300F28A42 /* Quiz */,
+				896968C72515936300F28A42 /* Masks */,
+				896968BD2515916300F28A42 /* Settings */,
+				896968BC2515915700F28A42 /* Main Pages */,
+				89AF6C5E24E4D91800CA1EC6 /* Assets.xcassets */,
 				890B03882514FE1D001DC79D /* virazePersonalisationDark.mov */,
 				890B03892514FE1D001DC79D /* virazePersonalisationLight.mov */,
 				894A36F3250881E00042B227 /* Virus (Dark).mov */,
 				894A36F4250881E00042B227 /* Virus (Light).mov */,
+				8926A4B5251783E6006E4AEF /* Haze (Dark).mov */,
+				8926A4B6251783E7006E4AEF /* Haze (Light).mov */,
 				89AF6C5524E4D91500CA1EC6 /* AppDelegate.swift */,
 				89AF6C5724E4D91500CA1EC6 /* SceneDelegate.swift */,
 				89AF6C5B24E4D91500CA1EC6 /* Main.storyboard */,
-				89AF6C5E24E4D91800CA1EC6 /* Assets.xcassets */,
 				89AF6C6024E4D91800CA1EC6 /* LaunchScreen.storyboard */,
 				89AF6C6324E4D91800CA1EC6 /* Info.plist */,
-				89AF6C5924E4D91500CA1EC6 /* ViewController.swift */,
-				89AF6C6924E50B1700CA1EC6 /* TabBarController.swift */,
-				89AF6C6B24E5107800CA1EC6 /* TutorialViewController.swift */,
-				89AF6C6D24E5502E00CA1EC6 /* NameViewController.swift */,
-				89D8D90524E6440A00ED240C /* HomeViewController.swift */,
-				89D8D90724E66E9500ED240C /* ChangeNameViewController.swift */,
 				89B6FFB624E7E75100B7A0B9 /* Data.swift */,
-				8978695724EE93AB0007F25A /* SettingsTableViewController.swift */,
-				8978695924EE93B30007F25A /* AccountTableViewController.swift */,
-				8978695B24EF664A0007F25A /* SecurityAndPrivacyTableViewController.swift */,
-				89E6D20D24F0A5AA005E9B11 /* HelpTableViewController.swift */,
-				89F5878E24F22E360058D62B /* TestVirusViewController.swift */,
-				89F5879024F2472A0058D62B /* DefintionViewController.swift */,
 				89F5879424F274B80058D62B /* CircularTransition.swift */,
-				89F5879624F27CD10058D62B /* FirstViewController.swift */,
-				89F5879824F27CE00058D62B /* SecondViewController.swift */,
-				89F11CF324F785EE004746EC /* McqMainViewController.swift */,
-				89F11CF224F785ED004746EC /* McqQnsViewController.swift */,
 				8931C08F24F564B300F7541D /* ScaleSegue.swift */,
-				89E37E3A2503E5E800434D16 /* TutorialInSettingsViewController.swift */,
-				89E37E3C2504777200434D16 /* SourcesTableViewController.swift */,
-				89E37E3E250544EA00434D16 /* TipsTableViewController.swift */,
 				89A714B025065CBF003AA536 /* ImageViewZoom.swift */,
-				89479B722507E6B3003E512C /* MoreDetailsViewController.swift */,
-				897FFCCF250CA83C005E336B /* GuidelinesTableViewController.swift */,
-				89378C692510867200409CCC /* VirusViewController.swift */,
-				89378C6B2510987800409CCC /* ResourcesTableViewController.swift */,
-				89378C6D2510989F00409CCC /* FAQsTableViewController.swift */,
-				89F2D9CF251368F900020C21 /* PreventionVirusViewController.swift */,
-				891677C62513B9CB006A45A4 /* VirusTableViewController.swift */,
-				896F16CA25147E6700390AFA /* MoreSettingsTableViewController.swift */,
-				891677CC25146A67006A45A4 /* AllSourcesTableViewController.swift */,
-				89CBF2F42514A5C000BDE9C7 /* TreatmentVirusViewController.swift */,
-				890B038D25151A6C001DC79D /* VirusMoreTableViewController.swift */,
-				890B039425152C87001DC79D /* ResourcesVirusTableViewController.swift */,
 			);
 			path = Viraze;
 			sourceTree = "<group>";
@@ -240,7 +325,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				890B039225151B2B001DC79D /* Main.storyboard in Resources */,
+				8926A4B8251783E7006E4AEF /* Haze (Light).mov in Resources */,
 				894A36F6250881E00042B227 /* Virus (Light).mov in Resources */,
+				8926A4B7251783E7006E4AEF /* Haze (Dark).mov in Resources */,
 				894A36F5250881E00042B227 /* Virus (Dark).mov in Resources */,
 				89AF6C6224E4D91800CA1EC6 /* LaunchScreen.storyboard in Resources */,
 				89AF6C5F24E4D91800CA1EC6 /* Assets.xcassets in Resources */,
@@ -259,24 +346,28 @@
 				89F2D9D0251368F900020C21 /* PreventionVirusViewController.swift in Sources */,
 				891677CD25146A68006A45A4 /* AllSourcesTableViewController.swift in Sources */,
 				8931C09024F564B300F7541D /* ScaleSegue.swift in Sources */,
+				896968AF251590EA00F28A42 /* MasksTableViewController.swift in Sources */,
 				89AF6C5A24E4D91500CA1EC6 /* ViewController.swift in Sources */,
 				89AF6C6A24E50B1800CA1EC6 /* TabBarController.swift in Sources */,
+				89B96191251753AF00B52C71 /* QuizThingViewController.swift in Sources */,
 				89378C6C2510987800409CCC /* ResourcesTableViewController.swift in Sources */,
+				89B96190251753AF00B52C71 /* GameEndedViewController.swift in Sources */,
 				8978695C24EF664A0007F25A /* SecurityAndPrivacyTableViewController.swift in Sources */,
 				89E37E3D2504777300434D16 /* SourcesTableViewController.swift in Sources */,
 				89A714B125065CBF003AA536 /* ImageViewZoom.swift in Sources */,
 				896F16CB25147E6700390AFA /* MoreSettingsTableViewController.swift in Sources */,
 				897FFCD0250CA83C005E336B /* GuidelinesTableViewController.swift in Sources */,
-				89E37E3F250544EB00434D16 /* TipsTableViewController.swift in Sources */,
+				89E37E3F250544EB00434D16 /* HazeTableCardViewController.swift in Sources */,
 				89378C6E2510989F00409CCC /* FAQsTableViewController.swift in Sources */,
 				89F5879924F27CE00058D62B /* SecondViewController.swift in Sources */,
 				8978695A24EE93B30007F25A /* AccountTableViewController.swift in Sources */,
 				89AF6C6C24E5107800CA1EC6 /* TutorialViewController.swift in Sources */,
 				890B039525152C88001DC79D /* ResourcesVirusTableViewController.swift in Sources */,
+				896968B62515911C00F28A42 /* PickMasksViewController.swift in Sources */,
 				89378C6A2510867200409CCC /* VirusViewController.swift in Sources */,
 				89F11CF524F785EE004746EC /* McqMainViewController.swift in Sources */,
 				89F11CF424F785EE004746EC /* McqQnsViewController.swift in Sources */,
-				89F5879124F2472A0058D62B /* DefintionViewController.swift in Sources */,
+				89F5879124F2472A0058D62B /* HazeCardViewController.swift in Sources */,
 				890B038E25151A6C001DC79D /* VirusMoreTableViewController.swift in Sources */,
 				8978695824EE93AB0007F25A /* SettingsTableViewController.swift in Sources */,
 				89AF6C5624E4D91500CA1EC6 /* AppDelegate.swift in Sources */,
@@ -293,6 +384,7 @@
 				89B6FFB724E7E75100B7A0B9 /* Data.swift in Sources */,
 				89CBF2F52514A5C000BDE9C7 /* TreatmentVirusViewController.swift in Sources */,
 				89D8D90824E66E9500ED240C /* ChangeNameViewController.swift in Sources */,
+				896968B92515912A00F28A42 /* ShowMasksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
