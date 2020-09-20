@@ -73,8 +73,8 @@ class McqMainViewController: UIViewController {
         playerLayer.frame = viewName.bounds
         playerLayer.videoGravity = .resizeAspect
         viewName.layer.addSublayer(playerLayer)
-        player.play()
         loopVideo(videoPlayer: player)
+        player.play()
     }
     
     func loopVideo(videoPlayer: AVPlayer) {

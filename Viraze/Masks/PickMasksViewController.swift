@@ -47,7 +47,7 @@ class PickMasksViewController: UIViewController, UIPickerViewDataSource, UIPicke
         picker.delegate = self
         picker.dataSource = self
         goToNextQuestion()
-        prevQuestion.setTitleColor(.lightGray, for: .disabled)
+        prevQuestion.setTitleColor(.systemGray4, for: .disabled)
         if maskquestionnumber > 1 {
             prevQuestion.isEnabled = true
         } else {
