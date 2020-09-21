@@ -45,6 +45,8 @@
 		89CBF2F52514A5C000BDE9C7 /* TreatmentVirusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CBF2F42514A5C000BDE9C7 /* TreatmentVirusViewController.swift */; };
 		89D8D90624E6440A00ED240C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D8D90524E6440A00ED240C /* HomeViewController.swift */; };
 		89D8D90824E66E9500ED240C /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D8D90724E66E9500ED240C /* ChangeNameViewController.swift */; };
+		89DC4CC2251904350047A370 /* Easy to Use.mov in Resources */ = {isa = PBXBuildFile; fileRef = 89DC4CC1251904350047A370 /* Easy to Use.mov */; };
+		89DC4CC5251905910047A370 /* theming.mov in Resources */ = {isa = PBXBuildFile; fileRef = 89DC4CC4251905910047A370 /* theming.mov */; };
 		89E37E3B2503E5E800434D16 /* TutorialInSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E37E3A2503E5E800434D16 /* TutorialInSettingsViewController.swift */; };
 		89E37E3D2504777300434D16 /* SourcesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E37E3C2504777200434D16 /* SourcesTableViewController.swift */; };
 		89E37E3F250544EB00434D16 /* HazeTableCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E37E3E250544EA00434D16 /* HazeTableCardViewController.swift */; };
@@ -97,6 +99,8 @@
 		89CBF2F42514A5C000BDE9C7 /* TreatmentVirusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentVirusViewController.swift; sourceTree = "<group>"; };
 		89D8D90524E6440A00ED240C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		89D8D90724E66E9500ED240C /* ChangeNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
+		89DC4CC1251904350047A370 /* Easy to Use.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Easy to Use.mov"; sourceTree = "<group>"; };
+		89DC4CC4251905910047A370 /* theming.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = theming.mov; sourceTree = "<group>"; };
 		89E37E3A2503E5E800434D16 /* TutorialInSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialInSettingsViewController.swift; sourceTree = "<group>"; };
 		89E37E3C2504777200434D16 /* SourcesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesTableViewController.swift; sourceTree = "<group>"; };
 		89E37E3E250544EA00434D16 /* HazeTableCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HazeTableCardViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +237,8 @@
 				894A36F4250881E00042B227 /* Virus (Light).mov */,
 				8926A4B5251783E6006E4AEF /* Haze (Dark).mov */,
 				8926A4B6251783E7006E4AEF /* Haze (Light).mov */,
+				89DC4CC4251905910047A370 /* theming.mov */,
+				89DC4CC1251904350047A370 /* Easy to Use.mov */,
 				89AF6C5524E4D91500CA1EC6 /* AppDelegate.swift */,
 				89AF6C5724E4D91500CA1EC6 /* SceneDelegate.swift */,
 				89AF6C5B24E4D91500CA1EC6 /* Main.storyboard */,
@@ -305,9 +311,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				890B039225151B2B001DC79D /* Main.storyboard in Resources */,
+				89DC4CC2251904350047A370 /* Easy to Use.mov in Resources */,
 				8926A4B8251783E7006E4AEF /* Haze (Light).mov in Resources */,
 				894A36F6250881E00042B227 /* Virus (Light).mov in Resources */,
 				8926A4B7251783E7006E4AEF /* Haze (Dark).mov in Resources */,
+				89DC4CC5251905910047A370 /* theming.mov in Resources */,
 				894A36F5250881E00042B227 /* Virus (Dark).mov in Resources */,
 				89AF6C6224E4D91800CA1EC6 /* LaunchScreen.storyboard in Resources */,
 				89AF6C5F24E4D91800CA1EC6 /* Assets.xcassets in Resources */,

@@ -44,6 +44,9 @@ class GameEndedViewController: UIViewController {
         comment.textColor = thenewtextcolor
         comment.text = commentThing
     }
+    @IBAction func startOver(_ sender: Any) {
+        performSegue(withIdentifier: "startQuizOver", sender: nil)
+    }
     
     @IBAction func home(_ sender: Any) {
         performSegue(withIdentifier: "closeQuiz2", sender: nil)

@@ -28,16 +28,16 @@ class TutorialInSettingsViewController: UIViewController {
         playerLayer.frame = self.ViewThing.bounds
         playerLayer.videoGravity = .resizeAspect
         ViewThing.layer.addSublayer(playerLayer)
+        loopVideo(videoPlayer: player)
         player.play()
-        // loopVideo(videoPlayer: player)
     }
     
-//    func loopVideo(videoPlayer: AVPlayer) {
-//        NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: nil) { notification in
-//            videoPlayer.seek(to: CMTime.zero)
-//            videoPlayer.play()
-//        }
-//    }
+    func loopVideo(videoPlayer: AVPlayer) {
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: nil) { notification in
+            videoPlayer.seek(to: CMTime.zero)
+            videoPlayer.play()
+        }
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
@@ -59,6 +59,8 @@ class TutorialInSettingsViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(nextTutorial))
         self.view.addGestureRecognizer(tap)
+        ViewThing.layer.cornerRadius = 10
+        ViewThing.layer.masksToBounds = true
 
     }
     @IBAction func pageControlChange(_ sender: UIPageControl) {

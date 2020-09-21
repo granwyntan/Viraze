@@ -844,13 +844,13 @@ struct TutorialStuff {
 }
 
 let tutorials = [
-    TutorialStuff(videoName: "Virus (Light)", videoFileType: "mov", image: "image1", title: "Title 1", desc: "desc 1"),
+    TutorialStuff(videoName: "Easy to Use", videoFileType: "mov", image: "image1", title: "Easy and friendly User Interface", desc: "Just by Scrolling Vertically and/or Horizontally, you are able to be exposed to lots of content"),
     TutorialStuff(videoName: "virazePersonalisationLight", videoFileType: "mov", image: "image2", title: "Personalisation", desc: "Make Viraze your very own, with a profile picture and name"),
-    TutorialStuff(videoName: "Virus (Light)", videoFileType: "mov", image: "image3", title: "Title 3", desc: "desc 3")
+    TutorialStuff(videoName: "theming", videoFileType: "mov", image: "image3", title: "Choose your theme", desc: "With a flick, the entire app is now suited to your liking, voila")
 ]
 
 let tutorialsDark = [
-    TutorialStuff(videoName: "Virus (Dark)", videoFileType: "mov", image: "image1", title: "Title 1", desc: "desc 1"),
+    TutorialStuff(videoName: "Easy to Use", videoFileType: "mov", image: "image1", title: "Easy and friendly User Interface", desc: "Just by Scrolling Vertically and/or Horizontally, you are able to be exposed to lots of content"),
     TutorialStuff(videoName: "virazePersonalisationDark", videoFileType: "mov", image: "image2", title: "Personalisation", desc: "Make Viraze your very own, with a profile picture and name"),
-    TutorialStuff(videoName: "Virus (Dark)", videoFileType: "mov", image: "image3", title: "Title 3", desc: "desc 3")
+    TutorialStuff(videoName: "theming", videoFileType: "mov", image: "image3", title: "Choose your theme", desc: "With a flick, the entire app is now suited to your liking, voila")
 ]

@@ -1895,8 +1895,8 @@
                             <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="G9Y-VF-hy7">
                                 <rect key="frame" x="146" y="799" width="123" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="pageIndicatorTintColor" systemColor="systemGrayColor"/>
-                                <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="currentPageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="pageControlChange:" destination="97X-nd-2s3" eventType="valueChanged" id="5V9-6f-WC9"/>
                                 </connections>
@@ -2881,6 +2881,9 @@
                                 <state key="normal" title="Start Over">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="startOver:" destination="8Me-Ol-Ejl" eventType="touchUpInside" id="bwE-K4-jwP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vaf-Ak-L5D">
                                 <rect key="frame" x="20" y="557" width="374" height="85"/>
@@ -2925,6 +2928,7 @@
                         <outlet property="scoreText" destination="CnI-oj-V5l" id="xzq-jC-7MY"/>
                         <outlet property="startover" destination="W8u-dY-pFc" id="xpv-tL-jgM"/>
                         <segue destination="J26-SV-Aiy" kind="unwind" identifier="closeQuiz2" unwindAction="prepareForUnwindWithSegue:" id="aAJ-pZ-x3Q"/>
+                        <segue destination="J26-SV-Aiy" kind="unwind" identifier="startQuizOver" unwindAction="startOverQuizWithSegue:" id="0VU-df-mRT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f6h-EO-62H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -42,6 +42,9 @@ class McqMainViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationController?.navigationBar.tintColor = .label
     }
+    @IBAction func startOverQuiz (segue: UIStoryboardSegue){
+        
+    }
     
     func playVideoAccordingly(viewName: UIView) {
         viewName.layer.sublayers?.removeAll()

@@ -30,15 +30,15 @@ class TutorialViewController: UIViewController {
         playerLayer.frame = self.playingThing.bounds
         playerLayer.videoGravity = .resizeAspect
         playingThing.layer.addSublayer(playerLayer)
+        loopVideo(videoPlayer: player)
         player.play()
-        // loopVideo(videoPlayer: player)
     }
-//    func loopVideo(videoPlayer: AVPlayer) {
-//        NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: nil) { notification in
-//            videoPlayer.seek(to: CMTime.zero)
-//            videoPlayer.play()
-//        }
-//    }
+    func loopVideo(videoPlayer: AVPlayer) {
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: nil) { notification in
+            videoPlayer.seek(to: CMTime.zero)
+            videoPlayer.play()
+        }
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
@@ -80,6 +80,8 @@ class TutorialViewController: UIViewController {
         }
     }
     @IBAction func pageControlChange(_ sender: UIPageControl) {
+        playingThing.layer.cornerRadius = 10
+        playingThing.layer.masksToBounds = true
         currentPage = pagecontrol.currentPage
 //        image.image = UIImage(named: tutorials[currentPage].image)
         startPlayingVideo()
