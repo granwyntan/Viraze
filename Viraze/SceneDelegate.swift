@@ -45,6 +45,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 }
             }
         }
+        if defaults.bool(forKey: "virazeTheme") {
+            if #available(iOS 13.0, *) {
+                if defaults.bool(forKey: "virazeTheme") == false {
+                    window?.overrideUserInterfaceStyle = .light
+                } else if defaults.bool(forKey: "virazeTheme") == true {
+                    window?.overrideUserInterfaceStyle = .dark
+                }
+            }
+        }
         
     }
 

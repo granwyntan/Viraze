@@ -38,6 +38,9 @@ class McqMainViewController: UIViewController {
         playVideoAccordingly(viewName: videoBackgroundView)
         instructionsbutton.backgroundColor = UIColor(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1.0)
         
+        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        navigationController?.navigationBar.tintColor = .label
     }
     
     func playVideoAccordingly(viewName: UIView) {
@@ -94,7 +97,7 @@ class McqMainViewController: UIViewController {
     }
     
     @IBAction func seeInstructions(_ sender: Any) {
-        let alert = UIAlertController(title: "Instructions for Quiz", message: "20 seconds will be given for each of the questions\nOnce the timer has ended, the correct answer will be shown, even if question has yet to be answered\nA correct answer will result in an increment in 1 point to the total score\nAn incorrect answer or unattempted answer will not result in a change in the total score\nThere are a total of 5 questions for each quiz\nOnce the game has ended, the user will have options to go back to homepage or play quiz again\nScores will be saved in a leaderboard after the game has ended", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Instructions for Quiz", message: "20 seconds will be given for each of the questions\nOnce the timer has ended, the correct answer will be shown, even if question has yet to be answered\nA correct answer will result in an increment in 1 point to the total score\nAn incorrect answer or unattempted answer will not result in a change in the total score\nThere are a total of 5 questions for each quiz\nOnce the game has ended, the user will have options to go back to homepage or play quiz/start over again", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true) {
             alert.view.superview?.isUserInteractionEnabled = true
@@ -134,6 +137,7 @@ class McqMainViewController: UIViewController {
                 listOfQuestions.remove(at: listOfQuestions.firstIndex(of: thing)!)
                 destVC.quizzes.append(thing)
             }
+            destVC.title = title
         }
     }
 }

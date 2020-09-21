@@ -306,6 +306,8 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
                 newtitle = "Viraze Quiz"
             }
             performSegue(withIdentifier: "seeQuiz", sender: nil)
+        } else if sender == coronavirus10 {
+            performSegue(withIdentifier: "virusResources", sender: nil)
         }
     }
     

@@ -9,15 +9,37 @@
 import UIKit
 
 class SettingsTableViewController: UITableViewController {
+
+    @IBOutlet weak var themeName: UILabel!
     let defaults = UserDefaults.standard
+    @IBOutlet weak var themeSwitch: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        themeSwitch.isOn = defaults.bool(forKey: "virazeTheme")
+        if themeSwitch.isOn == true {
+            themeSwitch.setOn(true, animated: false)
+            UIApplication.shared.windows.forEach { window in
+                window.overrideUserInterfaceStyle = .dark
+            }
+            defaults.synchronize()
+            themeName.text = "Dark"
+        }
+        
+        if themeSwitch.isOn == false {
+            themeSwitch.setOn(false, animated: false)
+            UIApplication.shared.windows.forEach { window in
+                window.overrideUserInterfaceStyle = .light
+            }
+            defaults.synchronize()
+            themeName.text = "Light"
+        }
     }
 
 //    override func viewDidAppear(_ animated: Bool) {
@@ -34,8 +56,32 @@ class SettingsTableViewController: UITableViewController {
     @IBAction func hideSettings(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-
-
+    
+    @IBAction func switchValChange(_ sender: Any) {
+        updateTheme()
+    }
+    
+    func updateTheme() { defaults.setValue(themeSwitch.isOn, forKey: "virazeTheme")
+        
+        if themeSwitch.isOn == true {
+            themeSwitch.setOn(true, animated: true)
+            UIApplication.shared.windows.forEach { window in
+                window.overrideUserInterfaceStyle = .dark
+            }
+            defaults.synchronize()
+            themeName.text = "Dark"
+        }
+        
+        if themeSwitch.isOn == false {
+            themeSwitch.setOn(false, animated: true)
+            UIApplication.shared.windows.forEach { window in
+                window.overrideUserInterfaceStyle = .light
+            }
+            defaults.synchronize()
+            themeName.text = "Light"
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row == 0 {
@@ -44,7 +90,7 @@ class SettingsTableViewController: UITableViewController {
             performSegue(withIdentifier: "seeHelp", sender: nil)
         } else if indexPath.row == 2 {
             performSegue(withIdentifier: "seeMore", sender: nil)
-        } else if indexPath.row == 3 {
+        } else if indexPath.row == 4 {
             let alert = UIAlertController(title: "Are you sure you want to Sign Out?", message: "Your data and preferences will not be saved", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
                 self.defaults.removeObject(forKey: "UserName")

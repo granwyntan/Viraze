@@ -13,8 +13,10 @@ class GameEndedViewController: UIViewController {
     @IBOutlet weak var startover: UIButton!
     @IBOutlet weak var backtohome: UIButton!
     @IBOutlet weak var scoreText: UILabel!
+    @IBOutlet weak var comment: UILabel!
     var score: Int?
-    var comment = ""
+    var commentThing = ""
+    var thenewtextcolor = UIColor()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,22 +28,25 @@ class GameEndedViewController: UIViewController {
         backtohome.layer.cornerRadius = 15
         // backtohome.isHidden = true
         if score! == 0 {
-            comment = "Try Harder Next Time."
-        } else if score! <= 3 {
-            comment = "You can do it."
+            thenewtextcolor = .systemRed
+            commentThing = "Try Harder Next Time"
+        } else if score! < 3 {
+            thenewtextcolor = .systemOrange
+            commentThing = "You can do it"
         } else if score! < 5 {
-            comment = "Almost There"
+            thenewtextcolor = .systemYellow
+            commentThing = "Almost There"
         } else {
-            comment = "Well Done!"
+            thenewtextcolor = .systemGreen
+            commentThing = "Well Done"
         }
-        scoreText.text = "\(comment)\nYour total score is: \(score!)/5"
+        scoreText.text = "Your total score is: \(score!)/5"
+        comment.textColor = thenewtextcolor
+        comment.text = commentThing
     }
     
-    @IBAction func startagain(_ sender: Any) {
-        performSegue(withIdentifier: "startover", sender: nil)
-    }
-    @IBAction func backtohome(_ sender: Any) {
-        performSegue(withIdentifier: "unwindToHome", sender: self)
+    @IBAction func home(_ sender: Any) {
+        performSegue(withIdentifier: "closeQuiz2", sender: nil)
     }
     
     
