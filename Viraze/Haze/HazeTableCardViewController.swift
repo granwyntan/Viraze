@@ -36,6 +36,45 @@ class HazeTableCardViewController: UITableViewController {
         }
         
     }
+    override func viewDidAppear(_ animated: Bool) {
+        self.setupLargeTitleAutoAdjustFont()
+    }
+    
+    private lazy var setupLargeTitleLabelOnce: Void = {[unowned self] in
+        if #available(iOS 11.0, *) {
+            self.setupLargeTitleAutoAdjustFont()
+        }
+    }()
+    
+    func setupLargeTitleAutoAdjustFont() {
+        guard let navigationBar = navigationController?.navigationBar else {
+            return
+        }
+        // recursively find the label
+        func findLabel(in view: UIView) -> UILabel? {
+            if view.subviews.count > 0 {
+                for subview in view.subviews {
+                    if let label = findLabel(in: subview) {
+                        return label
+                    }
+                }
+            }
+            return view as? UILabel
+        }
+
+        if let label = findLabel(in: navigationBar) {
+            if label.text == self.title {
+                label.adjustsFontSizeToFitWidth = true
+                // label.minimumScaleFactor = 0.7
+            }
+            //label.numberOfLines = 2
+        }
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let _ = setupLargeTitleLabelOnce
+    }
 
     // MARK: - Table view data source
 

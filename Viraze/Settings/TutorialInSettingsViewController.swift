@@ -26,9 +26,11 @@ class TutorialInSettingsViewController: UIViewController {
         let player = AVPlayer(url: URL(fileURLWithPath: path))
         let playerLayer = AVPlayerLayer(player: player)
         playerLayer.frame = self.ViewThing.bounds
+        playerLayer.cornerRadius = 10
+        ViewThing.clipsToBounds = true
         playerLayer.videoGravity = .resizeAspect
         ViewThing.layer.addSublayer(playerLayer)
-        loopVideo(videoPlayer: player)
+//        loopVideo(videoPlayer: player)
         player.play()
     }
     

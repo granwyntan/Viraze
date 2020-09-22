@@ -359,7 +359,7 @@ var Virus = [
             VirusTableItem(
                 header: "What are the symptoms of COVID-19?",
                 headerContents: VirusTableItemContent(
-                    description: "The symptoms of COVID-19 infection are similar to that of regular pneumonia. The most common or typical symptoms of COVID-19 are fever, dry cough, and tiredness, and shortness of breath. Other symptoms that are less common and may affect some patients include aches and pains, nasal congestion, headache, conjunctivitis, sore throat, diarrhea, loss of taste or smell or a rash on skin or discoloration of fingers or toes. These symptoms are usually mild and begin gradually. Some people become infected but only have very mild symptoms.\n\nMost people (about 80%) recover from the disease without needing hospital treatment. Around 1 out of every 5 people who gets COVID-19 becomes seriously ill and develops difficulty breathing. Older people, and those with underlying medical problems like high blood pressure, heart and lung problems, diabetes, or cancer, are at higher risk of developing serious illness. However, anyone can catch COVID-19 and become seriously ill. People of all ages who experience fever and/or cough associated with difficulty breathing/shortness of breath, chest pain/pressure, or loss of speech or movement should seek medical attention immediately. If possible, it is recommended to call the health care provider or facility first, so the patient can be directed to the right clinic.\n\nMost common symptoms:\n - fevern - dry coughn - tirednessn\nLess common symptoms:\n - aches and painsn - sore throatn - diarrhoean - conjunctivitisn - headachen - loss of taste or smelln - a rash on skin, or discolouration of fingers or toes",
+                    description: "The symptoms of COVID-19 infection are similar to that of regular pneumonia. The most common or typical symptoms of COVID-19 are fever, dry cough, and tiredness, and shortness of breath. Other symptoms that are less common and may affect some patients include aches and pains, nasal congestion, headache, conjunctivitis, sore throat, diarrhea, loss of taste or smell or a rash on skin or discoloration of fingers or toes. These symptoms are usually mild and begin gradually. Some people become infected but only have very mild symptoms.\n\nMost people (about 80%) recover from the disease without needing hospital treatment. Around 1 out of every 5 people who gets COVID-19 becomes seriously ill and develops difficulty breathing. Older people, and those with underlying medical problems like high blood pressure, heart and lung problems, diabetes, or cancer, are at higher risk of developing serious illness. However, anyone can catch COVID-19 and become seriously ill. People of all ages who experience fever and/or cough associated with difficulty breathing/shortness of breath, chest pain/pressure, or loss of speech or movement should seek medical attention immediately. If possible, it is recommended to call the health care provider or facility first, so the patient can be directed to the right clinic.\n\nMost common symptoms:\n - fever\n - dry cough\n - tiredness\n\nLess common symptoms:\n - aches and pains\n - sore throat\n - diarrhoea\n - conjunctivitis\n - headache\n - loss of taste or smell\n - a rash on skin, or discolouration of fingers or toes",
                     videoLink: "https://www.youtube.com/embed/U8r3oTVMtQ0"
                 )
             ),
@@ -811,7 +811,7 @@ var VirusQuestions = [
 
 var hazeNews = ["CNA (News)", "CNA (PSI)", "ST"]
 var hazeNewsWebsites = ["https://www.channelnewsasia.com/news/topic/haze", "https://www.channelnewsasia.com/news/psi", "https://www.straitstimes.com/tags/haze"]
-var hazeGov = ["Haze Microsite (LIVE PSI)", "NEA’s myENV app", "NEA’s Twitter Page", "NEA’s Facebook page", "NEA’s corporate website", "MOM", "MOH"]
+var hazeGov = ["Haze Microsite [LIVE]", "NEA’s myENV app", "NEA’s Twitter Page", "NEA’s Facebook page", "NEA’s corporate website", "MOM", "MOH"]
 var hazeGovSites = ["https://www.haze.gov.sg/","https://apps.apple.com/sg/app/myenv/id444435182", "https://twitter.com/NEAsg", "https://www.facebook.com/NEASingapore", "https://www.nea.gov.sg/", "https://www.mom.gov.sg/haze", "https://www.moh.gov.sg/resources-statistics/educational-resources/haze/faqs-on-haze-health-advisory"]
 var hazeJournalsLinks = [
     "https://ink.library.smu.edu.sg/cgi/viewcontent.cgi?article=5397&context=sis_research",
@@ -844,13 +844,13 @@ struct TutorialStuff {
 }
 
 let tutorials = [
-    TutorialStuff(videoName: "Easy to Use", videoFileType: "mov", image: "image1", title: "Easy and friendly User Interface", desc: "Just by Scrolling Vertically and/or Horizontally, you are able to be exposed to lots of content"),
+    TutorialStuff(videoName: "scrolling", videoFileType: "mov", image: "image1", title: "Easy and friendly User Interface", desc: "Just by Scrolling Vertically and/or Horizontally, you are able to be exposed to lots of content"),
     TutorialStuff(videoName: "virazePersonalisationLight", videoFileType: "mov", image: "image2", title: "Personalisation", desc: "Make Viraze your very own, with a profile picture and name"),
     TutorialStuff(videoName: "theming", videoFileType: "mov", image: "image3", title: "Choose your theme", desc: "With a flick, the entire app is now suited to your liking, voila")
 ]
 
 let tutorialsDark = [
-    TutorialStuff(videoName: "Easy to Use", videoFileType: "mov", image: "image1", title: "Easy and friendly User Interface", desc: "Just by Scrolling Vertically and/or Horizontally, you are able to be exposed to lots of content"),
+    TutorialStuff(videoName: "scrollingdark", videoFileType: "mov", image: "image1", title: "Easy and friendly User Interface", desc: "Just by Scrolling Vertically and/or Horizontally, you are able to be exposed to lots of content"),
     TutorialStuff(videoName: "virazePersonalisationDark", videoFileType: "mov", image: "image2", title: "Personalisation", desc: "Make Viraze your very own, with a profile picture and name"),
     TutorialStuff(videoName: "theming", videoFileType: "mov", image: "image3", title: "Choose your theme", desc: "With a flick, the entire app is now suited to your liking, voila")
 ]

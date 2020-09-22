@@ -29,8 +29,9 @@ class TutorialViewController: UIViewController {
         let playerLayer = AVPlayerLayer(player: player)
         playerLayer.frame = self.playingThing.bounds
         playerLayer.videoGravity = .resizeAspect
+        playingThing.clipsToBounds = true
         playingThing.layer.addSublayer(playerLayer)
-        loopVideo(videoPlayer: player)
+//        loopVideo(videoPlayer: player)
         player.play()
     }
     func loopVideo(videoPlayer: AVPlayer) {

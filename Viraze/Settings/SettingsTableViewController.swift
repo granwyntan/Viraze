@@ -8,10 +8,41 @@
 
 import UIKit
 
-class SettingsTableViewController: UITableViewController {
+class SettingsTableViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    func checkThemeAndUpdate() {
+        if (defaults.object(forKey: "virazeTheme") != nil) {
+            themeSwitch.isHidden = false
+            themeSwitch.setOn(defaults.bool(forKey: "virazeTheme"), animated: true)
+            if #available(iOS 13.0, *) {
+                if defaults.bool(forKey: "virazeTheme") == false {
+                    UIApplication.shared.windows.forEach { window in
+                        window.overrideUserInterfaceStyle = .light
+                    }
+                    themeName.text = "Light"
+                    themePickerView.selectRow(1, inComponent: 0, animated: true)
+                } else if defaults.bool(forKey: "virazeTheme") == true {
+                    UIApplication.shared.windows.forEach { window in
+                        window.overrideUserInterfaceStyle = .dark
+                    }
+                    themeName.text = "Dark"
+                    themePickerView.selectRow(2, inComponent: 0, animated: true)
+                }
+            }
+        } else if (defaults.object(forKey: "virazeTheme") == nil) {
+            UIApplication.shared.windows.forEach { window in
+                window.overrideUserInterfaceStyle = .unspecified
+            }
+            themePickerView.selectRow(0, inComponent: 0, animated: true)
+            themeName.text = "Default"
+            themeSwitch.isHidden = true
+        }
+    }
+    
+    var themeOptions = ["Default", "Light", "Dark"]
 
-    @IBOutlet weak var themeName: UILabel!
     let defaults = UserDefaults.standard
+    @IBOutlet weak var themeName: UITextField!
     @IBOutlet weak var themeSwitch: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,26 +51,18 @@ class SettingsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        themeSwitch.isOn = defaults.bool(forKey: "virazeTheme")
-        if themeSwitch.isOn == true {
-            themeSwitch.setOn(true, animated: false)
-            UIApplication.shared.windows.forEach { window in
-                window.overrideUserInterfaceStyle = .dark
-            }
-            defaults.synchronize()
-            themeName.text = "Dark"
-        }
+        createToolbar()
+        themePickerView.delegate = self
+        themePickerView.dataSource = self
+        themeName.inputView = themePickerView
+        themeName.selectedTextRange = nil
         
-        if themeSwitch.isOn == false {
-            themeSwitch.setOn(false, animated: false)
-            UIApplication.shared.windows.forEach { window in
-                window.overrideUserInterfaceStyle = .light
-            }
-            defaults.synchronize()
-            themeName.text = "Light"
-        }
+//        themeName.textAlignment = .center
+//        themeName.contentVerticalAlignment = .center
+    }
+    var themePickerView = UIPickerView()
+    override func viewWillAppear(_ animated: Bool) {
+        checkThemeAndUpdate()
     }
 
 //    override func viewDidAppear(_ animated: Bool) {
@@ -58,28 +81,29 @@ class SettingsTableViewController: UITableViewController {
     }
     
     @IBAction func switchValChange(_ sender: Any) {
-        updateTheme()
+        defaults.set(themeSwitch.isOn, forKey: "virazeTheme")
+        checkThemeAndUpdate()
     }
     
-    func updateTheme() { defaults.setValue(themeSwitch.isOn, forKey: "virazeTheme")
+    func createToolbar() {
         
-        if themeSwitch.isOn == true {
-            themeSwitch.setOn(true, animated: true)
-            UIApplication.shared.windows.forEach { window in
-                window.overrideUserInterfaceStyle = .dark
-            }
-            defaults.synchronize()
-            themeName.text = "Dark"
-        }
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
         
-        if themeSwitch.isOn == false {
-            themeSwitch.setOn(false, animated: true)
-            UIApplication.shared.windows.forEach { window in
-                window.overrideUserInterfaceStyle = .light
-            }
-            defaults.synchronize()
-            themeName.text = "Light"
-        }
+        //Customizations
+//        toolBar.barTintColor = .systemGreen
+//        toolBar.tintColor = .black
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissKeyboard))
+        
+        toolBar.setItems([doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        themeName.inputAccessoryView = toolBar
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -131,4 +155,30 @@ class SettingsTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension SettingsTableViewController {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return themeOptions.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return themeOptions[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if row == 0 {
+            defaults.removeObject(forKey: "virazeTheme")
+            checkThemeAndUpdate()
+        } else if row == 1 {
+            defaults.setValue(false, forKey: "virazeTheme")
+            checkThemeAndUpdate()
+        } else if row == 2 {
+            defaults.setValue(true, forKey: "virazeTheme")
+            checkThemeAndUpdate()
+        }
+    }
 }

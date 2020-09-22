@@ -1350,7 +1350,7 @@
             </objects>
             <point key="canvasLocation" x="7188.4057971014499" y="-631.47321428571422"/>
         </scene>
-        <!--Tips-->
+        <!--Haze-->
         <scene sceneID="L7I-IG-lxx">
             <objects>
                 <tableViewController id="nKO-lV-esG" customClass="HazeTableCardViewController" customModule="Viraze" customModuleProvider="target" sceneMemberID="viewController">
@@ -1382,7 +1382,7 @@
                             <outlet property="delegate" destination="nKO-lV-esG" id="BPF-c9-Dtp"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Tips" id="NzZ-nM-wr4">
+                    <navigationItem key="navigationItem" title="Haze" id="NzZ-nM-wr4">
                         <barButtonItem key="rightBarButtonItem" image="xmark" catalog="system" id="2vS-t6-D3n">
                             <connections>
                                 <action selector="closeTableCard:" destination="nKO-lV-esG" id="K3x-l5-OvO"/>
@@ -1558,13 +1558,12 @@
                                                         <action selector="switchValChange:" destination="QOV-Io-Grf" eventType="valueChanged" id="LDc-Hv-bEq"/>
                                                     </connections>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" fixedFrame="YES" text="Light" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORb-sb-f0Y">
-                                                    <rect key="frame" x="106" y="11" width="201" height="29"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Default" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YIe-wv-kQy">
+                                                    <rect key="frame" x="106" y="8" width="97" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="9Ou-Nq-JAE" secondAttribute="bottom" constant="10" id="7KO-jK-6JK"/>
@@ -1611,7 +1610,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="themeName" destination="ORb-sb-f0Y" id="WzV-Sz-4Fm"/>
+                        <outlet property="themeName" destination="YIe-wv-kQy" id="s0J-9X-f5Q"/>
                         <outlet property="themeSwitch" destination="9Ou-Nq-JAE" id="pIO-cq-5xU"/>
                         <segue destination="voy-AM-DWx" kind="show" identifier="seeAcct" id="jxT-S2-YN7"/>
                         <segue destination="tRf-Ht-rfw" kind="show" identifier="seeHelp" id="qzU-J2-wkN"/>
@@ -2958,9 +2957,9 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="9Ua-nC-ap8"/>
-        <segue reference="y0S-9K-lPC"/>
+        <segue reference="7xg-Tn-1aV"/>
         <segue reference="lfT-CO-6r9"/>
-        <segue reference="xK4-Xr-4V4"/>
+        <segue reference="r6f-v2-mvj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="HazeQuizPart" width="1428" height="1588"/>

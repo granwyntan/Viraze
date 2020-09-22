@@ -319,6 +319,8 @@ class QuizThingViewController: UIViewController {
             timeLabel.text = "Time Left: \(timeLeft)"
         }
         else {
+            nextButton.isHidden = false
+            submitAnsButton.isHidden = true
             timeLabel.text = "Time Left: 0"
             tt.invalidate()
             switch quizzes[currentQuestion].correctChoice {

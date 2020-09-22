@@ -45,7 +45,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 }
             }
         }
-        if defaults.bool(forKey: "virazeTheme") {
+        if (defaults.object(forKey: "virazeTheme") != nil) {
             if #available(iOS 13.0, *) {
                 if defaults.bool(forKey: "virazeTheme") == false {
                     window?.overrideUserInterfaceStyle = .light
@@ -53,6 +53,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     window?.overrideUserInterfaceStyle = .dark
                 }
             }
+        } else {
+            window?.overrideUserInterfaceStyle = UIUserInterfaceStyle.unspecified
         }
         
     }

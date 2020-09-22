@@ -36,6 +36,17 @@ class MoreDetailsViewController: UIViewController {
             }
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.setupLargeTitleAutoAdjustFont()
+    }
+    
+    private lazy var setupLargeTitleLabelOnce: Void = {[unowned self] in
+        if #available(iOS 11.0, *) {
+            self.setupLargeTitleAutoAdjustFont()
+        }
+    }()
+    
     func setupLargeTitleAutoAdjustFont() {
         guard let navigationBar = navigationController?.navigationBar else {
             return
@@ -60,6 +71,11 @@ class MoreDetailsViewController: UIViewController {
             //label.numberOfLines = 2
         }
     }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let _ = setupLargeTitleLabelOnce
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -81,7 +97,6 @@ class MoreDetailsViewController: UIViewController {
 //
 //        }
 //        setupLargeTitleAutoAdjustFont()
-
         
         contentText.text = content
         
@@ -126,16 +141,6 @@ class MoreDetailsViewController: UIViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    private lazy var setupLargeTitleLabelOnce: Void = {[unowned self] in
-        if #available(iOS 11.0, *) {
-            self.setupLargeTitleAutoAdjustFont()
-        }
-    }()
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        let _ = setupLargeTitleLabelOnce
-    }
 
     func playVideo(forView viewName: UIView, withName videoName: String, ofFileType fileType: String) {
             guard let path = Bundle.main.path(forResource: videoName, ofType: fileType) else {return}
@@ -159,4 +164,5 @@ class MoreDetailsViewController: UIViewController {
     }
     */
 
+    
 }
