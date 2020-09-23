@@ -252,7 +252,7 @@ override func viewWillDisappear(_ animated: Bool) {
     
     
     @IBAction func seeInstructions(_ sender: Any) {
-        let alert = UIAlertController(title: "Instructions for Quiz", message: "20 seconds will be given for each of the questions\nOnce the timer has ended, the correct answer will be shown, even if question has yet to be answered\nA correct answer will result in an increment in 1 point to the total score\nAn incorrect answer or unattempted answer will not result in a change in the total score\nThe number of questions can vary from 2-10 questions, based on the user's choice\nOnce the game has ended, the user will have options to go back to homepage or play quiz/start over again", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Instructions for Quiz", message: "A certain number of seconds will be given for each of the questions, based on the user's choice.\nFor each question, once the timer has ended, the correct answer will be shown, even if question has yet to be answered.\nA correct answer will result in an increment in 1 point to the total score\nAn incorrect answer or unattempted answer will not result in a change in the total score\nThe number of questions can vary from 2-10 questions, based on the user's choice\nOnce the game has ended, the user will have options to go back to homepage or play quiz/start over again", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true) {
             alert.view.superview?.isUserInteractionEnabled = true

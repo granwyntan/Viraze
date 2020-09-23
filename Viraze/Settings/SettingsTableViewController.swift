@@ -78,10 +78,10 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDataSource
                 return UITableView.automaticDimension
         }
     }
-    
-    func checkNotifs () {
-        
-    }
+//
+//    func checkNotifs () {
+//
+//    }
 
 //    override func viewDidAppear(_ animated: Bool) {
 //        if let name = defaults.string(forKey: "UserName") {
@@ -108,13 +108,23 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDataSource
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
         
+        let thingLabel = UILabel()
+        thingLabel.center = toolBar.center
+        let flexibleSpace = UIBarButtonItem(
+                                barButtonSystemItem: .flexibleSpace,
+                                target: nil,
+                                action: nil)
+        thingLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        thingLabel.textAlignment = .center
+        thingLabel.text = "Select Theme"
+        
         // Customizations
 //        toolBar.barTintColor = .systemGreen
 //        toolBar.tintColor = .black
         
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissKeyboard))
         
-        toolBar.setItems([doneButton], animated: false)
+        toolBar.setItems([doneButton, flexibleSpace, UIBarButtonItem(customView: thingLabel), flexibleSpace], animated: false)
         toolBar.isUserInteractionEnabled = true
         
         themeName.inputAccessoryView = toolBar
