@@ -316,7 +316,7 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
         performSegue(withIdentifier: "seeSettings", sender: nil)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         hasBeenPressed = false
         greeting.frame = CGRect(x: greetingText.layer.position.x, y: greetingText.layer.position.y, width: greetingText.layer.frame.width, height: greetingText.layer.frame.height)
         greeting.center = greetingText.center

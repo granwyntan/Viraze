@@ -10,6 +10,8 @@ import UIKit
 
 class PickMasksViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    @IBOutlet var swipeLeft: UISwipeGestureRecognizer!
+    @IBOutlet var swipeRight: UISwipeGestureRecognizer!
     var maskquestionnumber = 0
     var data = [Int]()
     var question = String()
@@ -50,14 +52,17 @@ class PickMasksViewController: UIViewController, UIPickerViewDataSource, UIPicke
         prevQuestion.setTitleColor(.systemGray4, for: .disabled)
         if maskquestionnumber > 1 {
             prevQuestion.isEnabled = true
+            swipeRight.isEnabled = true
         } else {
             prevQuestion.isEnabled = false
+            swipeRight.isEnabled = false
         }
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if row > 0 {
             nextButton.isEnabled = true
+            swipeLeft.isEnabled = false
             if data.count == maskquestionnumber {
                 data[maskquestionnumber-1] = row
                 //print("Row", row, "Q", maskquestionnumber-1)
@@ -67,6 +72,7 @@ class PickMasksViewController: UIViewController, UIPickerViewDataSource, UIPicke
             }
         } else {
             nextButton.isEnabled = false
+            swipeLeft.isEnabled = false
         }
     }
     
@@ -83,14 +89,18 @@ class PickMasksViewController: UIViewController, UIPickerViewDataSource, UIPicke
         if data.count >= maskquestionnumber {
             picker.selectRow(data[maskquestionnumber-1], inComponent: 0, animated: true)
             nextButton.isEnabled = true
+            swipeLeft.isEnabled = true
         } else {
             picker.selectRow(0, inComponent: 0, animated: true)
             nextButton.isEnabled = false
+            swipeLeft.isEnabled = false
         }
         if maskquestionnumber > 1 {
             prevQuestion.isEnabled = true
+            swipeRight.isEnabled = true
         } else {
             prevQuestion.isEnabled = false
+            swipeRight.isEnabled = false
         }
     }
     
@@ -101,11 +111,14 @@ class PickMasksViewController: UIViewController, UIPickerViewDataSource, UIPicke
         loadQuestion()
         if maskquestionnumber > 1 {
             prevQuestion.isEnabled = true
+            swipeRight.isEnabled = true
         } else {
             prevQuestion.isEnabled = false
+            swipeRight.isEnabled = false
         }
         picker.selectRow(data[maskquestionnumber-1], inComponent: 0, animated: true)
         nextButton.isEnabled = true
+        swipeLeft.isEnabled = true
     }
     
     @IBAction func nextQuestion(_ sender: Any) {
@@ -122,6 +135,14 @@ class PickMasksViewController: UIViewController, UIPickerViewDataSource, UIPicke
     }
     
     @IBAction func closeCard(_ sender: Any) {
+        DispatchQueue.global(qos: .background).async {
+
+        // Background Thread
+
+        DispatchQueue.main.async {
+            self.navigationController?.navigationBar.isHidden = true
+            }
+        }
         performSegue(withIdentifier: "closeMaskChooser", sender: nil)
     }
     

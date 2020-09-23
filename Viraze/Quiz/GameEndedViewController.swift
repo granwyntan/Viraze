@@ -17,6 +17,7 @@ class GameEndedViewController: UIViewController {
     var score: Int?
     var commentThing = ""
     var thenewtextcolor = UIColor()
+    var totalScore: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,17 +31,17 @@ class GameEndedViewController: UIViewController {
         if score! == 0 {
             thenewtextcolor = .systemRed
             commentThing = "Try Harder Next Time"
-        } else if score! < 3 {
+        } else if Double(score!) <= (Double(totalScore!)*0.5) {
             thenewtextcolor = .systemOrange
             commentThing = "You can do it"
-        } else if score! < 5 {
+        } else if Double(score!) <= (Double(totalScore!)*0.75) {
             thenewtextcolor = .systemYellow
             commentThing = "Almost There"
         } else {
             thenewtextcolor = .systemGreen
             commentThing = "Well Done"
         }
-        scoreText.text = "Your total score is: \(score!)/5"
+        scoreText.text = "Your total score is: \(score!)/\(totalScore!)"
         comment.textColor = thenewtextcolor
         comment.text = commentThing
     }
@@ -49,6 +50,14 @@ class GameEndedViewController: UIViewController {
     }
     
     @IBAction func home(_ sender: Any) {
+        DispatchQueue.global(qos: .background).async {
+
+        // Background Thread
+
+        DispatchQueue.main.async {
+            self.navigationController?.navigationBar.isHidden = true
+            }
+        }
         performSegue(withIdentifier: "closeQuiz2", sender: nil)
     }
     

@@ -49,6 +49,8 @@ class TutorialInSettingsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        descriptionLabel.sizeToFit()
+        descriptionLabel.layoutIfNeeded()
         startPlayingVideo()
         pageControl.numberOfPages = tutorials.count
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(nextTutorial))

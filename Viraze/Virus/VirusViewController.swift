@@ -44,6 +44,7 @@ class VirusViewController: UIViewController {
              }
 
         }
+        image.isUserInteractionEnabled = true
         webview.isHidden = true
         image.isHidden = true
         text.text = Virus[selectedVirusCard!-1].data[selectedRow!].headerContents.description
@@ -68,6 +69,7 @@ class VirusViewController: UIViewController {
             image.isHidden = false
             image.image = UIImage(named: Haze[selectedVirusCard!-1].imageName)
         }*/
+        image.isUserInteractionEnabled = true
     }
     private lazy var setupLargeTitleLabelOnce: Void = {[unowned self] in
         if #available(iOS 11.0, *) {
@@ -102,6 +104,57 @@ class VirusViewController: UIViewController {
             }
             //label.numberOfLines = 2
         }
+    }
+    
+    @IBAction func tapImage(_ sender: UITapGestureRecognizer) {
+        let viewHeight: CGFloat = self.view.bounds.size.height
+            //- window.safeAreaInsets.top
+        let viewWidth: CGFloat = self.view.bounds.size.width
+        let cancelButton = UIButton(frame: CGRect(x: viewWidth-40, y: 40
+            //+window.safeAreaInsets.top
+            , width: 30, height: 30))
+        cancelButton.isUserInteractionEnabled = true
+        cancelButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        cancelButton.tintColor = .white
+        cancelButton.addTarget(self, action: #selector(dismissPage(_:)), for: .touchUpInside)
+        cancelButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.85)
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.view.addSubview(cancelButton)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+        cancelButton.tag = 300
+        newImageView.tag = 400
+        newImageView.enableZoom()
+    }
+    
+    @objc func dismissPage (_ sender: UIButton) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+//        print(view.subviews)
+//        for x in self.view.subviews {
+//            print(x)
+//        }
+        view.viewWithTag(300)?.removeFromSuperview()
+        view.viewWithTag(400)?.removeFromSuperview()
+//        sender.removeFromSuperview()
+//        print()
+//        print(view.subviews)
+    }
+    
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        view.viewWithTag(300)?.removeFromSuperview()
+        view.viewWithTag(400)?.removeFromSuperview()
+        self.tabBarController?.tabBar.isHidden = false
+        //sender.view?.removeFromSuperview()
     }
     
 

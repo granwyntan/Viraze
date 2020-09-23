@@ -97,6 +97,14 @@ class MasksTableViewController: UITableViewController {
     }
 
     @IBAction func closeMask(_ sender: Any) {
+        DispatchQueue.global(qos: .background).async {
+
+        // Background Thread
+
+        DispatchQueue.main.async {
+            self.navigationController?.navigationBar.isHidden = true
+            }
+        }
         performSegue(withIdentifier: "closeMask", sender: nil)
     }
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		890106ED251B36E80081DE0F /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890106EC251B36E80081DE0F /* Notifications.swift */; };
+		890106F0251B48A50081DE0F /* NotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890106EF251B48A50081DE0F /* NotificationsTableViewController.swift */; };
+		890106F4251B58050081DE0F /* NotificationsMoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890106F3251B58050081DE0F /* NotificationsMoreTableViewController.swift */; };
 		890B038A2514FE1E001DC79D /* virazePersonalisationDark.mov in Resources */ = {isa = PBXBuildFile; fileRef = 890B03882514FE1D001DC79D /* virazePersonalisationDark.mov */; };
 		890B038B2514FE1E001DC79D /* virazePersonalisationLight.mov in Resources */ = {isa = PBXBuildFile; fileRef = 890B03892514FE1D001DC79D /* virazePersonalisationLight.mov */; };
 		890B038E25151A6C001DC79D /* VirusMoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890B038D25151A6C001DC79D /* VirusMoreTableViewController.swift */; };
@@ -60,6 +63,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		890106EC251B36E80081DE0F /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		890106EF251B48A50081DE0F /* NotificationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewController.swift; sourceTree = "<group>"; };
+		890106F3251B58050081DE0F /* NotificationsMoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsMoreTableViewController.swift; sourceTree = "<group>"; };
 		890B03882514FE1D001DC79D /* virazePersonalisationDark.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = virazePersonalisationDark.mov; sourceTree = "<group>"; };
 		890B03892514FE1D001DC79D /* virazePersonalisationLight.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = virazePersonalisationLight.mov; sourceTree = "<group>"; };
 		890B038D25151A6C001DC79D /* VirusMoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirusMoreTableViewController.swift; sourceTree = "<group>"; };
@@ -251,6 +257,9 @@
 				89F5879424F274B80058D62B /* CircularTransition.swift */,
 				8931C08F24F564B300F7541D /* ScaleSegue.swift */,
 				89A714B025065CBF003AA536 /* ImageViewZoom.swift */,
+				890106EC251B36E80081DE0F /* Notifications.swift */,
+				890106EF251B48A50081DE0F /* NotificationsTableViewController.swift */,
+				890106F3251B58050081DE0F /* NotificationsMoreTableViewController.swift */,
 			);
 			path = Viraze;
 			sourceTree = "<group>";
@@ -337,6 +346,7 @@
 			files = (
 				89F2D9D0251368F900020C21 /* PreventionVirusViewController.swift in Sources */,
 				891677CD25146A68006A45A4 /* AllSourcesTableViewController.swift in Sources */,
+				890106F0251B48A50081DE0F /* NotificationsTableViewController.swift in Sources */,
 				8931C09024F564B300F7541D /* ScaleSegue.swift in Sources */,
 				896968AF251590EA00F28A42 /* MasksTableViewController.swift in Sources */,
 				89AF6C5A24E4D91500CA1EC6 /* ViewController.swift in Sources */,
@@ -353,6 +363,7 @@
 				8978695A24EE93B30007F25A /* AccountTableViewController.swift in Sources */,
 				89AF6C6C24E5107800CA1EC6 /* TutorialViewController.swift in Sources */,
 				890B039525152C88001DC79D /* ResourcesVirusTableViewController.swift in Sources */,
+				890106ED251B36E80081DE0F /* Notifications.swift in Sources */,
 				896968B62515911C00F28A42 /* PickMasksViewController.swift in Sources */,
 				89378C6A2510867200409CCC /* VirusViewController.swift in Sources */,
 				89F11CF524F785EE004746EC /* McqMainViewController.swift in Sources */,
@@ -370,6 +381,7 @@
 				89E37E3B2503E5E800434D16 /* TutorialInSettingsViewController.swift in Sources */,
 				89AF6C6E24E5502F00CA1EC6 /* NameViewController.swift in Sources */,
 				89B6FFB724E7E75100B7A0B9 /* Data.swift in Sources */,
+				890106F4251B58050081DE0F /* NotificationsMoreTableViewController.swift in Sources */,
 				89CBF2F52514A5C000BDE9C7 /* TreatmentVirusViewController.swift in Sources */,
 				89D8D90824E66E9500ED240C /* ChangeNameViewController.swift in Sources */,
 				896968B92515912A00F28A42 /* ShowMasksViewController.swift in Sources */,

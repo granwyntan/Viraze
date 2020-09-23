@@ -27,6 +27,7 @@ class TreatmentVirusViewController: UIViewController {
 //        newcancelButton.scalesLargeContentImage = true
 //        self.view.addSubview(newcancelButton)
         title = "Treatment"
+        image.isUserInteractionEnabled = true
         text.text = """
 There are no vaccines nor specific antiviral treatments for COVID-19. Management involves the treatment of symptoms, supportive care, isolation, and experimental measures.
 
@@ -58,7 +59,67 @@ Examples of therapies used for these illnesses include:
     @IBAction func sourcepress(_ sender: Any) {
         present(SFSafariViewController(url: URL(string: "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/q-a-coronaviruses")!), animated: true)
     }
+    
+    @IBAction func tapImage(_ sender: UITapGestureRecognizer) {
+        let viewHeight: CGFloat = self.view.bounds.size.height
+            //- window.safeAreaInsets.top
+        let viewWidth: CGFloat = self.view.bounds.size.width
+        let cancelButton = UIButton(frame: CGRect(x: viewWidth-40, y: 40
+            //+window.safeAreaInsets.top
+            , width: 30, height: 30))
+        cancelButton.isUserInteractionEnabled = true
+        cancelButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        cancelButton.tintColor = .white
+        cancelButton.addTarget(self, action: #selector(dismissPage(_:)), for: .touchUpInside)
+        cancelButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.85)
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.view.addSubview(cancelButton)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+        cancelButton.tag = 300
+        newImageView.tag = 400
+        newImageView.enableZoom()
+    }
+    
+    @objc func dismissPage (_ sender: UIButton) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+//        print(view.subviews)
+//        for x in self.view.subviews {
+//            print(x)
+//        }
+        view.viewWithTag(300)?.removeFromSuperview()
+        view.viewWithTag(400)?.removeFromSuperview()
+//        sender.removeFromSuperview()
+//        print()
+//        print(view.subviews)
+    }
+    
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        view.viewWithTag(300)?.removeFromSuperview()
+        view.viewWithTag(400)?.removeFromSuperview()
+        self.tabBarController?.tabBar.isHidden = false
+        //sender.view?.removeFromSuperview()
+    }
+    
     @IBAction func closeCard(_sender: Any) {
+        DispatchQueue.global(qos: .background).async {
+
+        // Background Thread
+
+        DispatchQueue.main.async {
+            self.navigationController?.navigationBar.isHidden = true
+            }
+        }
         performSegue(withIdentifier: "closeTreatmentCard", sender: nil)
     }
     

@@ -9,12 +9,110 @@
 import UIKit
 import AVFoundation
 
-class McqMainViewController: UIViewController {
+var isNumbOfQn = false
+var numbOfQns = 5
+var timeForQn = 20
+
+class McqMainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    @IBOutlet weak var questionNumberTextField: UITextField!
+    @IBOutlet weak var timeTextField: UITextField!
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if isNumbOfQn == true {
+            return choices.count
+        }
+        return choices2.count
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        questionNumberTextField.text = "Number of Questions: \(String(numbOfQns))"
+        if isNumbOfQn == true {
+            numbOfQns = Int(choices[row])
+            questionNumberTextField.attributedText = NSMutableAttributedString()
+                    .bold("Number of Questions: ")
+                    .normal("\(String(numbOfQns))")
+            questionPickerView.selectRow(choices.firstIndex(of: numbOfQns)!, inComponent: 0, animated: true)
+        } else {
+            timeForQn = Int(choices2[row])
+            timeTextField.attributedText = NSMutableAttributedString()
+                    .bold("Time Limit for Each Question: ")
+                    .normal("\(String(timeForQn)) seconds")
+            questionPickerView.selectRow(choices2.firstIndex(of: timeForQn)!, inComponent: 0, animated: true)
+        }
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if isNumbOfQn == true {
+            return String(choices[row])
+        }
+        return String(choices2[row])
+    }
+    
+    @IBAction func editingBegin(_ sender: Any) {
+        isNumbOfQn = true
+        createToolbar()
+        questionPickerView.reloadAllComponents()
+    }
+    
+    @IBAction func editingBegin2(_ sender: Any) {
+        isNumbOfQn = false
+        createToolbar()
+        questionPickerView.reloadAllComponents()
+    }
+//    @IBAction func didEndOnExit(_ sender: UITextField) {
+//        if sender == questionNumberTextField {
+//            isNumbOfQn = true
+//        } else {
+//            isNumbOfQn = false
+//        }
+//        createToolbar()
+//    }
+    
+    func createToolbar() {
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+//        questionNumberTextField.text = "Number of Questions: \(String(numbOfQns))"
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissKeyboard))
+        let thingLabel = UILabel()
+        thingLabel.center = toolBar.center
+        let flexibleSpace = UIBarButtonItem(
+                                barButtonSystemItem: .flexibleSpace,
+                                target: nil,
+                                action: nil)
+        thingLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        thingLabel.textAlignment = .center
+        toolBar.isUserInteractionEnabled = true
+        if isNumbOfQn == true {
+            questionNumberTextField.attributedText = NSMutableAttributedString()
+                    .bold("Number of Questions: ")
+                    .normal("\(String(numbOfQns))")
+            thingLabel.text = "Select Number of Questions"
+            toolBar.setItems([doneButton, flexibleSpace, UIBarButtonItem(customView: thingLabel), flexibleSpace], animated: false)
+            questionNumberTextField.inputAccessoryView = toolBar
+            questionPickerView.selectRow(choices.firstIndex(of: numbOfQns)!, inComponent: 0, animated: true)
+        } else {
+            timeTextField.attributedText = NSMutableAttributedString()
+                    .bold("Time for Each Question: ")
+                    .normal("\(String(timeForQn)) seconds")
+            thingLabel.text = "Select Time Limit for Each Question"
+            questionPickerView.addSubview(thingLabel)
+            toolBar.setItems([doneButton, flexibleSpace, UIBarButtonItem(customView: thingLabel), flexibleSpace], animated: false)
+            timeTextField.inputAccessoryView = toolBar
+            questionPickerView.selectRow(choices2.firstIndex(of: timeForQn)!, inComponent: 0, animated: true)
+        }
+    }
     
     struct video {
         var name: String
         var fileType: String
     }
+    
+    let choices = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15]
+    let choices2 = [1, 2, 5, 10, 20, 30, 45]
     let videos_light = [
         video(name: "Virus (Light)", fileType: "mov"),
         video(name: "Haze (Light)", fileType: "mov")
@@ -25,14 +123,34 @@ class McqMainViewController: UIViewController {
         video(name: "Haze (Dark)", fileType: "mov")
     ]
     
+    var questionPickerView = UIPickerView()
     
+//    @IBOutlet weak var setNumberOfQuestionsLabel: UILabel!
     @IBOutlet weak var videoBackgroundView: UIView!
     @IBOutlet weak var instructionsbutton: UIButton!
     @IBOutlet weak var startQuizButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        questionNumberTextField.attributedText = NSMutableAttributedString()
+                .bold("Number of Questions: ")
+                .normal("\(String(numbOfQns))")
+        timeTextField.attributedText = NSMutableAttributedString()
+                .bold("Time for Each Question: ")
+                .normal("\(String(timeForQn)) seconds")
         // Do any additional setup after loading the view.
+        
+        questionPickerView.delegate = self
+        questionPickerView.dataSource = self
+//        questionPickerView.selectRow(choices.firstIndex(of: numbOfQns)!, inComponent: 0, animated: true)
+//        setNumberOfQuestionsLabel.textAlignment = .center
+        questionNumberTextField.inputView = questionPickerView
+        
+        timeTextField.inputView = questionPickerView
+        
+        questionNumberTextField.textAlignment = .center
+        questionNumberTextField.contentVerticalAlignment = .center
+        
         instructionsbutton.layer.cornerRadius = 10
         startQuizButton.layer.cornerRadius = 10
         playVideoAccordingly(viewName: videoBackgroundView)
@@ -41,7 +159,33 @@ class McqMainViewController: UIViewController {
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationController?.navigationBar.tintColor = .label
+        self.hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self,  selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self,  selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
+
+deinit {
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+}
+@objc func keyboardWillChange(notification: Notification) {
+    guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+        return
+    }
+    if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
+        view.frame.origin.y = -keyboardRect.height+20
+    } else if notification.name == UIResponder.keyboardWillHideNotification {
+        view.frame.origin.y = 0
+    }
+}
+override func viewWillDisappear(_ animated: Bool) {
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: self.view.window)
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: self.view.window)
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: self.view.window)
+    NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+}
     @IBAction func startOverQuiz (segue: UIStoryboardSegue){
         
     }
@@ -89,18 +233,26 @@ class McqMainViewController: UIViewController {
             videoPlayer.play()
         }
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
-    }
 
     
     @IBAction func startQuiz(_ sender: Any) {
         performSegue(withIdentifier: "playQuiz", sender: nil)
     }
+    @IBAction func close(_ sender: Any) {
+        DispatchQueue.global(qos: .background).async {
+
+        // Background Thread
+
+        DispatchQueue.main.async {
+            self.navigationController?.navigationBar.isHidden = true
+            }
+        }
+        performSegue(withIdentifier: "closeQuizMain", sender: nil)
+    }
+    
     
     @IBAction func seeInstructions(_ sender: Any) {
-        let alert = UIAlertController(title: "Instructions for Quiz", message: "20 seconds will be given for each of the questions\nOnce the timer has ended, the correct answer will be shown, even if question has yet to be answered\nA correct answer will result in an increment in 1 point to the total score\nAn incorrect answer or unattempted answer will not result in a change in the total score\nThere are a total of 5 questions for each quiz\nOnce the game has ended, the user will have options to go back to homepage or play quiz/start over again", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Instructions for Quiz", message: "20 seconds will be given for each of the questions\nOnce the timer has ended, the correct answer will be shown, even if question has yet to be answered\nA correct answer will result in an increment in 1 point to the total score\nAn incorrect answer or unattempted answer will not result in a change in the total score\nThe number of questions can vary from 2-10 questions, based on the user's choice\nOnce the game has ended, the user will have options to go back to homepage or play quiz/start over again", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true) {
             alert.view.superview?.isUserInteractionEnabled = true
@@ -135,12 +287,76 @@ class McqMainViewController: UIViewController {
             } else if self.title == "Viraze Quiz" {
                 listOfQuestions = VirusQuestions+HazeQuestions
             }
-            for _ in 0..<5 {
+            for _ in 0..<numbOfQns {
                 let thing = listOfQuestions.randomElement()!
                 listOfQuestions.remove(at: listOfQuestions.firstIndex(of: thing)!)
                 destVC.quizzes.append(thing)
             }
+            destVC.timeAllowed = timeForQn
             destVC.title = title
         }
+    }
+}
+
+extension NSMutableAttributedString {
+    var fontSize:CGFloat { return 14 }
+    var boldFont:UIFont { return UIFont(name: "Futura Bold", size: fontSize) ?? UIFont.boldSystemFont(ofSize: fontSize) }
+    var normalFont:UIFont { return UIFont(name: "Futura Medium", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)}
+
+    func bold(_ value:String) -> NSMutableAttributedString {
+
+        let attributes:[NSAttributedString.Key : Any] = [
+            .font : boldFont
+        ]
+
+        self.append(NSAttributedString(string: value, attributes:attributes))
+        return self
+    }
+
+    func normal(_ value:String) -> NSMutableAttributedString {
+
+        let attributes:[NSAttributedString.Key : Any] = [
+            .font : normalFont,
+        ]
+
+        self.append(NSAttributedString(string: value, attributes:attributes))
+        return self
+    }
+    /* Other styling methods */
+    func orangeHighlight(_ value:String) -> NSMutableAttributedString {
+
+        let attributes:[NSAttributedString.Key : Any] = [
+            .font :  normalFont,
+            .foregroundColor : UIColor.white,
+            .backgroundColor : UIColor.orange
+        ]
+
+        self.append(NSAttributedString(string: value, attributes:attributes))
+        return self
+    }
+
+    func blackHighlight(_ value:String) -> NSMutableAttributedString {
+
+        let attributes:[NSAttributedString.Key : Any] = [
+            .font :  normalFont,
+            .foregroundColor : UIColor.white,
+            .backgroundColor : UIColor.black
+
+        ]
+
+        self.append(NSAttributedString(string: value, attributes:attributes))
+        return self
+    }
+
+    func underlined(_ value:String) -> NSMutableAttributedString {
+
+        let attributes:[NSAttributedString.Key : Any] = [
+            .font :  normalFont,
+            .underlineStyle : NSUnderlineStyle.single.rawValue
+
+        ]
+
+        self.append(NSAttributedString(string: value, attributes:attributes))
+        return self
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class QuizThingViewController: UIViewController {
     
@@ -22,7 +23,7 @@ class QuizThingViewController: UIViewController {
     var score = 0
     var isLastQuestion = false
     
-    let timeAllowed = 20
+    var timeAllowed = 20
     let totalQns:UInt32 = 10
 
     var currentQuestion = 0
@@ -135,6 +136,10 @@ class QuizThingViewController: UIViewController {
             displayQuestion()
             nextButton.isHidden = true
             submitAnsButton.isHidden = false
+            if currentQuestion == quizzes.count-1 {
+                nextButton.setTitle("See Results", for: .normal)
+                nextButton.setTitleColor(.systemGreen, for: .normal)
+            }
         } else {
 //            let alert = UIAlertController(title: "Quiz Completed", message: "You scored \(score)/\(quizzes.count)", preferredStyle: .alert)
 //            alert.addAction(UIAlertAction(title: "Go Again", style: .default, handler: { action in self.initialiseQuiz()}))
@@ -233,7 +238,11 @@ class QuizThingViewController: UIViewController {
             selectedButton = nil
             selections[buttonNumber] = false
         }
-        submitAnsButton.isEnabled = selections[buttonNumber]
+        if selections != [false, false, false, false] && selectedOption != nil {
+            submitAnsButton.isEnabled = true
+        } else {
+            submitAnsButton.isEnabled = false
+        }
     }
     @IBAction func clickOption(_ sender: UIButton) {
         if sender == choice1 {
@@ -261,6 +270,14 @@ class QuizThingViewController: UIViewController {
 //    }
     
     @IBAction func close(_ sender: Any) {
+        DispatchQueue.global(qos: .background).async {
+
+        // Background Thread
+
+        DispatchQueue.main.async {
+            self.navigationController?.navigationBar.isHidden = true
+            }
+        }
         performSegue(withIdentifier: "closeQuiz1", sender: nil)
     }
     @IBAction func cancel(_ sender: Any) {
@@ -270,7 +287,7 @@ class QuizThingViewController: UIViewController {
             let alert2 = UIAlertController(title: "Are you sure you want to Leave/Quit Quiz", message: "Your current progress will be lost", preferredStyle: .alert)
             alert2.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in self.navigationController?.popViewController(animated: true)
             }))
-            alert2.addAction(UIAlertAction(title: "No", style: .default, handler: {
+            alert2.addAction(UIAlertAction(title: "No", style: .destructive, handler: {
                 action in
                 self.tt = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
             }))
@@ -319,19 +336,24 @@ class QuizThingViewController: UIViewController {
             timeLabel.text = "Time Left: \(timeLeft)"
         }
         else {
+            UIDevice.vibrate()
             nextButton.isHidden = false
             submitAnsButton.isHidden = true
             timeLabel.text = "Time Left: 0"
             tt.invalidate()
-            switch quizzes[currentQuestion].correctChoice {
-                case .one:
-                    choice1.backgroundColor = UIColor.systemGreen
-                case .two:
-                    choice2.backgroundColor = UIColor.systemGreen
-                case .three:
-                    choice4.backgroundColor = UIColor.systemGreen
-                case .four:
-                    choice4.backgroundColor = UIColor.systemGreen
+            if let selectedButton = selectedButton, let selectedOption = selectedOption {
+                checkAnswer(against: selectedOption, sender: selectedButton)
+            } else {
+                switch quizzes[currentQuestion].correctChoice {
+                    case .one:
+                        choice1.backgroundColor = UIColor.systemGreen
+                    case .two:
+                        choice2.backgroundColor = UIColor.systemGreen
+                    case .three:
+                        choice4.backgroundColor = UIColor.systemGreen
+                    case .four:
+                        choice4.backgroundColor = UIColor.systemGreen
+                }
             }
             hideBtn(hide: false)
         }
@@ -392,7 +414,14 @@ class QuizThingViewController: UIViewController {
         if segue.identifier == "gameEnded" {
             let destVC = segue.destination as! GameEndedViewController
             destVC.score = score
+            destVC.totalScore = quizzes.count
         }
+    }
+}
+
+extension UIDevice {
+    static func vibrate() {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
     }
 }
 

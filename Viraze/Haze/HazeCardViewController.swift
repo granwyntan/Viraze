@@ -22,7 +22,7 @@ class HazeCardViewController: UIViewController, UIViewControllerTransitioningDel
     @IBOutlet weak var videoPlayerView: UIView!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var imagePageControl: UIPageControl!
-    @IBOutlet weak var background: UIImageView!
+//    @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var sourceButton: UIButton!
     var currentPhoto = 0
     
@@ -70,7 +70,7 @@ class HazeCardViewController: UIViewController, UIViewControllerTransitioningDel
         videoPlayerView.isHidden = true
         image.isHidden = true
         imagePageControl.isHidden = true
-        background.image = UIImage(named: Haze[selectedHazeCard!-1].backgroundImageName)
+//        background.image = UIImage(named: Haze[selectedHazeCard!-1].backgroundImageName)
         title = Haze[selectedHazeCard!-1].title
         text.text = Haze[selectedHazeCard!-1].content
         if let videoLinkName = Haze[selectedHazeCard!-1].videoLink {
@@ -125,7 +125,7 @@ class HazeCardViewController: UIViewController, UIViewControllerTransitioningDel
 //        loopVideo(videoPlayer: player)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.setupLargeTitleAutoAdjustFont()
     }
     
@@ -296,7 +296,15 @@ class HazeCardViewController: UIViewController, UIViewControllerTransitioningDel
     }
     
     @IBAction func closeCard(_sender: Any) {
-        performSegue(withIdentifier: "closeCard", sender: nil)
+        DispatchQueue.global(qos: .background).async {
+
+        // Background Thread
+
+        DispatchQueue.main.async {
+            self.navigationController?.navigationBar.isHidden = true
+            }
+        }
+        self.performSegue(withIdentifier: "closeCard", sender: nil)
     }
     
     @IBAction func swipeRightThing(_ sender: Any) {

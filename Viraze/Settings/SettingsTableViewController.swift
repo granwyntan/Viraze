@@ -10,6 +10,7 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    @IBOutlet weak var notifs: UILabel!
     func checkThemeAndUpdate() {
         if (defaults.object(forKey: "virazeTheme") != nil) {
             themeSwitch.isHidden = false
@@ -56,6 +57,9 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDataSource
         themePickerView.dataSource = self
         themeName.inputView = themePickerView
         themeName.selectedTextRange = nil
+        self.hideKeyboardWhenTappedAround()
+        notifs.layer.cornerRadius = notifs.layer.frame.height/2
+        notifs.clipsToBounds = true
         
 //        themeName.textAlignment = .center
 //        themeName.contentVerticalAlignment = .center
@@ -63,6 +67,20 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDataSource
     var themePickerView = UIPickerView()
     override func viewWillAppear(_ animated: Bool) {
         checkThemeAndUpdate()
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.row {
+            case 1:
+                return 0
+            default:
+                return UITableView.automaticDimension
+        }
+    }
+    
+    func checkNotifs () {
+        
     }
 
 //    override func viewDidAppear(_ animated: Bool) {
@@ -90,7 +108,7 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDataSource
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
         
-        //Customizations
+        // Customizations
 //        toolBar.barTintColor = .systemGreen
 //        toolBar.tintColor = .black
         
@@ -102,24 +120,36 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDataSource
         themeName.inputAccessoryView = toolBar
     }
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
+//    @objc func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
+    func resetDefaults() {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row == 0 {
             performSegue(withIdentifier: "seeAcct", sender: nil)
-        } else if indexPath.row == 1 {
-            performSegue(withIdentifier: "seeHelp", sender: nil)
+        } else if indexPath.row == 1{
+            performSegue(withIdentifier: "seeNotifs", sender: nil)
         } else if indexPath.row == 2 {
+            performSegue(withIdentifier: "seeHelp", sender: nil)
+        } else if indexPath.row == 3 {
             performSegue(withIdentifier: "seeMore", sender: nil)
         } else if indexPath.row == 4 {
+            themeName.becomeFirstResponder()
+        } else if indexPath.row == 5 {
             let alert = UIAlertController(title: "Are you sure you want to Sign Out?", message: "Your data and preferences will not be saved", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
-                self.defaults.removeObject(forKey: "UserName")
-                self.defaults.removeObject(forKey: "pfpFileDir")
-                self.defaults.removeObject(forKey: "TutorialPage")
+//                self.defaults.removeObject(forKey: "UserName")
+//                self.defaults.removeObject(forKey: "pfpFileDir")
+//                self.defaults.removeObject(forKey: "TutorialPage")
+                self.resetDefaults()
 //                if var viewControllers = self.navigationController?.viewControllers
 //                {
 //                    if viewControllers.contains(where: {
@@ -180,5 +210,17 @@ extension SettingsTableViewController {
             defaults.setValue(true, forKey: "virazeTheme")
             checkThemeAndUpdate()
         }
+    }
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

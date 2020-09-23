@@ -27,6 +27,7 @@ class PreventionVirusViewController: UIViewController {
 //        newcancelButton.scalesLargeContentImage = true
 //        self.view.addSubview(newcancelButton)
         title = "Prevention"
+        imageView.isUserInteractionEnabled = true
         text.text = """
         Protect yourself and others around you by knowing the facts and taking appropriate precautions. Follow advice provided by your local health authority.
         
@@ -44,7 +45,66 @@ class PreventionVirusViewController: UIViewController {
         Masks can help prevent the spread of the virus from the person wearing the mask to others. Masks alone do not protect against COVID-19, and should be combined with physical distancing and hand hygiene. Follow the advice provided by your local health authority.
         """
     }
+    @IBAction func tapImage(_ sender: UITapGestureRecognizer) {
+        let viewHeight: CGFloat = self.view.bounds.size.height
+            //- window.safeAreaInsets.top
+        let viewWidth: CGFloat = self.view.bounds.size.width
+        let cancelButton = UIButton(frame: CGRect(x: viewWidth-40, y: 40
+            //+window.safeAreaInsets.top
+            , width: 30, height: 30))
+        cancelButton.isUserInteractionEnabled = true
+        cancelButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        cancelButton.tintColor = .white
+        cancelButton.addTarget(self, action: #selector(dismissPage(_:)), for: .touchUpInside)
+        cancelButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.85)
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.view.addSubview(cancelButton)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+        cancelButton.tag = 300
+        newImageView.tag = 400
+        newImageView.enableZoom()
+    }
+    
+    @objc func dismissPage (_ sender: UIButton) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+//        print(view.subviews)
+//        for x in self.view.subviews {
+//            print(x)
+//        }
+        view.viewWithTag(300)?.removeFromSuperview()
+        view.viewWithTag(400)?.removeFromSuperview()
+//        sender.removeFromSuperview()
+//        print()
+//        print(view.subviews)
+    }
+    
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        view.viewWithTag(300)?.removeFromSuperview()
+        view.viewWithTag(400)?.removeFromSuperview()
+        self.tabBarController?.tabBar.isHidden = false
+        //sender.view?.removeFromSuperview()
+    }
+    
     @IBAction func closeCard(_sender: Any) {
+        DispatchQueue.global(qos: .background).async {
+
+        // Background Thread
+
+        DispatchQueue.main.async {
+            self.navigationController?.navigationBar.isHidden = true
+            }
+        }
         performSegue(withIdentifier: "closePreventionCard", sender: nil)
     }
     @IBAction func seeSource(_ sender: Any) {

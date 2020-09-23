@@ -18,6 +18,7 @@ class ChangeNameViewController: UIViewController {
     var prefix = "Change"
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround() 
 
         // Do any additional setup after loading the view.
         // defaults.setValue("ChangeNameViewController", forKey: "LaunchViewController")

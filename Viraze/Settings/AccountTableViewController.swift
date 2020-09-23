@@ -24,6 +24,7 @@ class AccountTableViewController: UITableViewController, UIImagePickerController
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.hideKeyboardWhenTappedAround() 
         pfp.layer.masksToBounds = true
         pfp.layer.cornerRadius = pfp.bounds.width / 2
         // pfp.imageView?.contentMode = .scaleToFill
@@ -31,8 +32,31 @@ class AccountTableViewController: UITableViewController, UIImagePickerController
             pfp.setBackgroundImage(UIImage(contentsOfFile: imageThing), for: .normal)
             prefix = "Change"
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self,  selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self,  selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
-    override func viewDidAppear(_ animated: Bool) {
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    @objc func keyboardWillChange(notification: Notification) {
+        guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
+            view.frame.origin.y = -keyboardRect.height+20
+        } else if notification.name == UIResponder.keyboardWillHideNotification {
+            view.frame.origin.y = 0
+        }
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: self.view.window)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: self.view.window)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: self.view.window)
+    }
+    override func viewWillAppear(_ animated: Bool) {
         if let name = defaults.string(forKey: "UserName") {
             nameTextField.text = name
         } else {

@@ -37,7 +37,7 @@ class MoreDetailsViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.setupLargeTitleAutoAdjustFont()
     }
     
@@ -140,6 +140,57 @@ class MoreDetailsViewController: UIViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    @IBAction func tapImage(_ sender: UITapGestureRecognizer) {
+        let viewHeight: CGFloat = self.view.bounds.size.height
+            //- window.safeAreaInsets.top
+        let viewWidth: CGFloat = self.view.bounds.size.width
+        let cancelButton = UIButton(frame: CGRect(x: viewWidth-40, y: 40
+            //+window.safeAreaInsets.top
+            , width: 30, height: 30))
+        cancelButton.isUserInteractionEnabled = true
+        cancelButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        cancelButton.tintColor = .white
+        cancelButton.addTarget(self, action: #selector(dismissPage(_:)), for: .touchUpInside)
+        cancelButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.85)
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.view.addSubview(cancelButton)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+        cancelButton.tag = 500
+        newImageView.tag = 600
+        newImageView.enableZoom()
+    }
+    
+    @objc func dismissPage (_ sender: UIButton) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+//        print(view.subviews)
+//        for x in self.view.subviews {
+//            print(x)
+//        }
+        view.viewWithTag(500)?.removeFromSuperview()
+        view.viewWithTag(600)?.removeFromSuperview()
+//        sender.removeFromSuperview()
+//        print()
+//        print(view.subviews)
+    }
+    
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        view.viewWithTag(500)?.removeFromSuperview()
+        view.viewWithTag(600)?.removeFromSuperview()
+        self.tabBarController?.tabBar.isHidden = false
+        //sender.view?.removeFromSuperview()
     }
 
     func playVideo(forView viewName: UIView, withName videoName: String, ofFileType fileType: String) {
