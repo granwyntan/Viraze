@@ -16,6 +16,7 @@ class ShowMasksViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var text: UITextView!
+    @IBOutlet weak var seeAllMasks: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +42,18 @@ class ShowMasksViewController: UIViewController {
             text.text = maskdescription
         }
         
+        if isMaskResult == false {
+            seeAllMasks.isHidden = true
+        } else {
+            seeAllMasks.isHidden = false
+        }
     }
     @IBAction func seeMasks(_ sender: Any) {
         performSegue(withIdentifier: "seeAllMasks", sender: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupLargeTitleAutoAdjustFont()
     }
     
     private lazy var setupLargeTitleLabelOnce: Void = {[unowned self] in

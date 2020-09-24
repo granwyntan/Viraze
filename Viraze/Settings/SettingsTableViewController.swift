@@ -60,6 +60,7 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDataSource
         self.hideKeyboardWhenTappedAround()
         notifs.layer.cornerRadius = notifs.layer.frame.height/2
         notifs.clipsToBounds = true
+        themeName.tintColor = UIColor.clear
         
 //        themeName.textAlignment = .center
 //        themeName.contentVerticalAlignment = .center
@@ -154,8 +155,8 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDataSource
         } else if indexPath.row == 4 {
             themeName.becomeFirstResponder()
         } else if indexPath.row == 5 {
-            let alert = UIAlertController(title: "Are you sure you want to Sign Out?", message: "Your data and preferences will not be saved", preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
+            let alert = UIAlertController(title: "Are you sure you want to Sign Out?", message: "Your app data and user preferences will not be saved", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: {action in
 //                self.defaults.removeObject(forKey: "UserName")
 //                self.defaults.removeObject(forKey: "pfpFileDir")
 //                self.defaults.removeObject(forKey: "TutorialPage")
@@ -181,7 +182,7 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDataSource
                 vc.modalTransitionStyle = .crossDissolve
                 self.present(vc, animated: true, completion: nil)
             }))
-            alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: {action in}))
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: {action in}))
             self.present(alert, animated: true, completion: nil)
         }
     }

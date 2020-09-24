@@ -20,6 +20,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationItem.hidesBackButton = true
         defaults.setValue("ViewController", forKey: "LaunchViewController")
+//        if defaults.string(forKey: "LaunchViewController") == "ViewController" {
+//            getStarted.isHidden = false
+//        } else {
+//            getStarted.isHidden = true
+//        }
         icon.layer.cornerRadius = 25
         icon.clipsToBounds = true
     }

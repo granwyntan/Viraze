@@ -283,7 +283,7 @@ class QuizThingViewController: UIViewController {
     @IBAction func cancel(_ sender: Any) {
         tt.invalidate()
         let alert = UIAlertController(title: "Options", message: "Choose what to do next", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Leave/Quit Quiz", style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: "Leave/Quit Quiz", style: .destructive, handler: { action in
             let alert2 = UIAlertController(title: "Are you sure you want to Leave/Quit Quiz", message: "Your current progress will be lost", preferredStyle: .alert)
             alert2.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in self.navigationController?.popViewController(animated: true)
             }))
@@ -296,9 +296,12 @@ class QuizThingViewController: UIViewController {
         ))
         alert.addAction(UIAlertAction(title: "Restart", style: .default, handler: { action in
             let alert2 = UIAlertController(title: "Are you sure you want to Restart Quiz", message: "Your current progress will be lost", preferredStyle: .alert)
-                alert2.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
+            alert2.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
+                action in
                     self.currentQuestion = 0
+                    self.score = 0
                     self.displayQuestion()
+                self.scoreText.text = "Score: \(self.score)"
                 }))
             alert2.addAction(UIAlertAction(title: "No", style: .destructive, handler: {
                 action in
@@ -309,7 +312,7 @@ class QuizThingViewController: UIViewController {
                 alert2.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
             }
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: {
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {
             action in
             self.tt = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
         }))

@@ -58,6 +58,9 @@ struct HazeTable {
     var sources: [String]
     var sourcesName: [String]
 }
+
+var isMaskResult = false
+
 var HazeQuestions = [
     QuizQuestion(question: "What is Haze?", choice1: "Soot particles, carbon dioxide and other toxic gases", choice2: "Water vapour mixed with air", choice3: "Air infused with dirt and soil", choice4: "High concentration of nitrogen in air", correctChoice: .one),
     QuizQuestion(question: "What is Haze in Singapore usually caused by?", choice1: "Burning of trees", choice2: "Fire accidents", choice3: "Burning of water", choice4: "Burning of homes", correctChoice: .one),

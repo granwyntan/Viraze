@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3ed-6l-Xal">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="dBJ-QT-Bpc">
+            <objects>
+                <viewController id="3ed-6l-Xal" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fHf-lt-AQh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="e1D-kj-0bj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wht-Yg-aJr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1165" y="922"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -940,7 +954,7 @@
                                 <rect key="frame" x="20" y="141" width="374" height="573"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Feature Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayQ-8L-DJx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Feature Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayQ-8L-DJx">
                                 <rect key="frame" x="20" y="759" width="374" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
@@ -1779,24 +1793,23 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number of Questions" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ZI-iO-jlw">
-                                <rect key="frame" x="20" y="664" width="374" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="editingBegin:" destination="5Wx-ll-bYq" eventType="editingDidBegin" id="N7Q-YQ-eXH"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time LImit for Each Question" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hEF-zk-fHy">
                                 <rect key="frame" x="20" y="622" width="374" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="didEndOnExit:" destination="5Wx-ll-bYq" eventType="editingDidEndOnExit" id="By1-jO-m3H"/>
-                                    <action selector="editingBegin2:" destination="5Wx-ll-bYq" eventType="editingDidBegin" id="95Q-CF-gO9"/>
+                                    <action selector="editingBegin:" destination="5Wx-ll-bYq" eventType="editingDidBegin" id="OeZ-YG-Aud"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time for Each Question" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hEF-zk-fHy">
+                                <rect key="frame" x="20" y="664" width="374" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="editingBegin2:" destination="5Wx-ll-bYq" eventType="editingDidBegin" id="a6h-cC-gay"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -1974,13 +1987,6 @@
                                 <rect key="frame" x="20" y="141" width="374" height="573"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Feature Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qaa-qn-gqs">
-                                <rect key="frame" x="20" y="759" width="374" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MsA-3Y-0bd">
                                 <rect key="frame" x="20" y="140" width="374" height="574"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1995,6 +2001,13 @@
                                     <action selector="pageControlChange:" destination="97X-nd-2s3" eventType="valueChanged" id="5V9-6f-WC9"/>
                                 </connections>
                             </pageControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Feature Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LoE-4T-Pse">
+                                <rect key="frame" x="20" y="754" width="374" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mEX-uQ-jdL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2006,7 +2019,7 @@
                     <navigationItem key="navigationItem" title="Tutorial" id="LMj-3U-iYl"/>
                     <connections>
                         <outlet property="ViewThing" destination="MsA-3Y-0bd" id="N9z-zr-UPk"/>
-                        <outlet property="descriptionLabel" destination="Qaa-qn-gqs" id="CXg-e4-9Qv"/>
+                        <outlet property="descriptionLabel" destination="LoE-4T-Pse" id="COv-xM-Lww"/>
                         <outlet property="instructions" destination="v03-Vr-OV4" id="X9V-jt-jlV"/>
                         <outlet property="longPressGesture" destination="U15-gK-16Z" id="mFQ-Go-sKZ"/>
                         <outlet property="pageControl" destination="G9Y-VF-hy7" id="K1N-mV-Xla"/>
@@ -2808,6 +2821,7 @@
                     <navigationItem key="navigationItem" id="GU4-PA-nPS"/>
                     <connections>
                         <outlet property="imageView" destination="JLw-Zb-uoX" id="t0C-tP-yS0"/>
+                        <outlet property="seeAllMasks" destination="1nW-4i-TKq" id="YIZ-BX-WbV"/>
                         <outlet property="text" destination="cjH-qf-qyd" id="juY-z4-UuD"/>
                         <segue destination="o1K-re-qUd" kind="show" identifier="seeAllMasks" id="lfT-CO-6r9"/>
                     </connections>
@@ -3179,7 +3193,7 @@
         <segue reference="9Ua-nC-ap8"/>
         <segue reference="y0S-9K-lPC"/>
         <segue reference="lfT-CO-6r9"/>
-        <segue reference="r6f-v2-mvj"/>
+        <segue reference="xK4-Xr-4V4"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="HazeQuizPart" width="1428" height="1588"/>

@@ -57,12 +57,13 @@ class PickMasksViewController: UIViewController, UIPickerViewDataSource, UIPicke
             prevQuestion.isEnabled = false
             swipeRight.isEnabled = false
         }
+        isMaskResult = true
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if row > 0 {
             nextButton.isEnabled = true
-            swipeLeft.isEnabled = false
+            swipeLeft.isEnabled = true
             if data.count == maskquestionnumber {
                 data[maskquestionnumber-1] = row
                 //print("Row", row, "Q", maskquestionnumber-1)

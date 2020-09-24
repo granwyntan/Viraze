@@ -9,7 +9,9 @@
 import UIKit
 import AVFoundation
 
-var isNumbOfQn = false
+let defaults = UserDefaults.standard
+
+var isNumbOfQn: Bool?
 var numbOfQns = 5
 var timeForQn = 20
 
@@ -27,23 +29,26 @@ class McqMainViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         }
         return choices2.count
     }
-
+//    @IBAction func editingend(_ sender: Any) {
+//        isNumbOfQn = nil
+//        questionPickerView.reloadAllComponents()
+//    }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 //        questionNumberTextField.text = "Number of Questions: \(String(numbOfQns))"
         if isNumbOfQn == true {
             numbOfQns = Int(choices[row])
+            loadStuff(item: .quizNumberOfQns)
             questionNumberTextField.attributedText = NSMutableAttributedString()
                     .bold("Number of Questions: ")
                     .normal("\(String(numbOfQns))")
-            questionPickerView.selectRow(choices.firstIndex(of: numbOfQns)!, inComponent: 0, animated: true)
         } else {
             timeForQn = Int(choices2[row])
-            timeTextField.attributedText = NSMutableAttributedString()
-                    .bold("Time Limit for Each Question: ")
-                    .normal("\(String(timeForQn)) seconds")
-            questionPickerView.selectRow(choices2.firstIndex(of: timeForQn)!, inComponent: 0, animated: true)
+            loadStuff(item: .quizTime)
+            timeTextField.attributedText = timeForQn > 1 ? NSMutableAttributedString().bold("Time for Each Question: ").normal("\(String(timeForQn)) seconds") : NSMutableAttributedString().bold("Time for Each Question: ").normal("\(String(timeForQn)) second")
         }
     }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if isNumbOfQn == true {
             return String(choices[row])
@@ -53,14 +58,22 @@ class McqMainViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     @IBAction func editingBegin(_ sender: Any) {
         isNumbOfQn = true
-        createToolbar()
         questionPickerView.reloadAllComponents()
+//        questionPickerView.selectRow(choices.firstIndex(of: numbOfQns)!, inComponent: 0, animated: true)
+        createToolbar()
+        loadStuff(item: .quizNumberOfQns)
     }
+//    @IBAction func editingEnd(_ sender: Any) {
+//        isNumbOfQn = nil
+//        questionPickerView.reloadAllComponents()
+//    }
     
     @IBAction func editingBegin2(_ sender: Any) {
         isNumbOfQn = false
-        createToolbar()
         questionPickerView.reloadAllComponents()
+//        questionPickerView.selectRow(choices2.firstIndex(of: timeForQn)!, inComponent: 0, animated: true)
+        createToolbar()
+        loadStuff(item: .quizTime)
     }
 //    @IBAction func didEndOnExit(_ sender: UITextField) {
 //        if sender == questionNumberTextField {
@@ -93,12 +106,11 @@ class McqMainViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             thingLabel.text = "Select Number of Questions"
             toolBar.setItems([doneButton, flexibleSpace, UIBarButtonItem(customView: thingLabel), flexibleSpace], animated: false)
             questionNumberTextField.inputAccessoryView = toolBar
+            print(numbOfQns)
             questionPickerView.selectRow(choices.firstIndex(of: numbOfQns)!, inComponent: 0, animated: true)
         } else {
-            timeTextField.attributedText = NSMutableAttributedString()
-                    .bold("Time for Each Question: ")
-                    .normal("\(String(timeForQn)) seconds")
-            thingLabel.text = "Select Time Limit for Each Question"
+            timeTextField.attributedText = timeForQn > 1 ? NSMutableAttributedString().bold("Time for Each Question: ").normal("\(String(timeForQn)) seconds") : NSMutableAttributedString().bold("Time for Each Question: ").normal("\(String(timeForQn)) second")
+            thingLabel.text = "Select Time for Each Question"
             questionPickerView.addSubview(thingLabel)
             toolBar.setItems([doneButton, flexibleSpace, UIBarButtonItem(customView: thingLabel), flexibleSpace], animated: false)
             timeTextField.inputAccessoryView = toolBar
@@ -132,13 +144,9 @@ class McqMainViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        questionNumberTextField.attributedText = NSMutableAttributedString()
-                .bold("Number of Questions: ")
-                .normal("\(String(numbOfQns))")
-        timeTextField.attributedText = NSMutableAttributedString()
-                .bold("Time for Each Question: ")
-                .normal("\(String(timeForQn)) seconds")
         // Do any additional setup after loading the view.
+        timeTextField.tintColor = UIColor.clear
+        questionNumberTextField.tintColor = UIColor.clear
         
         questionPickerView.delegate = self
         questionPickerView.dataSource = self
@@ -156,6 +164,12 @@ class McqMainViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         playVideoAccordingly(viewName: videoBackgroundView)
         instructionsbutton.backgroundColor = UIColor(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1.0)
         
+        loadStuff(item: .initial)
+        
+        questionNumberTextField.attributedText = NSMutableAttributedString()
+                .bold("Number of Questions: ")
+                .normal("\(String(numbOfQns))")
+        timeTextField.attributedText = timeForQn > 1 ? NSMutableAttributedString().bold("Time for Each Question: ").normal("\(String(timeForQn)) seconds") : NSMutableAttributedString().bold("Time for Each Question: ").normal("\(String(timeForQn)) second")
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationController?.navigationBar.tintColor = .label
@@ -186,6 +200,33 @@ override func viewWillDisappear(_ animated: Bool) {
     NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: self.view.window)
     NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
 }
+    enum QuizItems {
+        case initial
+        case quizNumberOfQns
+        case quizTime
+    }
+    func loadStuff(item: QuizItems) {
+        switch item {
+        case .initial:
+            if defaults.object(forKey: "QuizNumberOfQns") != nil {
+                numbOfQns = defaults.integer(forKey: "QuizNumberOfQns")
+            } else {
+                defaults.setValue(numbOfQns, forKey: "QuizNumberOfQns")
+            }
+            
+            if defaults.object(forKey: "QuizTime") != nil {
+                timeForQn = defaults.integer(forKey: "QuizTime")
+            } else {
+                defaults.setValue(timeForQn, forKey: "QuizTime")
+            }
+        case .quizNumberOfQns:
+            print("Number of questions is", numbOfQns)
+            defaults.setValue(numbOfQns, forKey: "QuizNumberOfQns")
+        case .quizTime:
+            print("Time for each question is", timeForQn)
+            defaults.setValue(timeForQn, forKey: "QuizTime")
+        }
+    }
     @IBAction func startOverQuiz (segue: UIStoryboardSegue){
         
     }

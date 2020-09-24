@@ -44,6 +44,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     // self.presentViewController(vc, animated: true, completion: nil)
                 }
             }
+        } else {
+            let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+
+            // Create a reference to the ViewController you want to open
+            let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "ViewController")
+//
+//            let navigationController = UINavigationController.init(rootViewController: vc)
+
+            // Present the ViewController
+            DispatchQueue.global(qos: .background).async {
+
+                // Background Thread
+
+                DispatchQueue.main.async {
+                    vc.view.frame = (self.window!.frame)
+                    self.window!.addSubview(vc.view)
+                    self.window!.bringSubviewToFront(vc.view)
+//                    navigationController.navigationBar.prefersLargeTitles = true
+                    self.window?.rootViewController = vc
+                    self.window?.makeKeyAndVisible()
+                    // Run UI Updates
+                    // self.presentViewController(vc, animated: true, completion: nil)
+                }
+            }
         }
         if (defaults.object(forKey: "virazeTheme") != nil) {
             if #available(iOS 13.0, *) {
