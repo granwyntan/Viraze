@@ -37,10 +37,12 @@ class PickMasksViewController: UIViewController, UIPickerViewDataSource, UIPicke
         return 30
     }
     
+    @IBOutlet var tgr: UITapGestureRecognizer!
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var questionText: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var prevQuestion: UIButton!
+    @IBOutlet weak var tapAnywhereText: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,8 +60,23 @@ class PickMasksViewController: UIViewController, UIPickerViewDataSource, UIPicke
             swipeRight.isEnabled = false
         }
         isMaskResult = true
+        prevQuestion.isHidden = true
+        nextButton.isHidden = true
+        picker.isHidden = true
+        questionText.isHidden = true
+        tapAnywhereText.isHidden = false
+        tgr.isEnabled = true
     }
 
+    @IBAction func startPick(_ sender: UITapGestureRecognizer) {
+        prevQuestion.isHidden = false
+        nextButton.isHidden = false
+        picker.isHidden = false
+        questionText.isHidden = false
+        tapAnywhereText.isHidden = true
+        tgr.isEnabled = false
+    }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if row > 0 {
             nextButton.isEnabled = true

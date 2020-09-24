@@ -1181,6 +1181,13 @@
                                     <action selector="previousQuestion:" destination="5sR-SX-eJb" eventType="touchUpInside" id="VzK-H4-cYa"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap Anywhere to Start" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbC-Sp-abG">
+                                <rect key="frame" x="20" y="794" width="374" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gjX-Yr-y5h"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1188,6 +1195,7 @@
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="cxV-pt-3Wq" appends="YES" id="udP-Xp-URd"/>
                             <outletCollection property="gestureRecognizers" destination="ryj-MD-Jdx" appends="YES" id="DuX-rm-gtE"/>
+                            <outletCollection property="gestureRecognizers" destination="LUZ-2w-dOG" appends="YES" id="8Pb-Py-2KA"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Pick A Mask" id="C8A-js-F6L">
@@ -1204,6 +1212,8 @@
                         <outlet property="questionText" destination="jrO-Np-Lbd" id="4lz-dQ-p8H"/>
                         <outlet property="swipeLeft" destination="ryj-MD-Jdx" id="dVk-HT-6GW"/>
                         <outlet property="swipeRight" destination="cxV-pt-3Wq" id="iHm-0U-hiC"/>
+                        <outlet property="tapAnywhereText" destination="rbC-Sp-abG" id="It6-d8-YZ0"/>
+                        <outlet property="tgr" destination="LUZ-2w-dOG" id="bgv-ir-Kh9"/>
                         <segue destination="fby-hW-8uq" kind="unwind" identifier="closeMaskChooser" customClass="UnwindScaleSegue" customModule="Viraze" customModuleProvider="target" unwindAction="prepareForUnwindWithSegue:" id="WE6-U9-UW0"/>
                         <segue destination="wst-ZD-Gsw" kind="show" identifier="seeMaskChosen" id="9Ua-nC-ap8"/>
                     </connections>
@@ -1220,6 +1230,11 @@
                         <action selector="nextQuestion:" destination="5sR-SX-eJb" id="Cwv-y1-SUh"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer id="LUZ-2w-dOG">
+                    <connections>
+                        <action selector="startPick:" destination="5sR-SX-eJb" id="5vi-jq-wbh"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="7127.5362318840589" y="1614.5089285714284"/>
         </scene>
@@ -2818,7 +2833,13 @@
                         <viewLayoutGuide key="safeArea" id="8a5-jl-ITc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="GU4-PA-nPS"/>
+                    <navigationItem key="navigationItem" id="GU4-PA-nPS">
+                        <barButtonItem key="rightBarButtonItem" image="xmark" catalog="system" id="oDM-9q-bku">
+                            <connections>
+                                <segue destination="bXx-vp-le5" kind="unwind" customClass="UnwindScaleSegue" customModule="Viraze" customModuleProvider="target" unwindAction="prepareForUnwindWithSegue:" id="6f3-NW-iI5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="JLw-Zb-uoX" id="t0C-tP-yS0"/>
                         <outlet property="seeAllMasks" destination="1nW-4i-TKq" id="YIZ-BX-WbV"/>
@@ -2827,6 +2848,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sLg-a5-oo0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="bXx-vp-le5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="7873.9130434782619" y="1614.5089285714284"/>
         </scene>
@@ -3039,7 +3061,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjZ-p9-DDf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjZ-p9-DDf">
                                 <rect key="frame" x="20" y="308" width="374" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -3062,7 +3084,7 @@
                         <outlet property="comment" destination="qjZ-p9-DDf" id="kyA-ZP-52s"/>
                         <outlet property="scoreText" destination="CnI-oj-V5l" id="xzq-jC-7MY"/>
                         <outlet property="startover" destination="W8u-dY-pFc" id="xpv-tL-jgM"/>
-                        <segue destination="J26-SV-Aiy" kind="unwind" identifier="closeQuiz2" unwindAction="prepareForUnwindWithSegue:" id="aAJ-pZ-x3Q"/>
+                        <segue destination="J26-SV-Aiy" kind="unwind" identifier="closeQuiz2" customClass="UnwindScaleSegue" customModule="Viraze" customModuleProvider="target" unwindAction="prepareForUnwindWithSegue:" id="aAJ-pZ-x3Q"/>
                         <segue destination="J26-SV-Aiy" kind="unwind" identifier="startQuizOver" unwindAction="startOverQuizWithSegue:" id="0VU-df-mRT"/>
                     </connections>
                 </viewController>
