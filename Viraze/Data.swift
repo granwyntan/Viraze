@@ -856,3 +856,14 @@ let tutorialsDark = [
     TutorialStuff(videoName: "virazePersonalisationDark", videoFileType: "mov", image: "image2", title: "Personalisation", desc: "Make Viraze your very own, with a profile picture and name"),
     TutorialStuff(videoName: "theming", videoFileType: "mov", image: "image3", title: "Choose your theme", desc: "With a flick, the entire app is now suited to your liking, voila")
 ]
+
+// https://indianexpress.com/article/explained/coronavirus-covid-19-most-effective-face-mask-study-6551759/
+// https://monsterprints.com.sg/which-mask-should-i-wear-in-singapore/
+//https://www.wsj.com/articles/how-face-masks-work-and-which-types-offer-the-best-covid-19-protection-11595946178
+//https://timesofindia.indiatimes.com/life-style/health-fitness/health-news/4-types-of-common-masks-and-how-and-if-they-help/photostory/74926268.cms
+//https://www.verywellhealth.com/can-medical-masks-prevent-viral-infections-4798665
+//https://www.healthshots.com/preventive-care/self-care/these-3-types-of-face-masks-offer-the-best-protection-against-covid-19/
+//https://medium.com/@homecare24.blog/preventing-coronavirus-which-type-of-mask-is-the-safest-c12adcd0037e
+//https://www.healthline.com/health/coronavirus-mask#protection
+//https://www.sciencealert.com/some-masks-are-better-than-others-here-they-are-ranked-best-to-worst
+//https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public
