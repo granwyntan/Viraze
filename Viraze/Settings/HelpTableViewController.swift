@@ -49,7 +49,7 @@ class HelpTableViewController: UITableViewController, MFMailComposeViewControlle
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            let alert = UIAlertController(title: "About Us", message: "Viraze\nDeveloped by Granwyn Tan,\nJoel Hui and Ashok\nSST S2-05 2020\nLast Updated on 22 Sep 2020", preferredStyle: .alert)
+            let alert = UIAlertController(title: "About Us", message: "Viraze\nDeveloped by Granwyn Tan,\nJoel Hui and Ashok\nSST S2-05 2020\nLast Updated on 27 Sep 2020", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
         } else if indexPath.row == 1 {

@@ -834,6 +834,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
                                                     <connections>
+                                                        <action selector="hideKeyboard:" destination="voy-AM-DWx" eventType="editingDidEnd" id="jha-M4-P5X"/>
                                                         <action selector="hideKeyboard:" destination="voy-AM-DWx" eventType="editingDidEndOnExit" id="sMW-4R-8bu"/>
                                                     </connections>
                                                 </textField>
@@ -3215,7 +3216,7 @@
         <segue reference="9Ua-nC-ap8"/>
         <segue reference="y0S-9K-lPC"/>
         <segue reference="lfT-CO-6r9"/>
-        <segue reference="xK4-Xr-4V4"/>
+        <segue reference="r6f-v2-mvj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="HazeQuizPart" width="1428" height="1588"/>

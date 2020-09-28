@@ -328,6 +328,7 @@ class QuizThingViewController: UIViewController {
 
     func nextQuestion(){
         currentQuestion += 1
+        submitAnsButton.isEnabled = false
         if currentQuestion < quizzes.count {
             displayQuestion()
         }
@@ -381,6 +382,8 @@ class QuizThingViewController: UIViewController {
 //        choice4.titleLabel?.numberOfLines = 0; // Dynamic number of lines
 //        choice4.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping;
         selections = [false, false, false, false]
+        selectedOption = nil
+        selectedButton = nil
         currentQn.text = "Q\(currentQuestion+1)/\(quizzes.count)"
         let question = quizzes[currentQuestion]
         questionText.text = question.question
@@ -409,7 +412,7 @@ class QuizThingViewController: UIViewController {
             timeLabel.text = "Time Left: \(timeAllowed)"
         }
         else {
-            timeLabel.text = "Time Left:                    --"
+            timeLabel.text = "Time Left: --"
         }
     }
 

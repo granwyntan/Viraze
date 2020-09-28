@@ -29,7 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //            let navigationController = UINavigationController.init(rootViewController: vc)
 
             // Present the ViewController
-            DispatchQueue.global(qos: .background).async {
+            DispatchQueue.global(qos: .default).async {
 
                 // Background Thread
 
