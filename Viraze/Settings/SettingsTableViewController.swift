@@ -15,6 +15,14 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDataSource
         if (defaults.object(forKey: "virazeTheme") != nil) {
             themeSwitch.isHidden = false
             themeSwitch.setOn(defaults.bool(forKey: "virazeTheme"), animated: true)
+            if themeSwitch.isOn == true {
+                themeSwitch.onTintColor = .darkGray
+                themeSwitch.thumbTintColor = .black
+            } else {
+                themeSwitch.onTintColor = .lightGray
+                themeSwitch.thumbTintColor = .white
+            }
+            
             if #available(iOS 13.0, *) {
                 if defaults.bool(forKey: "virazeTheme") == false {
                     UIApplication.shared.windows.forEach { window in

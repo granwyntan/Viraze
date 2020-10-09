@@ -1495,11 +1495,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="0.0" id="azR-N0-8C3">
-                                        <rect key="frame" x="20" y="88" width="374" height="1.1920928955078125e-07"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="azR-N0-8C3">
+                                        <rect key="frame" x="20" y="88" width="374" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="azR-N0-8C3" id="91B-0n-fvE">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="1.1920928955078125e-07"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Rha-JE-nE8">
@@ -1552,7 +1552,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="yrV-QF-Pwj">
-                                        <rect key="frame" x="20" y="88.00000011920929" width="374" height="70"/>
+                                        <rect key="frame" x="20" y="158" width="374" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yrV-QF-Pwj" id="dCD-Y1-dmp">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
@@ -1595,7 +1595,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="3dc-e9-ZaP">
-                                        <rect key="frame" x="20" y="158.00000011920929" width="374" height="70"/>
+                                        <rect key="frame" x="20" y="228" width="374" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3dc-e9-ZaP" id="6E5-Ns-Ktj">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
@@ -1638,7 +1638,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="Hef-Tr-4eK">
-                                        <rect key="frame" x="20" y="228.00000011920929" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="298" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hef-Tr-4eK" id="fEZ-iV-ds6">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -1672,7 +1672,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="46" id="QQE-vQ-1tq">
-                                        <rect key="frame" x="20" y="278.00000011920929" width="374" height="46"/>
+                                        <rect key="frame" x="20" y="348" width="374" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QQE-vQ-1tq" id="rX9-iF-XRH">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="46"/>
@@ -3216,7 +3216,7 @@
         <segue reference="9Ua-nC-ap8"/>
         <segue reference="y0S-9K-lPC"/>
         <segue reference="lfT-CO-6r9"/>
-        <segue reference="r6f-v2-mvj"/>
+        <segue reference="xK4-Xr-4V4"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="HazeQuizPart" width="1428" height="1588"/>
