@@ -34,8 +34,9 @@ class NameViewController: UIViewController {
                 nameField.text = ""
                 if let name = defaults.string(forKey: "UserName") {
                     print(name)
-            }
-            self.performSegue(withIdentifier: "seeHomeScreen", sender: nil)
+                }
+                defaults.setValue("All", forKey: "language")
+                self.performSegue(withIdentifier: "seeHomeScreen", sender: nil)
             }
         } else {
             let alert = UIAlertController(title: "Error setting name", message: "Name is Blank", preferredStyle: .alert)
@@ -45,6 +46,7 @@ class NameViewController: UIViewController {
     }
     
     @IBAction func skip(_ sender: Any) {
+        defaults.setValue("All", forKey: "language")
         self.performSegue(withIdentifier: "seeHomeScreen", sender: nil)
     }
     

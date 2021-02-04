@@ -43,12 +43,12 @@ class SettingsTableViewController: UITableViewController, UIPickerViewDataSource
                 window.overrideUserInterfaceStyle = .unspecified
             }
             themePickerView.selectRow(0, inComponent: 0, animated: true)
-            themeName.text = "Default"
+            themeName.text = "System Default"
             themeSwitch.isHidden = true
         }
     }
     
-    var themeOptions = ["Default", "Light", "Dark"]
+    var themeOptions = ["System Default", "Light", "Dark"]
 
     let defaults = UserDefaults.standard
     @IBOutlet weak var themeName: UITextField!

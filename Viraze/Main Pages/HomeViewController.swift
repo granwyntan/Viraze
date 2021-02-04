@@ -47,12 +47,12 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
     @IBOutlet weak var coronavirus10: UIButton!
     @IBOutlet weak var textview: UITextView!
     
-    let greetingPrefixesMorning = ["Good Morning", "Wakey-wakey", "Rise and Shine", "Morning", "Good Day", "Mornin'", "Morning has broken", "早安", "早上好", "காலை வணக்கம்", "Selamat Pagi", "おはようございます", "좋은 아침", "Bonjour", "Guten Morgen", "Buenos días", "Buongiorno", "शुभ प्रभात", "สวัสดีตอนเช้า", "God Morgon", "Buổi Sáng Tốt Lành"]
+    let greetingPrefixesMorning = ["Good Morning", "Wakey-wakey", "Rise and Shine", "Morning", "Good Day", "Mornin'", /*"Morning has broken",*/ "早安", "早上好", "காலை வணக்கம்", "Selamat Pagi", /*"おはようございます", "좋은 아침", "Bonjour", "Guten Morgen", "Buenos días", "Buongiorno", "शुभ प्रभात", "สวัสดีตอนเช้า", "God Morgon", "Buổi Sáng Tốt Lành"*/]
     let greetingPrefixesAfternoon = ["Good Afternoon", "下午好", "Selamat Petang", "மதிய வணக்கம்"]
     let greetingPrefixesEvening = ["Good Evening", "晚上好", "Selamat Malam", "மாலை வணக்கம்"]
     let otherRandomGreetings = ["Hey", "Hi", "Hello", "What's up", "How are you", "Yo", "Sup", "Whazzup"]
     var greetingGiven = false
-    var timeLeft = 1.0
+    var timeLeft = 60.0
     var imageName = UIImage()
     let defaults = UserDefaults.standard
     var timer: Timer?
@@ -325,11 +325,12 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
     override func viewWillAppear(_ animated: Bool) {
         hasBeenPressed = false
         timeframe = Int()
-        self.timer = Timer.scheduledTimer(timeInterval: 1.0,
-                                                                    target: self,
-                                                                    selector: #selector(setGreetingAndDate),
-                                                                    userInfo: nil,
-                                                                    repeats: true)
+        setGreetingAndDate()
+        self.timer = Timer.scheduledTimer(timeInterval: 60.0,
+                                                                            target: self,
+                                                                            selector: #selector(setGreetingAndDate),
+                                                                            userInfo: nil,
+                                                                            repeats: true)
     }
     @objc func setGreetingAndDate() {
         greeting.frame = CGRect(x: greetingText.layer.position.x, y: greetingText.layer.position.y, width: greetingText.layer.frame.width, height: greetingText.layer.frame.height)
@@ -342,17 +343,30 @@ class HomeViewController: UIViewController/*, UIViewControllerTransitioningDeleg
 //        else
         if Calendar.current.component(.hour, from: Date()) >= 5 && Calendar.current.component(.hour, from: Date()) < 12 {
             if timeframe != 1 {
-                greetingPrefix = greetingPrefixesMorning.randomElement()!
+                if defaults.string(forKey: "language") == "All" {
+                    greetingPrefix = greetingPrefixesMorning.randomElement()!
+                } else {
+                    let number = Int.random(in: 0...5)
+                    greetingPrefix = greetingPrefixesMorning[number]
+                }
             }
             timeframe = 1
         } else if Calendar.current.component(.hour, from: Date()) >= 12 && Calendar.current.component(.hour, from: Date()) < 18 {
             if timeframe != 2 {
-                greetingPrefix = greetingPrefixesAfternoon.randomElement()!
+                if defaults.string(forKey: "language") == "All" {
+                    greetingPrefix = greetingPrefixesAfternoon.randomElement()!
+                } else {
+                    greetingPrefix = greetingPrefixesAfternoon[0]
+                }
             }
             timeframe = 2
         } else if Calendar.current.component(.hour, from: Date()) >= 18 && Calendar.current.component(.hour, from: Date()) < 23 {
             if timeframe != 3 {
-                greetingPrefix = greetingPrefixesEvening.randomElement()!
+                if defaults.string(forKey: "language") == "All" {
+                    greetingPrefix = greetingPrefixesEvening.randomElement()!
+                } else {
+                    greetingPrefix = greetingPrefixesEvening[0]
+                }
             }
             timeframe = 3
         } else {

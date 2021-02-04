@@ -1,15 +1,16 @@
 //
-//  MoreSettingsTableViewController.swift
+//  SelectLanguageTableViewController.swift
 //  Viraze
 //
-//  Created by Granwyn Tan on 18/9/20.
+//  Created by Granwyn Tan on 23/11/20.
 //  Copyright © 2020 Granwyn Tan. All rights reserved.
 //
 
 import UIKit
-import SafariServices
 
-class MoreSettingsTableViewController: UITableViewController {
+class SelectLanguageTableViewController: UITableViewController {
+    
+    let languages = ["All", "English (Singapore)", "简体中文 (新加坡) - Chinese", "Bahasa Melayu - Malay", "தமிழ் - Tamil"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +22,6 @@ class MoreSettingsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
-//        tableView.reloadRows(at: [IndexPath(row: 2, section: 0)], with: .automatic)
-    }
-    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,41 +31,34 @@ class MoreSettingsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return 5
     }
-
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "morecell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "languageCell", for: indexPath)
 
         // Configure the cell...
-
-        /*if indexPath.row == 0 {
-            cell.textLabel?.text = "Credits"
+        cell.textLabel?.text = languages[indexPath.row]
+        cell.selectionStyle = .none
+        if cell.textLabel!.text == defaults.string(forKey: "language") {
+            cell.accessoryType = .checkmark
+        } else {
             cell.accessoryType = .none
-            cell.detailTextLabel?.text = ""
-        } else */
-        if indexPath.row == 0 {
-            cell.textLabel?.text = "License"
-            cell.accessoryType = .none
-            cell.detailTextLabel?.text = ""
-        } else if indexPath.row == 1 {
-            cell.textLabel?.text = "Language"
-            cell.detailTextLabel?.text = defaults.string(forKey: "language")
-            cell.accessoryType = .disclosureIndicator
+        }
+        
+        if indexPath.row >= 2 {
+            cell.isUserInteractionEnabled = false
+            cell.textLabel?.textColor = .lightGray
         }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /*if indexPath.row == 0 {
-            performSegue(withIdentifier: "seeCredits", sender: nil)
-        }*/
-        /*else*/ if indexPath.row == 0 {
-            present(SFSafariViewController(url: URL(string: "https://github.com/granwyntan/Viraze/blob/master/LICENSE")!), animated: true)
-        } else if indexPath.row == 1 {
-            performSegue(withIdentifier: "seeLanguage", sender: nil)
+        for cell in tableView.visibleCells {
+            cell.accessoryType = .none
         }
+        defaults.setValue(tableView.cellForRow(at: indexPath)?.textLabel!.text, forKey: "language")
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
     }
 
     /*
